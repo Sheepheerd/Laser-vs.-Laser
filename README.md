@@ -12,4 +12,4 @@ In order to Work on the Project you must
 5. Use `git push ` to push the changes you made and make them permanent.
 
 
-Later we might work with Branches.
+ Later we might work with Branches.
