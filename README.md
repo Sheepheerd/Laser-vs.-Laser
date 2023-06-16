@@ -1,7 +1,7 @@
 # Godot_Space_PM
 For The Bois who are using this.
 
-In order to Work on the Project you must
+In order to Work on the Project
 
 ----------------------------------------
 
@@ -12,4 +12,3 @@ In order to Work on the Project you must
 5. Use `git push ` to push the changes you made and make them permanent.
 
 
- Later we might work with Branches.
