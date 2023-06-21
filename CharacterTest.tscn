@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dajf0yjr0oa0o"]
+[gd_scene load_steps=12 format=3 uid="uid://dajf0yjr0oa0o"]
 
-[ext_resource type="Script" path="res://CharacterTest.gd" id="2_2r3u1"]
+[ext_resource type="Script" path="res://OverWorld_Settings.gd" id="1_d5yff"]
+[ext_resource type="Script" path="res://Combat/CombatTransition.gd" id="2_5o2wy"]
 [ext_resource type="Texture2D" uid="uid://tlcfith2mkdc" path="res://Sprites/Test_Tile_Sprite_Holders/Black_Square.png" id="2_u1j5j"]
 [ext_resource type="Texture2D" uid="uid://bu3t1u42qw38y" path="res://Sprites/Test_Tile_Sprite_Holders/White_Square.png" id="3_y3n46"]
+[ext_resource type="Script" path="res://BattleData.gd" id="4_1cnwy"]
 
 [sub_resource type="GDScript" id="GDScript_yxshb"]
 script/source = "extends CharacterBody2D
@@ -14,8 +16,11 @@ const SPEED = 300.0
 #export(String, FILE, \"AttackScene.tscn\") var attack_scene_path
 var attack_scene_path = \"res://Combat/AttackScene.tscn\"
 
-
-func _process(delta):
+func _ready():
+	global_position = BattleData.player_data.position
+	
+	
+func _process(_delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -68,9 +73,11 @@ size = Vector2(128, 127)
 
 [node name="OverWorld" type="Node2D"]
 position = Vector2(-3, 0)
+script = ExtResource("1_d5yff")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(612, 347)
+zoom = Vector2(0.5, 0.5)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["Player"]]
 z_index = 1
@@ -89,7 +96,7 @@ shape = SubResource("RectangleShape2D_meuho")
 
 [node name="Combat_Transition" type="Area2D" parent="CharacterBody2D"]
 position = Vector2(17, 6)
-script = ExtResource("2_2r3u1")
+script = ExtResource("2_5o2wy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Combat_Transition"]
 z_index = 1
@@ -114,6 +121,24 @@ position = Vector2(2, 1.5)
 shape = SubResource("RectangleShape2D_8uvmb")
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy/RigidBody2D/CollisionShape2D"]
+position = Vector2(0, 0.5)
+rotation = -1.57079
+texture = ExtResource("2_u1j5j")
+
+[node name="BattleData" type="Node2D" parent="."]
+script = ExtResource("4_1cnwy")
+
+[node name="Enemy2" type="Node2D" parent="."]
+position = Vector2(457, 580)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Enemy2" groups=["Enemy"]]
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy2/RigidBody2D"]
+position = Vector2(2, 1.5)
+shape = SubResource("RectangleShape2D_8uvmb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy2/RigidBody2D/CollisionShape2D"]
 position = Vector2(0, 0.5)
 rotation = -1.57079
 texture = ExtResource("2_u1j5j")
