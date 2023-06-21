@@ -1,5 +1,7 @@
 extends Node2D
 
+
+
 var current_selection = 1
 var selection_positions = []
 
@@ -30,10 +32,18 @@ func _process(delta):
 				_on_run_button_pressed()
 
 func _on_attack_button_pressed():
-	print("Attack button pressed")
-
-func _on_item_button_pressed():
-	print("Item button pressed")
+	# Here you can display a new set of buttons for the player to choose the attack.
+	# For simplicity, let's just directly call the attack function.
+	kill_enemy()
 
 func _on_run_button_pressed():
-	print("Run button pressed")
+	# Transition back to the original scene
+	get_tree().change_scene_to_file(BattleData.previous_scene_path)
+
+func _on_item_button_pressed():
+	# Open the bag (you need to implement this according to your game design)
+	print("Open the bag")
+
+func kill_enemy():
+	var enemy = get_node("/root/AttackScene/Enemy")  # Adjust this path according to your node hierarchy
+	enemy.take_damage(50)  # Damage the enemy by its own health amount, effectively killing it

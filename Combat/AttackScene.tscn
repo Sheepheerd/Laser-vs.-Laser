@@ -20,7 +20,6 @@ texture = ExtResource("2_ix46s")
 
 [node name="Player" type="Node2D" parent="."]
 position = Vector2(108, 153)
-script = ExtResource("3_sj81x")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 texture = ExtResource("1_rix20")
@@ -29,6 +28,7 @@ texture = ExtResource("1_rix20")
 
 [node name="UI" type="Node2D" parent="."]
 position = Vector2(543, 433)
+script = ExtResource("3_sj81x")
 
 [node name="AttackButton" type="Button" parent="UI"]
 offset_left = -466.0
@@ -61,6 +61,6 @@ position = Vector2(-313, 28)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_ix46s")
 
-[connection signal="pressed" from="UI/AttackButton" to="Player" method="_on_attack_button_pressed"]
-[connection signal="pressed" from="UI/ItemButton" to="Player" method="_on_item_button_pressed"]
-[connection signal="pressed" from="UI/RunButton" to="Player" method="_on_run_button_pressed"]
+[connection signal="pressed" from="UI/AttackButton" to="UI" method="_on_attack_button_pressed"]
+[connection signal="pressed" from="UI/ItemButton" to="UI" method="_on_item_button_pressed"]
+[connection signal="pressed" from="UI/RunButton" to="UI" method="_on_run_button_pressed"]
