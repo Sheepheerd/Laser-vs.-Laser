@@ -11,7 +11,7 @@ var selection_positions = []
 @onready var Cursor = get_node("/root/AttackScene/UI/Cursor")
 func _ready():
 
-	selection_positions = [AttackButton.global_position, ItemButton.global_position, RunButton.global_position]
+	selection_positions = [AttackButton.global_position + Vector2(150, -45), ItemButton.global_position + Vector2(150, -45), RunButton.global_position + Vector2(150, -45)]
 	Cursor.global_position = selection_positions[current_selection - 1]
 
 func _process(delta):
