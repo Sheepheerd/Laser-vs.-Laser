@@ -1,7 +1,7 @@
 extends Node
 
 #Define the Scene
-var previous_scene_path = "res://CharacterTest.tscn"  # Replace with your actual scene path
+var previous_scene_path = "res://OverWorld.tscn"  # Replace with your actual scene path
 
 var player_data = {
 	"level": 0,
