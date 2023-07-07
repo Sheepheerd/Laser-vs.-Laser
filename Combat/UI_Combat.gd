@@ -20,6 +20,7 @@ var attack_selection_positions = []
 @onready var MeleeButton = get_node("/root/AttackScene/UI/MeleeButton")
 @onready var RangeButton = get_node("/root/AttackScene/UI/RangeButton")
 @onready var Cursor = get_node("/root/AttackScene/UI/Cursor")
+@onready var DisplayTile = get_node("/root/AttackScene/UI/Display")
 
 #Pre-setup for UI Selection
 func _ready():
@@ -35,8 +36,7 @@ func _ready():
 	Cursor.global_position = selection_positions[current_selection - 1]
 	MeleeButton.hide()
 	RangeButton.hide()
-	
-	#Set up Tilemap Position
+	#DisplayTile.hide()
 
 
 #Set Up Turns
@@ -53,6 +53,7 @@ func _process(_delta):
 	
 	elif current_game_state == GameState.ENEMY_ATTACKING:
 		# Player movement during enemy's turn
+		DisplayTile.show()
 		var movement = Vector2.ZERO
 		if Input.is_action_just_pressed("Right_dir"):
 			movement.x += 1
@@ -118,6 +119,9 @@ func _on_attack_button_pressed():
 	RunButton.hide()
 	MeleeButton.show()
 	RangeButton.show()
+	
+	DisplayTile.hide()
+	
 	current_selection = 1
 	Cursor.global_position = attack_selection_positions[current_selection - 1]
 
@@ -139,6 +143,9 @@ func _on_back_pressed():
 	Cursor.show()
 	MeleeButton.hide()
 	RangeButton.hide()
+	
+	DisplayTile.hide()
+	
 	current_selection = 1
 	Cursor.global_position = selection_positions[current_selection - 1]
 
@@ -182,7 +189,7 @@ func hide_all_buttons():
 const TILE_SIZE = 128  # Adjust this value based on your tile size
 
 # Define the map boundaries
-const MAP_WIDTH = 4
+const MAP_WIDTH = 3
 const MAP_HEIGHT = 4
 
 # Set up player position and tilemap
@@ -192,7 +199,8 @@ var playerPosition = Vector2(0, 1)
 # Convert tile position to world position
 func tile_to_world(tilePos):
 	return tilePos * TILE_SIZE
+	
 
 # Check if a position is within the map bounds
 func is_valid_position(position):
-	return position.x >= -3 && position.x < MAP_WIDTH && position.y >= -1 && position.y < MAP_HEIGHT
+	return position.x >= -2 && position.x < MAP_WIDTH && position.y >= -1 && position.y < MAP_HEIGHT

@@ -100,7 +100,7 @@ texture = ExtResource("2_ix46s")
 [node name="AttackData" type="Node2D" parent="Enemy"]
 
 [node name="Player" type="Node2D" parent="."]
-position = Vector2(0, 172)
+position = Vector2(-2, 120)
 rotation = 1.57079
 script = ExtResource("4_jgo8f")
 
@@ -120,10 +120,10 @@ format = 2
 [node name="UI" type="Node2D" parent="."]
 position = Vector2(-84, 172)
 script = ExtResource("5_w577b")
-metadata/_edit_lock_ = true
 
 [node name="Display" type="TileMap" parent="UI"]
-position = Vector2(148, 66)
+visible = false
+position = Vector2(148, 15)
 rotation = 1.57079
 tile_set = SubResource("TileSet_v2ckg")
 format = 2
