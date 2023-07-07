@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtb34pld2df8t"]
+[gd_scene load_steps=12 format=3 uid="uid://dtb34pld2df8t"]
 
 [ext_resource type="Texture2D" uid="uid://bu3t1u42qw38y" path="res://Sprites/Test_Tile_Sprite_Holders/White_Square.png" id="1_rix20"]
 [ext_resource type="Script" path="res://Combat/ComatTransition.gd" id="1_x4r3f"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Combat/Enemy.gd" id="2_u72vy"]
 [ext_resource type="Script" path="res://Combat/PlayerCombat.gd" id="4_jgo8f"]
 [ext_resource type="Script" path="res://Combat/UI_Combat.gd" id="5_w577b"]
+[ext_resource type="Texture2D" uid="uid://cdblvdggggc41" path="res://Sprites/blacksquare.png" id="6_6iyy6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_36stq"]
 texture = ExtResource("1_rix20")
@@ -77,6 +78,15 @@ texture = ExtResource("1_rix20")
 [sub_resource type="TileSet" id="TileSet_tyswo"]
 sources/0 = SubResource("TileSetAtlasSource_36stq")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j1vcl"]
+texture = ExtResource("6_6iyy6")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_v2ckg"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_j1vcl")
+
 [node name="AttackScene" type="Node2D"]
 script = ExtResource("1_x4r3f")
 
@@ -111,6 +121,13 @@ format = 2
 position = Vector2(-84, 172)
 script = ExtResource("5_w577b")
 metadata/_edit_lock_ = true
+
+[node name="Display" type="TileMap" parent="UI"]
+position = Vector2(148, 66)
+rotation = 1.57079
+tile_set = SubResource("TileSet_v2ckg")
+format = 2
+layer_0/tile_data = PackedInt32Array(131069, 0, 0, 196605, 0, 0, 262141, 0, 0, 262142, 0, 0, 196606, 0, 0, 131070, 0, 0, 262143, 0, 0, 196607, 0, 0, 131071, 0, 0, 196608, 0, 0, 131072, 0, 0, 65536, 0, 0, 0, 0, 0, -65536, 0, 0, -131072, 0, 0, -196608, 0, 0, -131073, 0, 0, -65537, 0, 0, -1, 0, 0, -2, 0, 0, -65538, 0, 0, -131074, 0, 0, -131075, 0, 0, -65539, 0, 0, -3, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0)
 
 [node name="AttackButton" type="Button" parent="UI"]
 anchors_preset = 4
