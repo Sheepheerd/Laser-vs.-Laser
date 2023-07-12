@@ -3,7 +3,7 @@ extends Node
 var previous_scene_path = "res://OverWorld.tscn"  # Replace with your actual scene path
 
 # Player and enemy nodes in the combat scene
-@onready var player = get_node("/root/AttackScene/Player")  # Adjust this path according to your node hierarchy
+@onready var player = get_node("/root/AttackScene/User/Player")  # Adjust this path according to your node hierarchy
 @onready var enemy = get_node("/root/AttackScene/Enemy")
 
 func _ready():
@@ -20,3 +20,5 @@ func _ready():
 		get_tree().change_scene_to_file(previous_scene_path)
 	
 	
+
+

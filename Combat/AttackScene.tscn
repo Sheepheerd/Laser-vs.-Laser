@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dtb34pld2df8t"]
+[gd_scene load_steps=17 format=3 uid="uid://dtb34pld2df8t"]
 
 [ext_resource type="Texture2D" uid="uid://bu3t1u42qw38y" path="res://Sprites/Test_Tile_Sprite_Holders/White_Square.png" id="1_rix20"]
 [ext_resource type="Script" path="res://Combat/ComatTransition.gd" id="1_x4r3f"]
@@ -7,6 +7,20 @@
 [ext_resource type="Script" path="res://Combat/PlayerCombat.gd" id="4_jgo8f"]
 [ext_resource type="Script" path="res://Combat/UI_Combat.gd" id="5_w577b"]
 [ext_resource type="Texture2D" uid="uid://cdblvdggggc41" path="res://Sprites/blacksquare.png" id="6_6iyy6"]
+[ext_resource type="Script" path="res://Combat/PlayerAttackPhase.gd" id="8_frq5w"]
+[ext_resource type="Script" path="res://Combat/AimingArea2D.gd" id="9_qufre"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdfxg"]
+size = Vector2(131, 131)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j1vcl"]
+texture = ExtResource("6_6iyy6")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_v2ckg"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_j1vcl")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_36stq"]
 texture = ExtResource("1_rix20")
@@ -78,14 +92,11 @@ texture = ExtResource("1_rix20")
 [sub_resource type="TileSet" id="TileSet_tyswo"]
 sources/0 = SubResource("TileSetAtlasSource_36stq")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j1vcl"]
-texture = ExtResource("6_6iyy6")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4u1u"]
+size = Vector2(129, 127)
 
-[sub_resource type="TileSet" id="TileSet_v2ckg"]
-tile_size = Vector2i(128, 128)
-sources/0 = SubResource("TileSetAtlasSource_j1vcl")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ueekk"]
+size = Vector2(126, 131)
 
 [node name="AttackScene" type="Node2D"]
 script = ExtResource("1_x4r3f")
@@ -99,23 +110,11 @@ texture = ExtResource("2_ix46s")
 
 [node name="AttackData" type="Node2D" parent="Enemy"]
 
-[node name="Player" type="Node2D" parent="."]
-position = Vector2(-2, 120)
-rotation = 1.57079
-script = ExtResource("4_jgo8f")
+[node name="RigidBody2D" type="RigidBody2D" parent="Enemy" groups=["Head"]]
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = ExtResource("1_rix20")
-
-[node name="AttackData" type="Node2D" parent="Player"]
-
-[node name="MeleeAttack" type="Node2D" parent="Player"]
-
-[node name="TileMap" type="TileMap" parent="Player"]
-position = Vector2(66.0001, -63.9999)
-scale = Vector2(8, 8)
-tile_set = SubResource("TileSet_tyswo")
-format = 2
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/RigidBody2D"]
+position = Vector2(1.5, 2.5)
+shape = SubResource("RectangleShape2D_kdfxg")
 
 [node name="UI" type="Node2D" parent="."]
 position = Vector2(-84, 172)
@@ -139,7 +138,7 @@ offset_right = -443.0
 offset_bottom = 290.0
 grow_vertical = 2
 action_mode = 0
-text = "Attack"
+text = "Bow"
 metadata/_edit_use_anchors_ = true
 
 [node name="ItemButton" type="Button" parent="UI"]
@@ -162,20 +161,11 @@ text = "Run
 "
 metadata/_edit_use_anchors_ = true
 
-[node name="MeleeButton" type="Button" parent="UI"]
-visible = false
-offset_left = -253.0
-offset_top = 73.0
-offset_right = 64.0
-offset_bottom = 147.0
-text = "Melee"
-
 [node name="RangeButton" type="Button" parent="UI"]
-visible = false
-offset_left = 129.0
-offset_top = 66.0
-offset_right = 479.0
-offset_bottom = 154.0
+offset_left = -82.0
+offset_top = 208.0
+offset_right = 268.0
+offset_bottom = 296.0
 text = "Range"
 
 [node name="Cursor" type="Node2D" parent="UI"]
@@ -195,8 +185,100 @@ rotation = 1.57079
 
 [node name="Range" type="Node2D" parent="Weapons"]
 
+[node name="User" type="Node2D" parent="."]
+
+[node name="Player" type="Node2D" parent="User"]
+position = Vector2(-2, 120)
+rotation = 1.57079
+script = ExtResource("4_jgo8f")
+
+[node name="MainSprite" type="Sprite2D" parent="User/Player"]
+texture = ExtResource("1_rix20")
+
+[node name="AttackData" type="Node2D" parent="User/Player"]
+
+[node name="TileMap" type="TileMap" parent="User/Player"]
+position = Vector2(66.0001, -63.9999)
+scale = Vector2(8, 8)
+tile_set = SubResource("TileSet_tyswo")
+format = 2
+
+[node name="PlayerPhase" type="Node2D" parent="User"]
+position = Vector2(-140, -31)
+script = ExtResource("8_frq5w")
+
+[node name="Enemy Sprite Holder" type="Node2D" parent="User/PlayerPhase"]
+visible = false
+position = Vector2(137, -233)
+
+[node name="BackGround" type="Sprite2D" parent="User/PlayerPhase/Enemy Sprite Holder"]
+position = Vector2(0, -2.00001)
+scale = Vector2(12.7656, 3.53125)
+texture = ExtResource("2_ix46s")
+
+[node name="EnemySprite" type="Sprite2D" parent="User/PlayerPhase/Enemy Sprite Holder"]
+scale = Vector2(2.28125, 1.98438)
+texture = ExtResource("1_rix20")
+
+[node name="Player Sprite Holder" type="Node2D" parent="User/PlayerPhase"]
+visible = false
+position = Vector2(-431, 75)
+
+[node name="PlayerSprite" type="Sprite2D" parent="User/PlayerPhase/Player Sprite Holder"]
+scale = Vector2(2.60938, 2.54688)
+texture = ExtResource("1_rix20")
+
+[node name="AttackBox" type="Node2D" parent="User/PlayerPhase"]
+visible = false
+position = Vector2(-51, 43)
+
+[node name="BoxSprite" type="Sprite2D" parent="User/PlayerPhase/AttackBox"]
+position = Vector2(189, 301)
+scale = Vector2(12.9063, 2.0625)
+texture = ExtResource("6_6iyy6")
+
+[node name="ArrowSprites" type="Node2D" parent="User/PlayerPhase"]
+visible = false
+
+[node name="Sprite0" type="Sprite2D" parent="User/PlayerPhase/ArrowSprites"]
+position = Vector2(-2340, 1)
+texture = ExtResource("1_rix20")
+
+[node name="Sprite1" type="Sprite2D" parent="User/PlayerPhase/ArrowSprites"]
+position = Vector2(-2113, 0)
+texture = ExtResource("1_rix20")
+
+[node name="Sprite2" type="Sprite2D" parent="User/PlayerPhase/ArrowSprites"]
+position = Vector2(-1814, 6)
+texture = ExtResource("1_rix20")
+
+[node name="Sprite3" type="Sprite2D" parent="User/PlayerPhase/ArrowSprites"]
+position = Vector2(-1504, 24)
+texture = ExtResource("1_rix20")
+
+[node name="Aiming" type="Node2D" parent="User/PlayerPhase"]
+position = Vector2(138, 11)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="User/PlayerPhase/Aiming"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="User/PlayerPhase/Aiming/CharacterBody2D"]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_y4u1u")
+
+[node name="Area2D" type="Area2D" parent="User/PlayerPhase/Aiming/CharacterBody2D"]
+script = ExtResource("9_qufre")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="User/PlayerPhase/Aiming/CharacterBody2D/Area2D"]
+position = Vector2(-1, -3.5)
+shape = SubResource("RectangleShape2D_ueekk")
+
+[node name="AimBox" type="Sprite2D" parent="User/PlayerPhase/Aiming"]
+texture = ExtResource("6_6iyy6")
+
+[connection signal="range_attack" from="UI" to="User/PlayerPhase" method="_on_ui_range_attack"]
 [connection signal="pressed" from="UI/AttackButton" to="UI" method="_on_attack_button_pressed"]
 [connection signal="pressed" from="UI/ItemButton" to="UI" method="_on_item_button_pressed"]
 [connection signal="pressed" from="UI/RunButton" to="UI" method="_on_run_button_pressed"]
-[connection signal="pressed" from="UI/MeleeButton" to="UI" method="_on_melee_pressed"]
 [connection signal="pressed" from="UI/RangeButton" to="UI" method="_on_range_pressed"]
+[connection signal="player_attack" from="User/PlayerPhase" to="UI" method="_on_range_pressed"]
+[connection signal="body_entered" from="User/PlayerPhase/Aiming/CharacterBody2D/Area2D" to="User/PlayerPhase/Aiming/CharacterBody2D/Area2D" method="_on_body_entered"]

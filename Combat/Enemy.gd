@@ -2,7 +2,7 @@ extends Node2D
 
 var previous_scene_path = "res://OverWorld.tscn"  # Replace with your actual scene path
 
-var health = 100
+var health = 200
 
 @onready var sprite = get_node("/root/AttackScene/Enemy/Sprite2D")
 
