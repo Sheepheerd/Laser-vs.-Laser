@@ -1,11 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://dtb34pld2df8t"]
+[gd_scene load_steps=16 format=3 uid="uid://dtb34pld2df8t"]
 
 [ext_resource type="Texture2D" uid="uid://bu3t1u42qw38y" path="res://Sprites/Test_Tile_Sprite_Holders/White_Square.png" id="1_rix20"]
 [ext_resource type="Script" path="res://Combat/ComatTransition.gd" id="1_x4r3f"]
 [ext_resource type="Texture2D" uid="uid://v3tf11sn16to" path="res://icon.svg" id="2_ie74k"]
 [ext_resource type="Texture2D" uid="uid://tlcfith2mkdc" path="res://Sprites/Test_Tile_Sprite_Holders/Black_Square.png" id="2_ix46s"]
 [ext_resource type="Script" path="res://Combat/Enemy.gd" id="2_u72vy"]
-[ext_resource type="Script" path="res://Combat/PlayerCombat.gd" id="4_jgo8f"]
 [ext_resource type="Script" path="res://Combat/UI_Combat.gd" id="5_w577b"]
 [ext_resource type="Texture2D" uid="uid://cdblvdggggc41" path="res://Sprites/blacksquare.png" id="6_6iyy6"]
 [ext_resource type="Script" path="res://Combat/PlayerAttackPhase.gd" id="8_frq5w"]
@@ -199,7 +198,6 @@ rotation = 1.57079
 [node name="Player" type="Node2D" parent="User"]
 position = Vector2(-2, 120)
 rotation = 1.57079
-script = ExtResource("4_jgo8f")
 
 [node name="MainSprite" type="Sprite2D" parent="User/Player"]
 texture = ExtResource("1_rix20")
@@ -266,9 +264,10 @@ position = Vector2(-1504, 24)
 texture = ExtResource("1_rix20")
 
 [node name="Aiming" type="Node2D" parent="User/PlayerPhase"]
+position = Vector2(133, -2)
 
 [node name="Area2D" type="Area2D" parent="User/PlayerPhase/Aiming"]
-position = Vector2(138, 11)
+position = Vector2(0, -2)
 script = ExtResource("9_qufre")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="User/PlayerPhase/Aiming/Area2D"]
@@ -276,14 +275,17 @@ position = Vector2(-1, -3.5)
 shape = SubResource("RectangleShape2D_ueekk")
 
 [node name="AimBox" type="Sprite2D" parent="User/PlayerPhase/Aiming"]
-position = Vector2(138, 11)
+visible = false
+position = Vector2(-1, -5)
 texture = ExtResource("6_6iyy6")
 
-[connection signal="range_attack" from="UI" to="User/PlayerPhase" method="_on_ui_range_attack"]
+[connection signal="range_attack" from="UI" to="User/PlayerPhase/Aiming/Area2D" method="_on_ui_range_attack"]
 [connection signal="pressed" from="UI/AttackButton" to="UI" method="_on_attack_button_pressed"]
 [connection signal="pressed" from="UI/ItemButton" to="UI" method="_on_item_button_pressed"]
 [connection signal="pressed" from="UI/RunButton" to="UI" method="_on_run_button_pressed"]
 [connection signal="pressed" from="UI/RangeButton" to="UI" method="_on_range_pressed"]
+[connection signal="combat_phase_fail" from="User/PlayerPhase" to="User/PlayerPhase" method="combatPhaseFail"]
+[connection signal="combat_phase_success" from="User/PlayerPhase" to="User/PlayerPhase" method="combatPhaseSuccess"]
 [connection signal="player_attack" from="User/PlayerPhase" to="UI" method="_on_range_pressed"]
 [connection signal="body_entered" from="User/PlayerPhase/Aiming/Area2D" to="User/PlayerPhase/Aiming/Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="User/PlayerPhase/Aiming/Area2D" to="User/PlayerPhase/Aiming/Area2D" method="_on_body_exited"]

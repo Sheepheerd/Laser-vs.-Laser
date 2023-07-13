@@ -11,14 +11,22 @@ var shouldCollisionEnable = false
 # Defining Signal
 signal player_attack
 
+signal combat_phase_success
+signal combat_phase_fail
 	
-func _on_ui_range_attack():
+#func _on_ui_range_attack():
+#	var UI = get_node("/root/AttackScene/UI")
+#	if UI.current_game_state == UI.GameState.PLAYER_ATTACKING && get_node("/root/AttackScene/User/PlayerPhase/Aiming/Area2D").HasChosen == true:
+#		_Buttons()
+#
+#		await get_tree().create_timer(2.0).timeout
+func _ui_range_attack():
 	var UI = get_node("/root/AttackScene/UI")
-	if UI.current_game_state == UI.GameState.PLAYER_ATTACKING:
+	if UI.current_game_state == UI.GameState.PLAYER_ATTACKING && get_node("/root/AttackScene/User/PlayerPhase/Aiming/Area2D").HasChosen == true:
 		_Buttons()
 
 		await get_tree().create_timer(2.0).timeout
-		
+
 
 func _Buttons():
 	shuffledButtonInputs = shuffleArray(originalButtonInputs)  # Shuffle the original buttonInputs array
@@ -57,13 +65,13 @@ func _CheckInput(event):
 			currentInputIndex += 1
 
 			if currentInputIndex >= shuffledButtonInputs.size():
-				combatPhaseSuccess()
+				emit_signal("combat_phase_success")
 				currentInputIndex = 0
 				shouldCheckInput = false
 				kill_enemy()
 
 		else:
-			combatPhaseFail()
+			emit_signal("combat_phase_fail")
 
 func findButtonSpriteByIndex(index: int) -> ButtonSprite:
 	for child in get_children():
@@ -74,15 +82,18 @@ func findButtonSpriteByIndex(index: int) -> ButtonSprite:
 func combatPhaseSuccess():
 	# Code for successful completion of the combat phase
 	print("Combat phase success!")
+	get_node("/root/AttackScene/User/PlayerPhase/Aiming/Area2D").HasChosen = false
 	get_node("/root/AttackScene/UI").current_game_state = get_node("/root/AttackScene/UI").GameState.ENEMY_TURN
 
 func combatPhaseFail():
 	# Code for failure in the combat phase
 	# Hide all ButtonSprite children
+	#currentInputIndex = 0
 	for child in get_children():
 		if child is ButtonSprite:
 			child.queue_free()
-			
+	
+	get_node("/root/AttackScene/User/PlayerPhase/Aiming/Area2D").HasChosen = false
 	shouldCheckInput = false
 	get_node("/root/AttackScene/UI").current_game_state = get_node("/root/AttackScene/UI").GameState.ENEMY_TURN
 
@@ -107,15 +118,13 @@ func can_input(event):
 		   Input.is_action_pressed("Left_dir") == false and \
 		   Input.is_action_pressed("Right_dir") == false:
 			shouldCheckInput = false
-		else:
-			shouldCheckInput = false #should be true
+		elif get_node("/root/AttackScene/User/PlayerPhase/Aiming/Area2D").HasChosen == true:
+			shouldCheckInput = true #should be true
 		
 		if shouldCheckInput:
 			_CheckInput(event)
 			
-#Aim
-
-
+#Aim Movement
 func _process(delta):
 	if shouldCheckInput == false && get_node("/root/AttackScene/UI").current_game_state == get_node("/root/AttackScene/UI").GameState.PLAYER_ATTACKING:
 		const SPEED = 300.0
@@ -142,6 +151,3 @@ func _process(delta):
 			targetPosition.y += SPEED
 
 		AimBox.position = AimBox.position.move_toward(targetPosition, SPEED * delta)
-
-		
-

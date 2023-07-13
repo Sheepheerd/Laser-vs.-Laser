@@ -21,6 +21,7 @@ var attack_selection_positions = []
 @onready var RangeButton = get_node("/root/AttackScene/UI/RangeButton")
 @onready var Cursor = get_node("/root/AttackScene/UI/Cursor")
 @onready var DisplayTile = get_node("/root/AttackScene/UI/Display")
+@onready var AimBoxSprite = get_node("/root/AttackScene/User/PlayerPhase/Aiming/AimBox")
 
 #Pre-setup for UI Selection
 func _ready():
@@ -34,6 +35,7 @@ func _ready():
 		RangeButton.global_position + Vector2(150, -45)
 	]
 	Cursor.global_position = selection_positions[current_selection - 1]
+	
 	RangeButton.hide()
 
 
@@ -140,6 +142,7 @@ func _on_back_pressed():
 signal range_attack
 func _on_range_pressed():
 	# Perform range attack
+	AimBoxSprite.show()
 	current_game_state = GameState.PLAYER_ATTACKING
 	emit_signal("range_attack")
 	print("Range attack")
