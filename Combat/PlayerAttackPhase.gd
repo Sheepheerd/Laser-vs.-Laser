@@ -7,7 +7,7 @@ var originalButtonInputs = ["Up_dir", "Down_dir", "Up_dir", "Down_dir"]
 var shuffledButtonInputs = []  # Holds the shuffled button inputs for each combat phase
 var currentInputIndex = 0
 var shouldCheckInput = false
-
+var shouldCollisionEnable = false
 # Defining Signal
 signal player_attack
 
@@ -16,6 +16,7 @@ func _on_ui_range_attack():
 	var UI = get_node("/root/AttackScene/UI")
 	if UI.current_game_state == UI.GameState.PLAYER_ATTACKING:
 		_Buttons()
+
 		await get_tree().create_timer(2.0).timeout
 		
 
@@ -107,7 +108,7 @@ func can_input(event):
 		   Input.is_action_pressed("Right_dir") == false:
 			shouldCheckInput = false
 		else:
-			shouldCheckInput = true #should be true
+			shouldCheckInput = false #should be true
 		
 		if shouldCheckInput:
 			_CheckInput(event)
@@ -118,6 +119,7 @@ func can_input(event):
 func _process(delta):
 	if shouldCheckInput == false && get_node("/root/AttackScene/UI").current_game_state == get_node("/root/AttackScene/UI").GameState.PLAYER_ATTACKING:
 		const SPEED = 300.0
+		#var AimBox = get_node("/root/AttackScene/Area2D")
 		var AimBox = get_node("/root/AttackScene/User/PlayerPhase/Aiming")
 		var x_direction_Left = Input.is_action_pressed("Left_dir")
 		var x_direction_Right = Input.is_action_pressed("Right_dir")
@@ -141,6 +143,5 @@ func _process(delta):
 
 		AimBox.position = AimBox.position.move_toward(targetPosition, SPEED * delta)
 
-		if Input.is_action_pressed("Accept"):
-			#get_node("/root/AttackScene/User/PlayerPhase/Aiming/Area2D").Enter()
-			pass
+		
+

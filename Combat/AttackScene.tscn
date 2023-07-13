@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bu3t1u42qw38y" path="res://Sprites/Test_Tile_Sprite_Holders/White_Square.png" id="1_rix20"]
 [ext_resource type="Script" path="res://Combat/ComatTransition.gd" id="1_x4r3f"]
+[ext_resource type="Texture2D" uid="uid://v3tf11sn16to" path="res://icon.svg" id="2_ie74k"]
 [ext_resource type="Texture2D" uid="uid://tlcfith2mkdc" path="res://Sprites/Test_Tile_Sprite_Holders/Black_Square.png" id="2_ix46s"]
 [ext_resource type="Script" path="res://Combat/Enemy.gd" id="2_u72vy"]
 [ext_resource type="Script" path="res://Combat/PlayerCombat.gd" id="4_jgo8f"]
@@ -10,8 +11,8 @@
 [ext_resource type="Script" path="res://Combat/PlayerAttackPhase.gd" id="8_frq5w"]
 [ext_resource type="Script" path="res://Combat/AimingArea2D.gd" id="9_qufre"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdfxg"]
-size = Vector2(131, 131)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjvyp"]
+size = Vector2(139, 53)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j1vcl"]
 texture = ExtResource("6_6iyy6")
@@ -92,9 +93,6 @@ texture = ExtResource("1_rix20")
 [sub_resource type="TileSet" id="TileSet_tyswo"]
 sources/0 = SubResource("TileSetAtlasSource_36stq")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4u1u"]
-size = Vector2(129, 127)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ueekk"]
 size = Vector2(126, 131)
 
@@ -106,15 +104,26 @@ position = Vector2(0, -270)
 script = ExtResource("2_u72vy")
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy"]
-texture = ExtResource("2_ix46s")
+position = Vector2(-5, -2)
+texture = ExtResource("2_ie74k")
 
 [node name="AttackData" type="Node2D" parent="Enemy"]
 
-[node name="RigidBody2D" type="RigidBody2D" parent="Enemy" groups=["Head"]]
+[node name="RigidBody2D" type="RigidBody2D" parent="Enemy" groups=["EnemyBody"]]
+position = Vector2(-5, 63)
+freeze = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/RigidBody2D"]
-position = Vector2(1.5, 2.5)
-shape = SubResource("RectangleShape2D_kdfxg")
+position = Vector2(2, -25.5)
+shape = SubResource("RectangleShape2D_yjvyp")
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="Enemy" groups=["EnemyHead"]]
+position = Vector2(-4, -7)
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/RigidBody2D2"]
+position = Vector2(2, -25.5)
+shape = SubResource("RectangleShape2D_yjvyp")
 
 [node name="UI" type="Node2D" parent="."]
 position = Vector2(-84, 172)
@@ -257,22 +266,17 @@ position = Vector2(-1504, 24)
 texture = ExtResource("1_rix20")
 
 [node name="Aiming" type="Node2D" parent="User/PlayerPhase"]
+
+[node name="Area2D" type="Area2D" parent="User/PlayerPhase/Aiming"]
 position = Vector2(138, 11)
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="User/PlayerPhase/Aiming"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="User/PlayerPhase/Aiming/CharacterBody2D"]
-position = Vector2(-0.5, -1.5)
-shape = SubResource("RectangleShape2D_y4u1u")
-
-[node name="Area2D" type="Area2D" parent="User/PlayerPhase/Aiming/CharacterBody2D"]
 script = ExtResource("9_qufre")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="User/PlayerPhase/Aiming/CharacterBody2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="User/PlayerPhase/Aiming/Area2D"]
 position = Vector2(-1, -3.5)
 shape = SubResource("RectangleShape2D_ueekk")
 
 [node name="AimBox" type="Sprite2D" parent="User/PlayerPhase/Aiming"]
+position = Vector2(138, 11)
 texture = ExtResource("6_6iyy6")
 
 [connection signal="range_attack" from="UI" to="User/PlayerPhase" method="_on_ui_range_attack"]
@@ -281,4 +285,5 @@ texture = ExtResource("6_6iyy6")
 [connection signal="pressed" from="UI/RunButton" to="UI" method="_on_run_button_pressed"]
 [connection signal="pressed" from="UI/RangeButton" to="UI" method="_on_range_pressed"]
 [connection signal="player_attack" from="User/PlayerPhase" to="UI" method="_on_range_pressed"]
-[connection signal="body_entered" from="User/PlayerPhase/Aiming/CharacterBody2D/Area2D" to="User/PlayerPhase/Aiming/CharacterBody2D/Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="User/PlayerPhase/Aiming/Area2D" to="User/PlayerPhase/Aiming/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="User/PlayerPhase/Aiming/Area2D" to="User/PlayerPhase/Aiming/Area2D" method="_on_body_exited"]
