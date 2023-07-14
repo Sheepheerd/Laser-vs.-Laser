@@ -40,12 +40,12 @@ func _ready():
 
 
 #Set Up Turns
-func _process(_delta):
+func _process(delta):
 	if current_game_state == GameState.PLAYER_TURN:
 		if AttackButton.is_visible():
-			process_normal_selection(_delta)
+			process_normal_selection(delta)
 		else:
-			process_attack_selection(_delta)
+			process_attack_selection(delta)
 			
 	elif current_game_state == GameState.PLAYER_ATTACKING:
 		hide_all_pre_attack_sprites() # Hide all buttons before attacking
@@ -65,7 +65,7 @@ func _process(_delta):
 
 		
 #Set Up Selection for the Curson on The Selection Screen
-func process_normal_selection(delta):
+func process_normal_selection(_delta):
 
 	if Input.is_action_just_pressed("Right_dir"):
 		current_selection = (current_selection % 3) + 1
@@ -85,7 +85,7 @@ func process_normal_selection(delta):
 
 
 #Set Up Selection for the Curson on The Attack Scene
-func process_attack_selection(delta):
+func process_attack_selection(_delta):
 	if Input.is_action_just_pressed("Right_dir"):
 		current_selection = (current_selection % 2) + 1
 		Cursor.global_position = attack_selection_positions[current_selection - 1]
@@ -168,7 +168,6 @@ const MAP_HEIGHT = 4
 
 # Set up player position and tilemap
 var playerPosition = Vector2(0, 1)
-@onready var tileMap = get_node("/root/AttackScene/User/Player/TileMap")
 
 # Convert tile position to world position
 func tile_to_world(tilePos):

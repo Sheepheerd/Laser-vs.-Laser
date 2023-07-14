@@ -3,9 +3,14 @@ extends Node2D
 class ButtonSprite extends Sprite2D:
 	var metadata: int
 
+#The Buttons That will be displayed, add duplicates to enable the randomness.
 var originalButtonInputs = ["Up_dir", "Down_dir", "Up_dir", "Down_dir"]
 var shuffledButtonInputs = []  # Holds the shuffled button inputs for each combat phase
+
+#Button Index
 var currentInputIndex = 0
+
+#If enabled, then will proceed with Button Input Phase
 var shouldCheckInput = false
 var shouldCollisionEnable = false
 # Defining Signal
@@ -14,12 +19,7 @@ signal player_attack
 signal combat_phase_success
 signal combat_phase_fail
 	
-#func _on_ui_range_attack():
-#	var UI = get_node("/root/AttackScene/UI")
-#	if UI.current_game_state == UI.GameState.PLAYER_ATTACKING && get_node("/root/AttackScene/User/PlayerPhase/Aiming/Area2D").HasChosen == true:
-#		_Buttons()
-#
-#		await get_tree().create_timer(2.0).timeout
+
 func _ui_range_attack():
 	var UI = get_node("/root/AttackScene/UI")
 	if UI.current_game_state == UI.GameState.PLAYER_ATTACKING && get_node("/root/AttackScene/User/PlayerPhase/Aiming/Area2D").HasChosen == true:
@@ -51,10 +51,24 @@ func showButtonSprites():
 # Defines if can input, then if can, then goes to _CheckInput
 func _input(event):
 	can_input(event)
+	
+func can_input(event):
+	#If it is the Players Turn, These are the set of conditions.
+	if get_node("/root/AttackScene/UI").current_game_state == get_node("/root/AttackScene/UI").GameState.PLAYER_ATTACKING:
+		if Input.is_action_pressed("Up_dir") == false and \
+		   Input.is_action_pressed("Down_dir") == false and \
+		   Input.is_action_pressed("Left_dir") == false and \
+		   Input.is_action_pressed("Right_dir") == false:
+			shouldCheckInput = false
+		elif get_node("/root/AttackScene/User/PlayerPhase/Aiming/Area2D").HasChosen == true:
+			shouldCheckInput = true #should be true
+		
+		if shouldCheckInput:
+			_CheckInput(event)
 
 func _CheckInput(event):
 	if event is InputEventKey:
-		if event.is_action_pressed(shuffledButtonInputs[currentInputIndex]):
+		if Input.is_action_just_pressed(shuffledButtonInputs[currentInputIndex]):
 			var spriteIndex = currentInputIndex
 
 			# Find the sprite with the corresponding index
@@ -111,18 +125,6 @@ func kill_enemy():
 	var enemy = get_node("/root/AttackScene/Enemy")  # Adjust this path according to your node hierarchy
 	enemy.take_damage(50)  # Damage the enemy by its own health amount, effectively killing it
 
-func can_input(event):
-	if get_node("/root/AttackScene/UI").current_game_state == get_node("/root/AttackScene/UI").GameState.PLAYER_ATTACKING:
-		if Input.is_action_pressed("Up_dir") == false and \
-		   Input.is_action_pressed("Down_dir") == false and \
-		   Input.is_action_pressed("Left_dir") == false and \
-		   Input.is_action_pressed("Right_dir") == false:
-			shouldCheckInput = false
-		elif get_node("/root/AttackScene/User/PlayerPhase/Aiming/Area2D").HasChosen == true:
-			shouldCheckInput = true #should be true
-		
-		if shouldCheckInput:
-			_CheckInput(event)
 			
 #Aim Movement
 func _process(delta):

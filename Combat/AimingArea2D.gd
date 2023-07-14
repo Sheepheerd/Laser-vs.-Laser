@@ -7,12 +7,11 @@ var HasChosen = false
 
 var AimPosition = Vector2(138, 0)
 
-@onready var root_node = get_node("/root/AttackScene/User/PlayerPhase/Aiming")
+@onready var Aiming_Node = get_node("/root/AttackScene/User/PlayerPhase/Aiming")
 @onready var AimBoxSprite = get_node("/root/AttackScene/User/PlayerPhase/Aiming/AimBox")
 
 func _on_ui_range_attack():
-	var root_node = get_node("/root/AttackScene/User/PlayerPhase/Aiming")
-	root_node.position = AimPosition
+	Aiming_Node.position = AimPosition
 	AimBoxSprite.show()
 	
 func _on_body_entered(body):
@@ -20,6 +19,7 @@ func _on_body_entered(body):
 		if body.is_in_group("EnemyHead"):
 			collidedHead = body
 		if body.is_in_group("EnemyBody"):
+			print("Body")
 			collidedBody = body
 
 func _on_body_exited(body):
@@ -43,10 +43,12 @@ func _input(event):
 				else:
 					print("Missed")
 					Transition()
-	
+
+#Create Signal For Transition
+signal _transition_
 func Transition():
 	
 	HasChosen = true
 	AimBoxSprite.hide()
+	emit_signal("_transition_")
 	
-	get_node("/root/AttackScene/User/PlayerPhase")._ui_range_attack()

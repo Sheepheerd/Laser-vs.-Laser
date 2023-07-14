@@ -1,17 +1,17 @@
-[gd_scene load_steps=16 format=3 uid="uid://dtb34pld2df8t"]
+[gd_scene load_steps=14 format=3 uid="uid://dtb34pld2df8t"]
 
 [ext_resource type="Texture2D" uid="uid://bu3t1u42qw38y" path="res://Sprites/Test_Tile_Sprite_Holders/White_Square.png" id="1_rix20"]
-[ext_resource type="Script" path="res://Combat/ComatTransition.gd" id="1_x4r3f"]
 [ext_resource type="Texture2D" uid="uid://v3tf11sn16to" path="res://icon.svg" id="2_ie74k"]
 [ext_resource type="Texture2D" uid="uid://tlcfith2mkdc" path="res://Sprites/Test_Tile_Sprite_Holders/Black_Square.png" id="2_ix46s"]
 [ext_resource type="Script" path="res://Combat/Enemy.gd" id="2_u72vy"]
 [ext_resource type="Script" path="res://Combat/UI_Combat.gd" id="5_w577b"]
 [ext_resource type="Texture2D" uid="uid://cdblvdggggc41" path="res://Sprites/blacksquare.png" id="6_6iyy6"]
 [ext_resource type="Script" path="res://Combat/PlayerAttackPhase.gd" id="8_frq5w"]
+[ext_resource type="Script" path="res://Combat/EnemyOnLoadData.gd" id="9_qfnky"]
 [ext_resource type="Script" path="res://Combat/AimingArea2D.gd" id="9_qufre"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yjvyp"]
-size = Vector2(139, 53)
+size = Vector2(136.5, 56)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j1vcl"]
 texture = ExtResource("6_6iyy6")
@@ -22,105 +22,33 @@ texture_region_size = Vector2i(128, 128)
 tile_size = Vector2i(128, 128)
 sources/0 = SubResource("TileSetAtlasSource_j1vcl")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_36stq"]
-texture = ExtResource("1_rix20")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-7:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-4:3/0 = 0
-5:3/0 = 0
-6:3/0 = 0
-7:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-6:4/0 = 0
-7:4/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
-4:5/0 = 0
-5:5/0 = 0
-6:5/0 = 0
-7:5/0 = 0
-0:6/0 = 0
-1:6/0 = 0
-2:6/0 = 0
-3:6/0 = 0
-4:6/0 = 0
-5:6/0 = 0
-6:6/0 = 0
-7:6/0 = 0
-0:7/0 = 0
-1:7/0 = 0
-2:7/0 = 0
-3:7/0 = 0
-4:7/0 = 0
-5:7/0 = 0
-6:7/0 = 0
-7:7/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_tyswo"]
-sources/0 = SubResource("TileSetAtlasSource_36stq")
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ueekk"]
 size = Vector2(126, 131)
 
 [node name="AttackScene" type="Node2D"]
-script = ExtResource("1_x4r3f")
 
 [node name="Enemy" type="Node2D" parent="."]
-position = Vector2(0, -270)
+position = Vector2(192, -267)
 script = ExtResource("2_u72vy")
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy"]
 position = Vector2(-5, -2)
 texture = ExtResource("2_ie74k")
 
-[node name="AttackData" type="Node2D" parent="Enemy"]
-
-[node name="RigidBody2D" type="RigidBody2D" parent="Enemy" groups=["EnemyBody"]]
+[node name="Body" type="RigidBody2D" parent="Enemy" groups=["EnemyBody"]]
 position = Vector2(-5, 63)
 freeze = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/RigidBody2D"]
-position = Vector2(2, -25.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Body"]
+position = Vector2(0.75, -25)
 shape = SubResource("RectangleShape2D_yjvyp")
+debug_color = Color(0, 0.602169, 0.68733, 0.42)
 
-[node name="RigidBody2D2" type="RigidBody2D" parent="Enemy" groups=["EnemyHead"]]
+[node name="Head" type="RigidBody2D" parent="Enemy" groups=["EnemyHead"]]
 position = Vector2(-4, -7)
 freeze = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/RigidBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Head"]
 position = Vector2(2, -25.5)
 shape = SubResource("RectangleShape2D_yjvyp")
 
@@ -185,14 +113,6 @@ texture = ExtResource("2_ix46s")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Weapons" type="Node2D" parent="."]
-position = Vector2(0, 172)
-rotation = 1.57079
-
-[node name="Melee" type="Node2D" parent="Weapons"]
-
-[node name="Range" type="Node2D" parent="Weapons"]
-
 [node name="User" type="Node2D" parent="."]
 
 [node name="Player" type="Node2D" parent="User"]
@@ -203,12 +123,6 @@ rotation = 1.57079
 texture = ExtResource("1_rix20")
 
 [node name="AttackData" type="Node2D" parent="User/Player"]
-
-[node name="TileMap" type="TileMap" parent="User/Player"]
-position = Vector2(66.0001, -63.9999)
-scale = Vector2(8, 8)
-tile_set = SubResource("TileSet_tyswo")
-format = 2
 
 [node name="PlayerPhase" type="Node2D" parent="User"]
 position = Vector2(-140, -31)
@@ -244,25 +158,6 @@ position = Vector2(189, 301)
 scale = Vector2(12.9063, 2.0625)
 texture = ExtResource("6_6iyy6")
 
-[node name="ArrowSprites" type="Node2D" parent="User/PlayerPhase"]
-visible = false
-
-[node name="Sprite0" type="Sprite2D" parent="User/PlayerPhase/ArrowSprites"]
-position = Vector2(-2340, 1)
-texture = ExtResource("1_rix20")
-
-[node name="Sprite1" type="Sprite2D" parent="User/PlayerPhase/ArrowSprites"]
-position = Vector2(-2113, 0)
-texture = ExtResource("1_rix20")
-
-[node name="Sprite2" type="Sprite2D" parent="User/PlayerPhase/ArrowSprites"]
-position = Vector2(-1814, 6)
-texture = ExtResource("1_rix20")
-
-[node name="Sprite3" type="Sprite2D" parent="User/PlayerPhase/ArrowSprites"]
-position = Vector2(-1504, 24)
-texture = ExtResource("1_rix20")
-
 [node name="Aiming" type="Node2D" parent="User/PlayerPhase"]
 position = Vector2(133, -2)
 
@@ -279,6 +174,9 @@ visible = false
 position = Vector2(-1, -5)
 texture = ExtResource("6_6iyy6")
 
+[node name="EnemyData" type="Node2D" parent="."]
+script = ExtResource("9_qfnky")
+
 [connection signal="range_attack" from="UI" to="User/PlayerPhase/Aiming/Area2D" method="_on_ui_range_attack"]
 [connection signal="pressed" from="UI/AttackButton" to="UI" method="_on_attack_button_pressed"]
 [connection signal="pressed" from="UI/ItemButton" to="UI" method="_on_item_button_pressed"]
@@ -287,5 +185,6 @@ texture = ExtResource("6_6iyy6")
 [connection signal="combat_phase_fail" from="User/PlayerPhase" to="User/PlayerPhase" method="combatPhaseFail"]
 [connection signal="combat_phase_success" from="User/PlayerPhase" to="User/PlayerPhase" method="combatPhaseSuccess"]
 [connection signal="player_attack" from="User/PlayerPhase" to="UI" method="_on_range_pressed"]
+[connection signal="_transition_" from="User/PlayerPhase/Aiming/Area2D" to="User/PlayerPhase" method="_ui_range_attack"]
 [connection signal="body_entered" from="User/PlayerPhase/Aiming/Area2D" to="User/PlayerPhase/Aiming/Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="User/PlayerPhase/Aiming/Area2D" to="User/PlayerPhase/Aiming/Area2D" method="_on_body_exited"]

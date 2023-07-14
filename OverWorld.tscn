@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dajf0yjr0oa0o"]
+[gd_scene load_steps=14 format=3 uid="uid://dajf0yjr0oa0o"]
 
 [ext_resource type="Script" path="res://OverWorld_Settings.gd" id="1_5p7po"]
 [ext_resource type="Script" path="res://Character Scripts/PlayerMovement.gd" id="2_dlon2"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Combat/CombatTransition.gd" id="4_jags8"]
 [ext_resource type="Texture2D" uid="uid://bu3t1u42qw38y" path="res://Sprites/Test_Tile_Sprite_Holders/White_Square.png" id="5_cslh2"]
 [ext_resource type="Script" path="res://BattleData.gd" id="6_s5jg3"]
+[ext_resource type="Script" path="res://Enemies/BasicEnemy.gd" id="7_o8oee"]
+[ext_resource type="Script" path="res://Combat/Data.gd" id="8_m5efc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_meuho"]
 size = Vector2(128, 128)
@@ -87,6 +89,7 @@ position = Vector2(457, 580)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="Enemy2" groups=["Enemy"]]
 freeze = true
+script = ExtResource("7_o8oee")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy2/RigidBody2D"]
 position = Vector2(2, 1.5)
@@ -96,5 +99,8 @@ shape = SubResource("RectangleShape2D_8uvmb")
 position = Vector2(0, 0.5)
 rotation = -1.57079
 texture = ExtResource("3_dvcpf")
+
+[node name="EnemyData" type="Node2D" parent="."]
+script = ExtResource("8_m5efc")
 
 [connection signal="body_entered" from="CharacterBody2D/Combat_Transition" to="CharacterBody2D/Combat_Transition" method="_on_body_entered"]
