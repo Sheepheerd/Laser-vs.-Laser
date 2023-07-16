@@ -2,8 +2,9 @@ extends Node2D
 
 var previous_scene_path = "res://OverWorld.tscn"  # Replace with your actual scene path
 
-var health = 200
+var health = Data.health
 
+@onready var EnemyData = get_node("/root/AttackScene/EnemyData")
 @onready var sprite = get_node("/root/AttackScene/Enemy/Sprite2D")
 
 #Script That UI_Combat Calls for Enemy Attack Phase, also sets the players attack Phase after finishing
@@ -24,7 +25,7 @@ func take_damage(damage):
 
 func die():
 	#queue_free()  # Remove the enemy from the scene when its health reaches 0
-	sprite.visible = false
+	EnemyData.enemy.queue_free()
 
 func _dead_transition():
 	get_tree().change_scene_to_file(previous_scene_path)

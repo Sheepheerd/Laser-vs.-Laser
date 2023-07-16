@@ -10,6 +10,9 @@ var AimPosition = Vector2(138, 0)
 @onready var Aiming_Node = get_node("/root/AttackScene/User/PlayerPhase/Aiming")
 @onready var AimBoxSprite = get_node("/root/AttackScene/User/PlayerPhase/Aiming/AimBox")
 
+#Set Damage Multiplier from Data.gd
+var DamageMultiplier = 0
+
 func _on_ui_range_attack():
 	Aiming_Node.position = AimPosition
 	AimBoxSprite.show()
@@ -34,11 +37,15 @@ func _input(event):
 			if event.is_action_pressed("Back"):
 				if collidedBody:
 					print("The Main Collision Box is Body")
+					DamageMultiplier = Data.DamageMultiplier["Body"]
+					print(DamageMultiplier)
 					Transition()
 					# Add your desired code here
 				elif collidedHead:
 					print("The Main Collision Box is Head")
-					Transition()
+					DamageMultiplier = Data.DamageMultiplier["Head"]
+					print(DamageMultiplier)
+					#Transition()
 					# Add your desired code here
 				else:
 					print("Missed")

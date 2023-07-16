@@ -71,6 +71,7 @@ position = Vector2(1086, 340)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="Enemy" groups=["Enemy"]]
 freeze = true
+script = ExtResource("7_o8oee")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/RigidBody2D"]
 position = Vector2(2, 1.5)

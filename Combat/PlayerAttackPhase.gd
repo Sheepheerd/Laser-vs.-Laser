@@ -18,7 +18,10 @@ signal player_attack
 
 signal combat_phase_success
 signal combat_phase_fail
-	
+
+
+#Define the correctnessPercent
+var correctnessPercent = 0
 
 func _ui_range_attack():
 	var UI = get_node("/root/AttackScene/UI")
@@ -32,7 +35,13 @@ func _Buttons():
 	shuffledButtonInputs = shuffleArray(originalButtonInputs)  # Shuffle the original buttonInputs array
 	showButtonSprites()
 
+
 func showButtonSprites():
+	var BowTimer = get_node("/root/AttackScene/User/PlayerPhase/Bow")
+	
+	#Set up Bow Timer
+	BowTimer.time_to_press()
+	
 	var spritePositions = [
 		Vector2(-400, 0),  # First column
 		Vector2(-100, 0),  # Second column
@@ -67,6 +76,7 @@ func can_input(event):
 			_CheckInput(event)
 
 func _CheckInput(event):
+	
 	if event is InputEventKey:
 		if Input.is_action_just_pressed(shuffledButtonInputs[currentInputIndex]):
 			var spriteIndex = currentInputIndex
@@ -77,6 +87,8 @@ func _CheckInput(event):
 				sprite.queue_free()
 
 			currentInputIndex += 1
+			
+			correctnessPercent += 10.0
 
 			if currentInputIndex >= shuffledButtonInputs.size():
 				emit_signal("combat_phase_success")
@@ -97,19 +109,29 @@ func combatPhaseSuccess():
 	# Code for successful completion of the combat phase
 	print("Combat phase success!")
 	get_node("/root/AttackScene/User/PlayerPhase/Aiming/Area2D").HasChosen = false
-	get_node("/root/AttackScene/UI").current_game_state = get_node("/root/AttackScene/UI").GameState.ENEMY_TURN
+	if has_done_d_calc == false:
+		DamageCalculation()
+	if has_done_d_calc == true:
+		kill_enemy()
+	if has_done_damage == true:
+		get_node("/root/AttackScene/UI").current_game_state = get_node("/root/AttackScene/UI").GameState.ENEMY_TURN
 
 func combatPhaseFail():
 	# Code for failure in the combat phase
 	# Hide all ButtonSprite children
-	#currentInputIndex = 0
+	currentInputIndex = 0
 	for child in get_children():
 		if child is ButtonSprite:
 			child.queue_free()
 	
 	get_node("/root/AttackScene/User/PlayerPhase/Aiming/Area2D").HasChosen = false
 	shouldCheckInput = false
-	get_node("/root/AttackScene/UI").current_game_state = get_node("/root/AttackScene/UI").GameState.ENEMY_TURN
+	if has_done_d_calc == false:
+		DamageCalculation()
+	if has_done_d_calc == true:
+		kill_enemy()
+	if has_done_damage == true:
+		get_node("/root/AttackScene/UI").current_game_state = get_node("/root/AttackScene/UI").GameState.ENEMY_TURN
 
 func shuffleArray(array):
 	var shuffledArray = array.duplicate()
@@ -120,10 +142,44 @@ func shuffleArray(array):
 		shuffledArray[j] = temp
 	return shuffledArray
 
+#Define DamageMultiplier Var
+var DamageMultiplier = 0.0
+var damage = 0.0
+var has_done_d_calc = false
+var finalDamage = 0.0
+var adjustedDamage = 0.0
+
+#Fix This Later - This should be dependant on the weapon of the user/level
+var BaseDamage = 0.0
+
+func DamageCalculation():
+	if has_done_d_calc == false:
+		has_done_damage = false
+		#Define Base Damage (This should be equal to the damage of the weapon the player holds)
+		BaseDamage = 100.0
+
+		#Define the AimNode
+		var AimNode = get_node("/root/AttackScene/User/PlayerPhase/Aiming/Area2D")
+		DamageMultiplier = AimNode.DamageMultiplier
+		#Adjust The damage by the multiplier
+		adjustedDamage = BaseDamage * DamageMultiplier
+		finalDamage = adjustedDamage * (correctnessPercent / 100)
+		damage = finalDamage
+		print(finalDamage)
+		has_done_d_calc = true
+		
+	
 # Placeholder For Attack
+var has_done_damage = false
 func kill_enemy():
-	var enemy = get_node("/root/AttackScene/Enemy")  # Adjust this path according to your node hierarchy
-	enemy.take_damage(50)  # Damage the enemy by its own health amount, effectively killing it
+	if has_done_d_calc == true && has_done_damage == false:
+		var enemy = get_node("/root/AttackScene/Enemy")  # Adjust this path according to your node hierarchy
+		enemy.take_damage(damage)  # Damage the enemy by its own health amount, effectively killing it
+		has_done_d_calc = false
+		has_done_damage = true
+		#Reset Correctnesspercent back to 0 so combat values can be default for player's turn
+		correctnessPercent = 0.0
+		print(enemy.health)
 
 			
 #Aim Movement

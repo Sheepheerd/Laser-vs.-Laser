@@ -6,12 +6,24 @@ var collisionShape = CollisionShape2D.new()
 var enemy = Node2D.new()
 #Put this in the Data.gd
 var shape = RectangleShape2D.new()
+
+# Reference to the enemy script instance
+var enemy_script_instance
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Create EnemyNode
 	enemy.position = Data.Enemy_position
 	add_child(enemy)
 	enemy.name = "Enemy2"
+	
+	
+	#Add the Enemy.gd script
+	#Create instance of script
+	var enemy_script_instance = load("res://Combat/Enemy.gd").new()
+
+	enemy.add_child(enemy_script_instance)
 
 	
 	#Define Sprites
