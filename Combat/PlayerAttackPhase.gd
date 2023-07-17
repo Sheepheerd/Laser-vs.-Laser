@@ -19,9 +19,24 @@ signal player_attack
 signal combat_phase_success
 signal combat_phase_fail
 
+#Defining If the player has attacked so that it can end the timer in BowTiming.gd
+var has_attacked = false
 
 #Define the correctnessPercent
 var correctnessPercent = 0
+
+#Define DamageMultiplier Var
+var DamageMultiplier = 0.0
+var damage = 0.0
+var has_done_d_calc = false
+var finalDamage = 0.0
+var adjustedDamage = 0.0
+
+#Fix This Later - This should be dependant on the weapon of the user/level
+var BaseDamage = 0.0
+
+# Placeholder For Attack
+var has_done_damage = false
 
 func _ui_range_attack():
 	var UI = get_node("/root/AttackScene/UI")
@@ -32,15 +47,15 @@ func _ui_range_attack():
 
 
 func _Buttons():
-	shuffledButtonInputs = shuffleArray(originalButtonInputs)  # Shuffle the original buttonInputs array
-	showButtonSprites()
-
-
-func showButtonSprites():
 	var BowTimer = get_node("/root/AttackScene/User/PlayerPhase/Bow")
 	
 	#Set up Bow Timer
 	BowTimer.time_to_press()
+	shuffledButtonInputs = shuffleArray(originalButtonInputs)  # Shuffle the original buttonInputs array
+	showButtonSprites()
+	has_attacked = false
+
+func showButtonSprites():
 	
 	var spritePositions = [
 		Vector2(-400, 0),  # First column
@@ -77,7 +92,7 @@ func can_input(event):
 
 func _CheckInput(event):
 	
-	if event is InputEventKey:
+	if event is InputEventKey && get_node("/root/AttackScene/UI").current_game_state == get_node("/root/AttackScene/UI").GameState.PLAYER_ATTACKING:
 		if Input.is_action_just_pressed(shuffledButtonInputs[currentInputIndex]):
 			var spriteIndex = currentInputIndex
 
@@ -91,13 +106,13 @@ func _CheckInput(event):
 			correctnessPercent += 10.0
 
 			if currentInputIndex >= shuffledButtonInputs.size():
-				emit_signal("combat_phase_success")
 				currentInputIndex = 0
 				shouldCheckInput = false
-				kill_enemy()
+				has_attacked = true
+				combat_phase_success.emit()
 
 		else:
-			emit_signal("combat_phase_fail")
+			combat_phase_fail.emit()
 
 func findButtonSpriteByIndex(index: int) -> ButtonSprite:
 	for child in get_children():
@@ -142,15 +157,6 @@ func shuffleArray(array):
 		shuffledArray[j] = temp
 	return shuffledArray
 
-#Define DamageMultiplier Var
-var DamageMultiplier = 0.0
-var damage = 0.0
-var has_done_d_calc = false
-var finalDamage = 0.0
-var adjustedDamage = 0.0
-
-#Fix This Later - This should be dependant on the weapon of the user/level
-var BaseDamage = 0.0
 
 func DamageCalculation():
 	if has_done_d_calc == false:
@@ -169,8 +175,6 @@ func DamageCalculation():
 		has_done_d_calc = true
 		
 	
-# Placeholder For Attack
-var has_done_damage = false
 func kill_enemy():
 	if has_done_d_calc == true && has_done_damage == false:
 		var enemy = get_node("/root/AttackScene/Enemy")  # Adjust this path according to your node hierarchy
@@ -180,6 +184,7 @@ func kill_enemy():
 		#Reset Correctnesspercent back to 0 so combat values can be default for player's turn
 		correctnessPercent = 0.0
 		print(enemy.health)
+		#has_attacked = false
 
 			
 #Aim Movement

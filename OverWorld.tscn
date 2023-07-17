@@ -1,13 +1,13 @@
 [gd_scene load_steps=14 format=3 uid="uid://dajf0yjr0oa0o"]
 
-[ext_resource type="Script" path="res://OverWorld_Settings.gd" id="1_5p7po"]
+[ext_resource type="Script" path="res://OverWorldScripts/OverWorld_Settings.gd" id="1_2pndo"]
 [ext_resource type="Script" path="res://Character Scripts/PlayerMovement.gd" id="2_dlon2"]
 [ext_resource type="Texture2D" uid="uid://tlcfith2mkdc" path="res://Sprites/Test_Tile_Sprite_Holders/Black_Square.png" id="3_dvcpf"]
 [ext_resource type="Script" path="res://Combat/CombatTransition.gd" id="4_jags8"]
 [ext_resource type="Texture2D" uid="uid://bu3t1u42qw38y" path="res://Sprites/Test_Tile_Sprite_Holders/White_Square.png" id="5_cslh2"]
-[ext_resource type="Script" path="res://BattleData.gd" id="6_s5jg3"]
+[ext_resource type="Script" path="res://OverWorldScripts/BattleData.gd" id="7_6lw1q"]
 [ext_resource type="Script" path="res://Enemies/BasicEnemy.gd" id="7_o8oee"]
-[ext_resource type="Script" path="res://Combat/Data.gd" id="8_m5efc"]
+[ext_resource type="Script" path="res://Combat/enemydata.gd" id="8_0v231"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_meuho"]
 size = Vector2(128, 128)
@@ -29,7 +29,7 @@ size = Vector2(128, 127)
 
 [node name="OverWorld" type="Node2D"]
 position = Vector2(-3, 0)
-script = ExtResource("1_5p7po")
+script = ExtResource("1_2pndo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(612, 347)
@@ -83,7 +83,7 @@ rotation = -1.57079
 texture = ExtResource("3_dvcpf")
 
 [node name="BattleData" type="Node2D" parent="."]
-script = ExtResource("6_s5jg3")
+script = ExtResource("7_6lw1q")
 
 [node name="Enemy2" type="Node2D" parent="."]
 position = Vector2(457, 580)
@@ -102,6 +102,6 @@ rotation = -1.57079
 texture = ExtResource("3_dvcpf")
 
 [node name="EnemyData" type="Node2D" parent="."]
-script = ExtResource("8_m5efc")
+script = ExtResource("8_0v231")
 
 [connection signal="body_entered" from="CharacterBody2D/Combat_Transition" to="CharacterBody2D/Combat_Transition" method="_on_body_entered"]

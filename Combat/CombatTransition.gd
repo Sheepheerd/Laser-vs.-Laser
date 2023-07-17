@@ -6,8 +6,8 @@ var attack_scene_path = "res://Combat/AttackScene.tscn"
 func _on_body_entered(body):
 	if body.has_method("get_enemy_tag"):
 		var enemyTag = body.get_enemy_tag()
-		Data.currentEnemyTag = enemyTag
-		Data.performActions()
+		enemydata.currentEnemyTag = enemyTag
+		enemydata.performActions()
 		
 		var player_node = get_node("/root/OverWorld/CharacterBody2D")
 		

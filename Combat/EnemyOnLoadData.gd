@@ -14,7 +14,7 @@ var enemy_script_instance
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Create EnemyNode
-	enemy.position = Data.Enemy_position
+	enemy.position = enemydata.Enemy_position
 	add_child(enemy)
 	enemy.name = "Enemy2"
 	
@@ -27,20 +27,20 @@ func _ready():
 
 	
 	#Define Sprites
-	sprite.texture = Data.Spritetexture
-	sprite.position = Data.Spriteposition
+	sprite.texture = enemydata.Spritetexture
+	sprite.position = enemydata.Spriteposition
 	enemy.add_child(sprite)
 
 
 	#Define CollisionBox
-	shape.extents = Data.ShapeExtents1
+	shape.extents = enemydata.ShapeExtents1
 	collisionShape.shape = shape #Change shape to be the new variable in Data.gd
 	rigidbody.add_child(collisionShape)
 	
 	#Define Rigid Shape Position and Groupo
-	rigidbody.position = Data.Rigidbody_position
+	rigidbody.position = enemydata.Rigidbody_position
 	rigidbody.add_to_group("EnemyBody")
-	rigidbody.freeze = Data.Rigid_frozen
+	rigidbody.freeze = enemydata.Rigid_frozen
 	enemy.add_child(rigidbody)
 	
 	

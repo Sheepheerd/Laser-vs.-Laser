@@ -37,13 +37,13 @@ func _input(event):
 			if event.is_action_pressed("Back"):
 				if collidedBody:
 					print("The Main Collision Box is Body")
-					DamageMultiplier = Data.DamageMultiplier["Body"]
+					DamageMultiplier = enemydata.DamageMultiplier["Body"]
 					print(DamageMultiplier)
 					Transition()
 					# Add your desired code here
 				elif collidedHead:
 					print("The Main Collision Box is Head")
-					DamageMultiplier = Data.DamageMultiplier["Head"]
+					DamageMultiplier = enemydata.DamageMultiplier["Head"]
 					print(DamageMultiplier)
 					#Transition()
 					# Add your desired code here
