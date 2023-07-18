@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bu3t1u42qw38y" path="res://Sprites/Test_Tile_Sprite_Holders/White_Square.png" id="5_cslh2"]
 [ext_resource type="Script" path="res://OverWorldScripts/BattleData.gd" id="7_6lw1q"]
 [ext_resource type="Script" path="res://Enemies/BasicEnemy.gd" id="7_o8oee"]
-[ext_resource type="Script" path="res://Combat/enemydata.gd" id="8_0v231"]
+[ext_resource type="Script" path="res://Combat/enemy_data.gd" id="8_ras6u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_meuho"]
 size = Vector2(128, 128)
@@ -102,6 +102,6 @@ rotation = -1.57079
 texture = ExtResource("3_dvcpf")
 
 [node name="EnemyData" type="Node2D" parent="."]
-script = ExtResource("8_0v231")
+script = ExtResource("8_ras6u")
 
 [connection signal="body_entered" from="CharacterBody2D/Combat_Transition" to="CharacterBody2D/Combat_Transition" method="_on_body_entered"]

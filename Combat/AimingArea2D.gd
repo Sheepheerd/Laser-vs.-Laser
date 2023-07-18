@@ -1,61 +1,61 @@
 extends Area2D
 
-var collidedHead = null
-var collidedBody = null
+var collided_head = null
+var collided_body = null
 
-var HasChosen = false
+var has_chosen = false
 
-var AimPosition = Vector2(138, 0)
+var aim_position = Vector2(138, 0)
 
-@onready var Aiming_Node = get_node("/root/AttackScene/User/PlayerPhase/Aiming")
-@onready var AimBoxSprite = get_node("/root/AttackScene/User/PlayerPhase/Aiming/AimBox")
+@onready var aiming_node = get_node("/root/AttackScene/User/PlayerPhase/Aiming")
+@onready var aim_box_sprite = get_node("/root/AttackScene/User/PlayerPhase/Aiming/AimBox")
 
 #Set Damage Multiplier from Data.gd
-var DamageMultiplier = 0
+var damage_multiplier = 0
 
 func _on_ui_range_attack():
-	Aiming_Node.position = AimPosition
-	AimBoxSprite.show()
+	aiming_node.position = aim_position
+	aim_box_sprite.show()
 	
 func _on_body_entered(body):
-	if get_node("/root/AttackScene/User/PlayerPhase").shouldCheckInput == false && get_node("/root/AttackScene/UI").current_game_state == get_node("/root/AttackScene/UI").GameState.PLAYER_ATTACKING:
+	if get_node("/root/AttackScene/User/PlayerPhase").should_check_input == false && get_node("/root/AttackScene/UI").current_game_state == get_node("/root/AttackScene/UI").game_state.PLAYER_ATTACKING:
 		if body.is_in_group("EnemyHead"):
-			collidedHead = body
+			collided_head = body
 		if body.is_in_group("EnemyBody"):
 			print("Body")
-			collidedBody = body
+			collided_body = body
 
 func _on_body_exited(body):
-		if get_node("/root/AttackScene/User/PlayerPhase").shouldCheckInput == false && get_node("/root/AttackScene/UI").current_game_state == get_node("/root/AttackScene/UI").GameState.PLAYER_ATTACKING:
-			if body == collidedHead:
-				collidedHead = null
-			if body == collidedBody:
-				collidedBody = null
+		if get_node("/root/AttackScene/User/PlayerPhase").should_check_input == false && get_node("/root/AttackScene/UI").current_game_state == get_node("/root/AttackScene/UI").game_state.PLAYER_ATTACKING:
+			if body == collided_head:
+				collided_head = null
+			if body == collided_body:
+				collided_body = null
 
 func _input(event):
-		if get_node("/root/AttackScene/User/PlayerPhase").shouldCheckInput == false && get_node("/root/AttackScene/UI").current_game_state == get_node("/root/AttackScene/UI").GameState.PLAYER_ATTACKING && HasChosen == false:
+		if get_node("/root/AttackScene/User/PlayerPhase").should_check_input == false && get_node("/root/AttackScene/UI").current_game_state == get_node("/root/AttackScene/UI").game_state.PLAYER_ATTACKING && has_chosen == false:
 			if event.is_action_pressed("Back"):
-				if collidedBody:
+				if collided_body:
 					print("The Main Collision Box is Body")
-					DamageMultiplier = enemydata.DamageMultiplier["Body"]
-					print(DamageMultiplier)
-					Transition()
+					damage_multiplier = enemy_data.damage_multiplier["Body"]
+					print(damage_multiplier)
+					transition()
 					# Add your desired code here
-				elif collidedHead:
+				elif collided_head:
 					print("The Main Collision Box is Head")
-					DamageMultiplier = enemydata.DamageMultiplier["Head"]
-					print(DamageMultiplier)
+					damage_multiplier = enemy_data.damage_multiplier["Head"]
+					print(damage_multiplier)
 					#Transition()
 					# Add your desired code here
 				else:
 					print("Missed")
-					Transition()
+					transition()
 
 #Create Signal For Transition
 signal _transition_
-func Transition():
+func transition():
 	
-	HasChosen = true
-	AimBoxSprite.hide()
+	has_chosen = true
+	aim_box_sprite.hide()
 	emit_signal("_transition_")
 	

@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-BattleData="*res://OverWorldScripts/BattleData.gd"
-enemydata="*res://Combat/enemydata.gd"
+battle_data="*res://OverWorldScripts/BattleData.gd"
+enemy_data="*res://Combat/enemy_data.gd"
 
 [display]
 
