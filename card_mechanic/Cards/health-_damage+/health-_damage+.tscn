@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cijk5f1n8kuyn"]
+
+[ext_resource type="Script" path="res://card_mechanic/Cards/health-_damage+/health-_damage+.gd" id="1_ee5ic"]
+
+[node name="Button" type="Button"]
+offset_right = 263.0
+offset_bottom = 108.0
+text = "health-_damage+"
+script = ExtResource("1_ee5ic")

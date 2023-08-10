@@ -24,7 +24,7 @@ func _ready():
 	game_process_controller.player_death[alive_player] = false
 func _process(delta):
 	# Fix This....this permanently changes the scene because the health is never reset
-	if gun_controller["health"] == 0: #&& dead_player_declared:
+	if gun_controller["health"] <= 0: #&& dead_player_declared:
 		dead_player_declared = false
 		game_process_controller.player_death[dead_player] = true  # Update the dictionary
 		gun_controller["health"] = 100

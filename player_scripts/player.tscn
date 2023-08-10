@@ -156,6 +156,7 @@ position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_q82ae")
 
 [node name="cursor" parent="." instance=ExtResource("3_rxgd7")]
+visible = false
 position = Vector2(3.8147e-06, 0)
 
 [node name="pickup" parent="." instance=ExtResource("4_rnej6")]

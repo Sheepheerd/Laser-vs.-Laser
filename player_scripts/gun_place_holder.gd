@@ -10,7 +10,7 @@ var grenade_type
 var player_index
 @onready var attackTimer: Timer = get_parent().get_node("Timer")
 @onready var grenade_shoot_timer: Timer = get_parent().get_node("grenade_throw_timer")
-
+var grenade_number
 var gun_controller
 func _ready():
 	player_index = get_parent().get_parent().player_index
@@ -18,6 +18,8 @@ func _ready():
 		gun_controller = gun_tags.player_1_stats
 	else:
 		gun_controller = gun_tags.player_2_stats
+	gun_controller["grenade_num"] = gun_controller["grenade_max_num"]
+	grenade_number = gun_controller["grenade_num"]
 	gun_controller["magazine_size"] = gun_controller["magazine_max_size"]
 	define_bullet_type()
 func _process(_delta):
@@ -26,7 +28,7 @@ func _process(_delta):
 	else:
 		magazine_empty = false
 
-var grenade_number = 10
+
 func grenade_throw():
 	if grenade_number != 0:
 		grenade_type = preload("res://weapons/grenade/grenade.tscn")
@@ -97,16 +99,14 @@ func apply_accuracy(dir, accuracy):
 func define_bullet_type():
 	
 	if gun_controller["gun_bullet"] == "1_bullet":
-		bullet_type = preload("res://weapons/pistol/pistol_bullet_2.0.tscn")
-#	if gun_controller.current_gun_tag == gun_controller.gun_tag.SMG:
-#		bullet_type = preload("res://weapons/smg/smg_bullet_2.0.tscn")
-	if gun_controller["gun_bullet"] == "3_bullets":
-		bullet_type = preload("res://weapons/shottey/shotgun_bullets_2.0.tscn")
-#	if gun_controller.current_gun_tag == gun_controller.gun_tag.Sniper_boi:
-#		bullet_type = preload("res://weapons/sniper_boi/sniper_bullet_2.0.tscn")
-#	if gun_controller.current_gun_tag == gun_controller.gun_tag.gatling_gun:
-#		bullet_type = preload("res://weapons/gatling_gun/gatling_gun_bullets.tscn")
+		bullet_type = preload("res://weapons/bullets/one_bullet/one_bullet.tscn")
+	if gun_controller["gun_bullet"] == "2_bullet":
+		bullet_type = preload("res://weapons/bullets/two_bullets/two_bullets.tscn")
+	if gun_controller["gun_bullet"] == "3_bullet":
+		bullet_type = preload("res://weapons/bullets/three_bullets/three_bullets.tscn")
+	if gun_controller["gun_bullet"] == "4_bullet":
+		bullet_type = preload("res://weapons/bullets/four_bullets/four_bullets.tscn")
+
 	if gun_controller["gun_bullet"] == "Grenade_Launcher":
 		bullet_type = preload("res://weapons/grenade_launcher/grenade_bullets.tscn")
-#	if gun_controller.current_gun_tag == gun_controller.gun_tag.laser_boi:
-#		bullet_type = preload("res://weapons/laser_boi/laser_raycast.tscn")
+

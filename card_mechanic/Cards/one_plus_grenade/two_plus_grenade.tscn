@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm1y2qrr6bgj7"]
+
+[ext_resource type="Script" path="res://card_mechanic/Cards/one_plus_grenade/two_plus_grenade.gd" id="1_nn5ii"]
+
+[node name="Button" type="Button"]
+offset_right = 163.0
+offset_bottom = 105.0
+text = "one_plus_grenade"
+script = ExtResource("1_nn5ii")

@@ -28,6 +28,8 @@ func _ready():
 	if Input.is_joy_button_pressed(player_index, 0) == true:
 		has_selected = true
 		
+	#Setting Health
+	gun_controller["health"] = gun_controller["max_health"]
 func _physics_process(delta):
 	if 	game_process_controller.current_game_process == game_process_controller.game_process.game_fight:
 		if Input.is_joy_button_pressed(player_index, 0) == false:

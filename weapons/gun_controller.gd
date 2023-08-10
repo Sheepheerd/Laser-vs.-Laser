@@ -19,13 +19,18 @@ var player_1_stats = {
 			"first_dodge_timer" : 1,
 			"health" : 100,
 			"gun_bullet" : "1_bullet",
-			"magazine_max_size" : 10
+			"magazine_max_size" : 10,
+			"max_health" : 100,
+			"grenade_num" : 1,
+			"grenade_max_num" : 1,
+			"grenade_speed" : 800,
+			"grenade_slowdown" : 400
 	}
 	
 var player_1_stats_defaults = {
 			"damage": 10,
 			"bullet_speed": 1000,
-			"bullet_slowdown" : 50,
+			"bullet_slowdown" : 250,
 			"bullet_live_timer" : 2,
 			"bounce_speed" : .9,
 			"fire_rate" : 0.8, # per second
@@ -34,19 +39,24 @@ var player_1_stats_defaults = {
 			"accuracy" : 0.03, # try to implement some sort of random spray
 			"magazine_depletion_size" : 1,
 			"speed_with_gun" : 90,
-			"wait_time_after_dodge_timer" : .25,
+			"wait_time_after_dodge_timer" : 1,
 			"dodge_speed_with_gun" : 200,
 			"dodge_distance_with_gun" : 200,
-			"first_dodge_timer" : .5, # make this bigger than dodge_wait_time_with_gun
+			"first_dodge_timer" : 1,
 			"health" : 100,
 			"gun_bullet" : "1_bullet",
-			"magazine_max_size" : 10
+			"magazine_max_size" : 10,
+			"max_health" : 100,
+			"grenade_num" : 1,
+			"grenade_max_num" : 1,
+			"grenade_speed" : 800,
+			"grenade_slowdown" : 400
 	}
 	
 var player_2_stats = {
 			"damage": 10,
 			"bullet_speed": 1000,
-			"bullet_slowdown" : 50,
+			"bullet_slowdown" : 250,
 			"bullet_live_timer" : 2,
 			"bounce_speed" : .9,
 			"fire_rate" : 0.8, # per second
@@ -55,19 +65,24 @@ var player_2_stats = {
 			"accuracy" : 0.03, # try to implement some sort of random spray
 			"magazine_depletion_size" : 1,
 			"speed_with_gun" : 90,
-			"wait_time_after_dodge_timer" : .25,
+			"wait_time_after_dodge_timer" : 1,
 			"dodge_speed_with_gun" : 200,
 			"dodge_distance_with_gun" : 200,
-			"first_dodge_timer" : .5, # make this bigger than dodge_wait_time_with_gun
+			"first_dodge_timer" : 1,
 			"health" : 100,
-			"gun_bullet": "1_bullet",
-			"magazine_max_size": 10
+			"gun_bullet" : "1_bullet",
+			"magazine_max_size" : 10,
+			"max_health" : 100,
+			"grenade_num" : 1,
+			"grenade_max_num" : 1,
+			"grenade_speed" : 800,
+			"grenade_slowdown" : 400
 	}
 
 var player_2_stats_defaults = {
 			"damage": 10,
 			"bullet_speed": 1000,
-			"bullet_slowdown" : 50,
+			"bullet_slowdown" : 250,
 			"bullet_live_timer" : 2,
 			"bounce_speed" : .9,
 			"fire_rate" : 0.8, # per second
@@ -76,13 +91,18 @@ var player_2_stats_defaults = {
 			"accuracy" : 0.03, # try to implement some sort of random spray
 			"magazine_depletion_size" : 1,
 			"speed_with_gun" : 90,
-			"wait_time_after_dodge_timer" : .25,
+			"wait_time_after_dodge_timer" : 1,
 			"dodge_speed_with_gun" : 200,
 			"dodge_distance_with_gun" : 200,
-			"first_dodge_timer" : .5, # make this bigger than dodge_wait_time_with_gun
+			"first_dodge_timer" : 1,
 			"health" : 100,
-			"gun_bullet": "1_bullet",
-			"magazine_max_size": 10
+			"gun_bullet" : "1_bullet",
+			"magazine_max_size" : 10,
+			"max_health" : 100,
+			"grenade_num" : 1,
+			"grenade_max_num" : 1,
+			"grenade_speed" : 800,
+			"grenade_slowdown" : 400
 	}
 
 #func _ready():

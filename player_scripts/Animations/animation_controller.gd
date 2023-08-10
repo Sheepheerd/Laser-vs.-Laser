@@ -6,8 +6,7 @@ var player_index = 1
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	player_index = get_parent().player_index
-#	var mpos = get_parent().get_child(3).position
-#	look_at(mpos)
+
 	var angle = get_parent().get_node("cursor").global_position
 	look_at(angle)
 #

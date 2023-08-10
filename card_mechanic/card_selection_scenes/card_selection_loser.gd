@@ -1,12 +1,7 @@
 extends Control
 
 
-var card_scene_paths = [
-	"res://card_mechanic/Cards/3_bullets/3_bullets_bullet_speed_down.tscn",
-	"res://card_mechanic/Cards/dodge_speed_up/dodge_speed_up_mag_size_down.tscn",
-	"res://card_mechanic/Cards/player_speed_up/player_speed_up_accuracy_down.tscn"
-	# Add more card paths here
-]
+var card_scene_paths
 var shuffled_card_scene_paths = []
 
 var display_cards := []
@@ -18,6 +13,7 @@ var prev_horizontal : float = 0
 var has_selected = false
 var player_index
 func _ready():
+	card_scene_paths = game_process_controller.card_scene_paths
 	if 	game_process_controller.current_game_process == game_process_controller.game_process.cards_selection_loser:
 		if game_process_controller.player_death["player_1"] == true && game_process_controller.player_death["player_2"] == false:
 			player_index = 0
@@ -26,6 +22,12 @@ func _ready():
 			player_index = 1
 		shuffle_cards()
 		display_random_cards()
+	if 	game_process_controller.current_game_process == game_process_controller.game_process.cards_selection_winner:
+		if game_process_controller.player_death["player_1"] == true && game_process_controller.player_death["player_2"] == false:
+			player_index = 1
+		#if player two dies
+		elif game_process_controller.player_death["player_1"] == false && game_process_controller.player_death["player_2"] == true:
+			player_index = 0
 #	if Input.is_joy_button_pressed(dead_player, 0) == true:
 #		has_selected = true
 
@@ -99,6 +101,10 @@ func handle_selection():
 			display_cards[selected_option - 1].action()
 	
 	has_selected = true
-	game_process_controller.current_game_process = game_process_controller.game_process.cards_selection_winner
-	get_tree().change_scene_to_file("res://card_mechanic/card_selection_scenes/cards_selection_winner.tscn")
+	if game_process_controller.current_game_process == game_process_controller.game_process.cards_selection_loser:
+		game_process_controller.current_game_process = game_process_controller.game_process.cards_selection_winner
+		get_tree().change_scene_to_file("res://card_mechanic/card_selection_scenes/cards_selection_winner.tscn")
+	elif game_process_controller.current_game_process == game_process_controller.game_process.cards_selection_winner:
+		game_process_controller.current_game_process = game_process_controller.game_process.game_fight
+		get_tree().change_scene_to_file("res://overworld.tscn")
 

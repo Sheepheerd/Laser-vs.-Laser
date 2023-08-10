@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://yr2s8totoq2d"]
-
-[ext_resource type="Script" path="res://card_mechanic/Cards/player_speed_up/player_speed_up_accuracy_down.gd" id="1_m5n40"]
-
-[node name="Button" type="Button"]
-offset_right = 262.0
-offset_bottom = 105.0
-text = "player_speed_up_accuracy_down"
-script = ExtResource("1_m5n40")

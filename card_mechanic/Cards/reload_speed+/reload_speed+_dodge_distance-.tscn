@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://i0dloa7hm636"]
+
+[ext_resource type="Script" path="res://card_mechanic/Cards/reload_speed+/reload_speed+_dodge_distance-.gd" id="1_18xcc"]
+
+[node name="Button" type="Button"]
+offset_right = 263.0
+offset_bottom = 108.0
+text = "reload_speed+_dodge_distance-"
+script = ExtResource("1_18xcc")

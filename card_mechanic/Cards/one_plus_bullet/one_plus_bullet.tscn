@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpyck4s6cn860"]
+
+[ext_resource type="Script" path="res://card_mechanic/Cards/one_plus_bullet/one_plus_bullet.gd" id="1_mfott"]
+
+[node name="Button" type="Button"]
+offset_right = 163.0
+offset_bottom = 105.0
+text = "one_plus_bullet"
+script = ExtResource("1_mfott")

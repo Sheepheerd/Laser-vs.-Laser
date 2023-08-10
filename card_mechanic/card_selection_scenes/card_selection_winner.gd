@@ -1,12 +1,7 @@
 extends Control
 
 
-var card_scene_paths = [
-	"res://card_mechanic/Cards/3_bullets/3_bullets_bullet_speed_down.tscn",
-	"res://card_mechanic/Cards/dodge_speed_up/dodge_speed_up_mag_size_down.tscn",
-	"res://card_mechanic/Cards/player_speed_up/player_speed_up_accuracy_down.tscn"
-	# Add more card paths here
-]
+var card_scene_paths
 var shuffled_card_scene_paths = []
 
 var display_cards := []
@@ -18,6 +13,7 @@ var prev_horizontal : float = 0
 var has_selected = false
 var player_index
 func _ready():
+	card_scene_paths = game_process_controller.card_scene_paths
 	if 	game_process_controller.current_game_process == game_process_controller.game_process.cards_selection_winner:
 		#if player one dies
 		if game_process_controller.player_death["player_1"] == true && game_process_controller.player_death["player_2"] == false:
