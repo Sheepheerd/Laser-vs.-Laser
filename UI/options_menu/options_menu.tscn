@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5su7xmiju6op"]
+
+[ext_resource type="Script" path="res://UI/options_menu/start_menu_options.gd" id="1_tiql8"]
+
+[node name="UI" type="Node2D"]
+
+[node name="start_menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_tiql8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="start_menu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Fullscreen" type="Button" parent="start_menu/VBoxContainer"]
+layout_mode = 2
+text = "Fullscreen
+"
+
+[node name="Back" type="Button" parent="start_menu/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="start_menu/VBoxContainer/Fullscreen" to="start_menu" method="_on_fullscreen_pressed"]
+[connection signal="pressed" from="start_menu/VBoxContainer/Back" to="start_menu" method="_on_back_pressed"]

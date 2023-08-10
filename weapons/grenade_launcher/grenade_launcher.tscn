@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://biynyma43fcm3"]
+
+[ext_resource type="Script" path="res://weapons/grenade_launcher/grenade_launcher.gd" id="1_gaupt"]
+[ext_resource type="Texture2D" uid="uid://b0yox0nxfumhj" path="res://sprites/sprite_gun.png" id="2_jdd3t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1svva"]
+size = Vector2(26, 21)
+
+[node name="grenade_launcher" type="Node2D"]
+position = Vector2(0, -1)
+
+[node name="grenade_launcher" type="RigidBody2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_gaupt")
+
+[node name="Sprite2D" type="Sprite2D" parent="grenade_launcher"]
+position = Vector2(0, -6)
+texture = ExtResource("2_jdd3t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grenade_launcher"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_1svva")

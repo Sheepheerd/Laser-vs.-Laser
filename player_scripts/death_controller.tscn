@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuqrvt6eqyr61"]
+
+[ext_resource type="Script" path="res://player_scripts/death_controller.gd" id="1_nwh5i"]
+
+[node name="death_controller" type="Node2D"]
+script = ExtResource("1_nwh5i")

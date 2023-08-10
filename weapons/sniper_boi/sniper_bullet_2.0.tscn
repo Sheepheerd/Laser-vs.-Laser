@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnuf4vedd2v8j"]
+
+[ext_resource type="Script" path="res://weapons/sniper_boi/sniper_bullet.gd" id="1_uogha"]
+[ext_resource type="Texture2D" uid="uid://cwkm247h0olyh" path="res://sprites/bullet.png" id="2_hi7hu"]
+[ext_resource type="PackedScene" uid="uid://dslrhk2vawumg" path="res://weapons/damage_controller/damage.tscn" id="3_s4018"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p0eyk"]
+radius = 8.46356
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sdveb"]
+radius = 6.08276
+
+[node name="bullet" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+wall_min_slide_angle = 0.0
+floor_stop_on_slope = false
+floor_block_on_wall = false
+floor_max_angle = 0.0
+platform_on_leave = 2
+platform_floor_layers = 4294901760
+script = ExtResource("1_uogha")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.599999, 0.599999)
+shape = SubResource("CircleShape2D_p0eyk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_hi7hu")
+
+[node name="damage" parent="." instance=ExtResource("3_s4018")]
+collision_layer = 1
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damage"]
+shape = SubResource("CircleShape2D_sdveb")

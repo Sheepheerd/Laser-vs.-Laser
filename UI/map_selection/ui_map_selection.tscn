@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd6p3mdlmuckc"]
+
+[ext_resource type="Script" path="res://UI/map_selection/map_selection.gd" id="1_w2yl3"]
+
+[node name="UI" type="Node2D"]
+
+[node name="map_selection" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_w2yl3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="map_selection"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Map_1" type="Button" parent="map_selection/VBoxContainer"]
+layout_mode = 2
+text = "Map 1
+"
+
+[node name="Map_2" type="Button" parent="map_selection/VBoxContainer"]
+layout_mode = 2
+text = "Map 2"
+
+[node name="Map_3" type="Button" parent="map_selection/VBoxContainer"]
+layout_mode = 2
+text = "Map 3"
+
+[connection signal="pressed" from="map_selection/VBoxContainer/Map_1" to="map_selection" method="_on_map_1_pressed"]
+[connection signal="pressed" from="map_selection/VBoxContainer/Map_2" to="map_selection" method="_on_map_2_pressed"]
+[connection signal="pressed" from="map_selection/VBoxContainer/Map_3" to="map_selection" method="_on_map_3_pressed"]

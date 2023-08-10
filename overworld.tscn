@@ -1,43 +1,80 @@
-[gd_scene load_steps=6 format=3 uid="uid://cp4sk1q2f7hhv"]
+[gd_scene load_steps=11 format=3 uid="uid://cp4sk1q2f7hhv"]
 
-[ext_resource type="Texture2D" uid="uid://dtk1v2451o530" path="res://icon.svg" id="1_h7yvy"]
-[ext_resource type="Script" path="res://player_scripts/character_movement.gd" id="2_pqetu"]
-[ext_resource type="Texture2D" uid="uid://b0yox0nxfumhj" path="res://sprites/sprite_gun.png" id="3_jivpo"]
-[ext_resource type="Script" path="res://rotation_controller.gd" id="4_kaqo1"]
+[ext_resource type="Shader" path="res://overworld_crt_good.gdshader" id="1_7kdmj"]
+[ext_resource type="Script" path="res://player_controller.gd" id="1_153jp"]
+[ext_resource type="PackedScene" uid="uid://cbgcr5dushx4j" path="res://win_condition/win.tscn" id="1_hgpv7"]
+[ext_resource type="Script" path="res://healthcheck.gd" id="4_xfa85"]
+[ext_resource type="Shader" path="res://shaders/overworld_crt_good.gdshader" id="11_s1br2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5o1o"]
-size = Vector2(138, 147)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_va10s"]
+render_priority = 0
+shader = ExtResource("1_7kdmj")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ixca3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lmrwg"]
+size = Vector2(215.5, 163.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_diwaq"]
+shader = ExtResource("11_s1br2")
+shader_parameter/shake = 0.015
+shader_parameter/noiseQuality = 114.7
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.0
+shader_parameter/colorOffsetIntensity = 0.232
+
+[sub_resource type="Environment" id="Environment_0eoc0"]
+glow_enabled = true
+glow_normalized = true
+glow_bloom = 0.33
+fog_enabled = true
 
 [node name="overworld" type="Node2D"]
 
+[node name="win" parent="." instance=ExtResource("1_hgpv7")]
+
 [node name="player" type="Node2D" parent="."]
-position = Vector2(153, -35)
-
-[node name="character_body_2d" type="CharacterBody2D" parent="player"]
-script = ExtResource("2_pqetu")
-
-[node name="collision_shape_2d" type="CollisionShape2D" parent="player/character_body_2d"]
-position = Vector2(-2, 1.5)
-shape = SubResource("RectangleShape2D_b5o1o")
-
-[node name="character_sprite" type="Sprite2D" parent="player/character_body_2d"]
-texture = ExtResource("1_h7yvy")
-
-[node name="gun" type="Node2D" parent="player"]
-
-[node name="gun_sprite" type="Sprite2D" parent="player/gun"]
-position = Vector2(47, 4)
-scale = Vector2(2.625, 2.53125)
-texture = ExtResource("3_jivpo")
-offset = Vector2(8.75202, -1.18728)
-script = ExtResource("4_kaqo1")
-
-[node name="Marker2D" type="Marker2D" parent="player/gun/gun_sprite"]
-position = Vector2(19.4286, 0)
-scale = Vector2(0.380952, 0.395062)
+material = SubResource("ShaderMaterial_va10s")
+position = Vector2(-127, -9)
+script = ExtResource("1_153jp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.75, 0.75)
+position_smoothing_enabled = true
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(-125, 135)
-texture = ExtResource("1_h7yvy")
+[node name="StaticBody2D2" type="StaticBody2D" parent="." groups=["player"]]
+position = Vector2(159, -71)
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_ixca3")
+script = ExtResource("4_xfa85")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(324, 163)
+shape = SubResource("RectangleShape2D_lmrwg")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-38.25, 425.75)
+shape = SubResource("RectangleShape2D_lmrwg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-75, -159)
+shape = SubResource("RectangleShape2D_lmrwg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-706, -61)
+shape = SubResource("RectangleShape2D_lmrwg")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-677, 375)
+shape = SubResource("RectangleShape2D_lmrwg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_diwaq")
+offset_left = -965.0
+offset_top = -543.0
+offset_right = 955.0
+offset_bottom = 537.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0eoc0")

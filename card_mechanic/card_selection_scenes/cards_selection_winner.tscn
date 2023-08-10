@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://de1knkt0h31u6"]
+
+[ext_resource type="Script" path="res://card_mechanic/card_selection_scenes/card_selection_winner.gd" id="1_qptsb"]
+
+[node name="cards" type="Node2D"]
+
+[node name="card_selection" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1437.0
+offset_bottom = 809.0
+size_flags_vertical = 4
+script = ExtResource("1_qptsb")

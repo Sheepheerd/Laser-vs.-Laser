@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c44msdm6u5lls"]
+
+[ext_resource type="Script" path="res://weapons/laser_boi/laser_boi.gd" id="1_0hxlj"]
+[ext_resource type="Texture2D" uid="uid://b0yox0nxfumhj" path="res://sprites/sprite_gun.png" id="2_fc75d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1svva"]
+size = Vector2(26, 21)
+
+[node name="laser_boi" type="Node2D"]
+position = Vector2(0, -1)
+
+[node name="laser_boi" type="RigidBody2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_0hxlj")
+
+[node name="Sprite2D" type="Sprite2D" parent="laser_boi"]
+position = Vector2(0, -6)
+texture = ExtResource("2_fc75d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="laser_boi"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_1svva")

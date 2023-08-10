@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Node2D
 
 var bulletVelocity = Vector2(0, 0)
 
@@ -24,24 +24,11 @@ func _ready():
 	bounce_speed = gun_controller["bounce_speed"]
 	slowDownRate = gun_controller["bullet_slowdown"]
 	bullet_live_timer = gun_controller["bullet_live_timer"]
-		
-func _physics_process(delta):
-
-
-	# Move the bullet
-	#global_position += bulletVelocity * delta
-	if speed > 0:
-		speed = max(0, speed - slowDownRate * delta)
-
-	# Check for collision
-	var collision_info = move_and_collide(direction * speed * delta)
-	if collision_info:
-		direction = direction.bounce(collision_info.get_normal())
-		direction.x *= bounce_speed
-		direction.y *= bounce_speed
-
+	
+func _process(delta):
 	var has_shot_timer = get_tree().create_timer(bullet_live_timer)
-	has_shot_timer.timeout.connect(delte_bullet)
+	has_shot_timer.timeout.connect(delete_bullet)
 
-func delte_bullet():
+func delete_bullet():
 	queue_free()
+

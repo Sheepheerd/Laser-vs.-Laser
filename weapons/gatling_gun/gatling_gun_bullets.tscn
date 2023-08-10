@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://4ftfj2r04jar"]
+
+[ext_resource type="Script" path="res://weapons/gatling_gun/gatling_gun_bullets.gd" id="1_eqhjd"]
+[ext_resource type="Texture2D" uid="uid://cwkm247h0olyh" path="res://sprites/bullet.png" id="2_1ubit"]
+[ext_resource type="Script" path="res://weapons/gatling_gun/bullet_damage_instance.gd" id="2_3e3pm"]
+[ext_resource type="PackedScene" uid="uid://dslrhk2vawumg" path="res://weapons/damage_controller/damage.tscn" id="3_uussl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_32ghp"]
+radius = 8.46356
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gf43v"]
+radius = 5.02494
+
+[node name="gatling_gun_bullets" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_eqhjd")
+
+[node name="bullet_1" type="CharacterBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_3e3pm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bullet_1"]
+scale = Vector2(0.599999, 0.599999)
+shape = SubResource("CircleShape2D_32ghp")
+
+[node name="Sprite2D" type="Sprite2D" parent="bullet_1"]
+texture = ExtResource("2_1ubit")
+
+[node name="damage" parent="bullet_1" instance=ExtResource("3_uussl")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bullet_1/damage"]
+shape = SubResource("CircleShape2D_gf43v")

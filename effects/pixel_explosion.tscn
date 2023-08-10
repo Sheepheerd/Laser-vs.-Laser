@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://cd07vqhq8lrtm"]
+
+[ext_resource type="Texture2D" uid="uid://bbl2kvglsyrjy" path="res://sprites/Explosion_Sheet.png" id="1_viofk"]
+[ext_resource type="Script" path="res://effects/pixel_explosion_controller.gd" id="2_tsdgf"]
+[ext_resource type="PackedScene" uid="uid://dslrhk2vawumg" path="res://weapons/damage_controller/damage.tscn" id="3_20e3g"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_38xn7"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_sk1ky"]
+offsets = PackedFloat32Array(0.205298, 0.523179, 0.622517, 0.761589)
+colors = PackedColorArray(1, 0.95, 0, 1, 1, 0.683333, 0, 1, 1, 0.283333, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yi2yt"]
+
+[node name="pixel_explosion" type="CPUParticles2D"]
+material = SubResource("CanvasItemMaterial_38xn7")
+emitting = false
+amount = 30
+one_shot = true
+speed_scale = 2.0
+fixed_fps = 60
+texture = ExtResource("1_viofk")
+emission_shape = 1
+emission_sphere_radius = 19.41
+spread = 65.0
+gravity = Vector2(0, -10)
+color = Color(1, 1, 0, 1)
+color_ramp = SubResource("Gradient_sk1ky")
+anim_speed_min = 1.0
+anim_speed_max = 3.0
+script = ExtResource("2_tsdgf")
+
+[node name="queue_timer" type="Timer" parent="."]
+
+[node name="damage" parent="." instance=ExtResource("3_20e3g")]
+
+[node name="damage_box" type="CollisionShape2D" parent="damage"]
+shape = SubResource("RectangleShape2D_yi2yt")
+
+[connection signal="timeout" from="queue_timer" to="." method="timer_timout"]

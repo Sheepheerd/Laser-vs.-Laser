@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cebk2vi0emwfh"]
+
+[ext_resource type="Texture2D" uid="uid://b0yox0nxfumhj" path="res://sprites/sprite_gun.png" id="2_h4s0u"]
+[ext_resource type="Script" path="res://weapons/sniper_boi/sniper_boi.gd" id="2_wei16"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1svva"]
+size = Vector2(26, 21)
+
+[node name="Sniper_boi" type="Node2D"]
+position = Vector2(0, -1)
+
+[node name="sniper_boi" type="RigidBody2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("2_wei16")
+
+[node name="Sprite2D" type="Sprite2D" parent="sniper_boi"]
+position = Vector2(0, -6)
+texture = ExtResource("2_h4s0u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sniper_boi"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_1svva")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://kvmb536yhkc0"]
+
+[ext_resource type="Script" path="res://weapons/reload.gd" id="1_ytagd"]
+
+[node name="reload" type="Node2D"]
+script = ExtResource("1_ytagd")
+
+[node name="reload_time" type="Timer" parent="."]

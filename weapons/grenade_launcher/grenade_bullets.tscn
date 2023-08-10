@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://uo526d7530r1"]
+
+[ext_resource type="Script" path="res://weapons/grenade/grenade_controller.gd" id="1_qpjgl"]
+[ext_resource type="Texture2D" uid="uid://cwkm247h0olyh" path="res://sprites/bullet.png" id="2_lt0h4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3i58k"]
+radius = 5.09902
+
+[node name="grenade_bullets" type="CharacterBody2D"]
+script = ExtResource("1_qpjgl")
+
+[node name="explosion_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3i58k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_lt0h4")
+
+[connection signal="timeout" from="explosion_timer" to="." method="_on_explosion_timer_timeout" flags=18]

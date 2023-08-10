@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0wuq2gumqipn"]
+
+[ext_resource type="Script" path="res://weapons/shottey/shotgun_bullets_2.0.gd" id="1_617o3"]
+[ext_resource type="Texture2D" uid="uid://cwkm247h0olyh" path="res://sprites/bullet.png" id="2_16qxi"]
+[ext_resource type="Script" path="res://weapons/shottey/child_bullet_collision.gd" id="2_f7gw3"]
+[ext_resource type="PackedScene" uid="uid://dslrhk2vawumg" path="res://weapons/damage_controller/damage.tscn" id="3_upors"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ajk72"]
+radius = 8.46356
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q4jur"]
+radius = 5.02494
+
+[node name="shotgun_shell" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_617o3")
+
+[node name="bullet_1" type="CharacterBody2D" parent="."]
+position = Vector2(0.5, 14.5)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_f7gw3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bullet_1"]
+scale = Vector2(0.599999, 0.599999)
+shape = SubResource("CircleShape2D_ajk72")
+
+[node name="Sprite2D" type="Sprite2D" parent="bullet_1"]
+texture = ExtResource("2_16qxi")
+
+[node name="damage" parent="bullet_1" instance=ExtResource("3_upors")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bullet_1/damage"]
+shape = SubResource("CircleShape2D_q4jur")
+
+[node name="bullet_2" type="CharacterBody2D" parent="."]
+position = Vector2(-12.5, 0.5)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_f7gw3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bullet_2"]
+scale = Vector2(0.599999, 0.599999)
+shape = SubResource("CircleShape2D_ajk72")
+
+[node name="Sprite2D" type="Sprite2D" parent="bullet_2"]
+texture = ExtResource("2_16qxi")
+
+[node name="damage" parent="bullet_2" instance=ExtResource("3_upors")]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bullet_2/damage"]
+position = Vector2(0, 0.5)
+shape = SubResource("CircleShape2D_q4jur")
+
+[node name="bullet_3" type="CharacterBody2D" parent="."]
+position = Vector2(13, 0.5)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_f7gw3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bullet_3"]
+scale = Vector2(0.599999, 0.599999)
+shape = SubResource("CircleShape2D_ajk72")
+
+[node name="Sprite2D" type="Sprite2D" parent="bullet_3"]
+texture = ExtResource("2_16qxi")
+
+[node name="damage" parent="bullet_3" instance=ExtResource("3_upors")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bullet_3/damage"]
+shape = SubResource("CircleShape2D_q4jur")

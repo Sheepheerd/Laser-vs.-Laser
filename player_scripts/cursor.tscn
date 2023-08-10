@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://co3nabnet1av0"]
+
+[ext_resource type="Script" path="res://player_scripts/cursor_controller.gd" id="1_52pqi"]
+[ext_resource type="Script" path="res://player_scripts/gun_place_holder.gd" id="3_110ys"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_10fis"]
+radius = 4.99998
+
+[node name="cursor" type="Area2D"]
+scale = Vector2(0.200001, 0.200001)
+script = ExtResource("1_52pqi")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="grenade_throw_timer" type="Timer" parent="."]
+
+[node name="gun_place_holder" type="Node2D" parent="."]
+script = ExtResource("3_110ys")
+
+[node name="gun_shoot_timer" type="Timer" parent="gun_place_holder"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_10fis")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="grenade_throw_timer" to="." method="_on_grenade_thown_timer_timeout"]
+[connection signal="timeout" from="gun_place_holder/gun_shoot_timer" to="gun_place_holder" method="shoot_bullet"]

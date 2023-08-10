@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://2adhu74lxpph"]
+
+[ext_resource type="Script" path="res://player_scripts/player_pickup_controller.gd" id="1_3xk53"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gd1s7"]
+size = Vector2(14, 17.5)
+
+[node name="pickup" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_3xk53")
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_gd1s7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
