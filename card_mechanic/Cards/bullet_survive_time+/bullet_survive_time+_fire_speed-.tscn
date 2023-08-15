@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpo2ifjhn8fv5"]
+
+[ext_resource type="Script" path="res://card_mechanic/Cards/bullet_survive_time+/bullet_survive_time+_fire_speed-.gd" id="1_t1pa3"]
+
+[node name="Button" type="Button"]
+offset_right = 263.0
+offset_bottom = 108.0
+text = "bullet_survive_time+_fire_speed-"
+script = ExtResource("1_t1pa3")

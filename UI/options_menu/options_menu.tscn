@@ -1,29 +1,133 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5su7xmiju6op"]
+[gd_scene load_steps=11 format=3 uid="uid://b5su7xmiju6op"]
 
 [ext_resource type="Script" path="res://UI/options_menu/start_menu_options.gd" id="1_tiql8"]
+[ext_resource type="Shader" path="res://UI/vaporwave.gdshader" id="1_xh65v"]
+[ext_resource type="Shader" path="res://shaders/VHS.gdshader" id="2_pnqe1"]
+[ext_resource type="Script" path="res://UI/map_selection/hover_selection.gd" id="4_1485g"]
+[ext_resource type="Theme" uid="uid://bajqmo6fttg8t" path="res://UI/Theme/player_menu.tres" id="4_c5c2w"]
+[ext_resource type="Script" path="res://UI/options_menu/options_menu_controller.gd" id="6_pk15i"]
+[ext_resource type="AnimationLibrary" uid="uid://dmjaqxcvaawai" path="res://UI/start_menu/start_menu_animations.res" id="7_t4xfr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vnjkg"]
+shader = ExtResource("1_xh65v")
+shader_parameter/battery = 0.404
+shader_parameter/anchor = -0.5
+shader_parameter/speed_scale = 1.0
+shader_parameter/fov = 0.01
+shader_parameter/background_color = Vector4(0, 0.1, 0.2, 1)
+shader_parameter/grid_color = Vector4(1, 0.5, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cpv1o"]
+shader = ExtResource("2_pnqe1")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.119
+shader_parameter/scanlines_width = 0.093
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(1920, 1080)
+shader_parameter/pixelate = false
+shader_parameter/roll = true
+shader_parameter/roll_speed = 1.59
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 2.67
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3mrk8"]
 
 [node name="UI" type="Node2D"]
 
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_vnjkg")
+offset_right = 1920.0
+offset_bottom = 1080.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_cpv1o")
+offset_right = 1920.0
+offset_bottom = 1080.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_cpv1o")
+offset_right = 1920.0
+offset_bottom = 1080.0
+metadata/_edit_use_anchors_ = true
+
 [node name="start_menu" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_tiql8")
+metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="start_menu"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Fullscreen" type="Button" parent="start_menu/VBoxContainer"]
+[node name="Fullscreen" type="Button" parent="start_menu"]
 layout_mode = 2
-text = "Fullscreen
-"
+anchor_left = 0.5
+anchor_top = 0.404
+anchor_right = 0.5
+anchor_bottom = 0.404
+offset_left = -210.0
+offset_top = -40.32
+offset_right = 210.0
+offset_bottom = 39.68
+theme = ExtResource("4_c5c2w")
+text = "F u l l s c r e e n"
+script = ExtResource("4_1485g")
+metadata/_edit_use_anchors_ = true
 
-[node name="Back" type="Button" parent="start_menu/VBoxContainer"]
+[node name="Back" type="Button" parent="start_menu"]
 layout_mode = 2
-text = "Back"
+anchor_left = 0.5
+anchor_top = 0.515
+anchor_right = 0.5
+anchor_bottom = 0.515
+offset_left = -210.0
+offset_top = -40.2001
+offset_right = 210.0
+offset_bottom = 39.7999
+theme = ExtResource("4_c5c2w")
+text = "B a c k"
+metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="start_menu/VBoxContainer/Fullscreen" to="start_menu" method="_on_fullscreen_pressed"]
-[connection signal="pressed" from="start_menu/VBoxContainer/Back" to="start_menu" method="_on_back_pressed"]
+[node name="NO set" type="Button" parent="start_menu"]
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.626
+anchor_right = 0.5
+anchor_bottom = 0.626
+offset_left = -210.0
+offset_top = -40.0801
+offset_right = 210.0
+offset_bottom = 39.9199
+theme = ExtResource("4_c5c2w")
+text = "N o t  S e t"
+metadata/_edit_use_anchors_ = true
+
+[node name="Animation Controller" type="Node2D" parent="."]
+script = ExtResource("6_pk15i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animation Controller"]
+root_node = NodePath("../..")
+libraries = {
+"options_menu": SubResource("AnimationLibrary_3mrk8"),
+"start_menu": ExtResource("7_t4xfr")
+}

@@ -12,14 +12,14 @@ func _process(delta):
 			restore_default_stats()
 			print("player 1 wins")
 			if defaults_restored == true:
-				get_tree().change_scene_to_file("res://UI/ui_start.tscn")
+				get_tree().change_scene_to_file("res://UI/start_menu/ui_start.tscn")
 			else:
 				return
 		elif game_process_controller.wins["player_2"] == game_process_controller.required_wins:
 			restore_default_stats()
 			print("player 2 wins")
 			if defaults_restored == true:
-				get_tree().change_scene_to_file("res://UI/ui_start.tscn")
+				get_tree().change_scene_to_file("res://UI/start_menu/ui_start.tscn")
 			else:
 				return
 

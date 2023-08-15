@@ -107,6 +107,6 @@ func define_bullet_type():
 	if gun_controller["gun_bullet"] == "4_bullet":
 		bullet_type = preload("res://weapons/bullets/four_bullets/four_bullets.tscn")
 
-	if gun_controller["gun_bullet"] == "Grenade_Launcher":
-		bullet_type = preload("res://weapons/grenade_launcher/grenade_bullets.tscn")
+#	if gun_controller["gun_bullet"] == "Grenade_Launcher":
+#		bullet_type = preload("res://weapons/grenade_launcher/grenade_bullets.tscn")
 

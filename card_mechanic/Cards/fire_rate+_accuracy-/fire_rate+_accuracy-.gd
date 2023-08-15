@@ -11,7 +11,7 @@ func _ready():
 	
 func action():
 	#Buff - Fire Rate - 80% faster
-	gun_controller["fire_rate"] = gun_controller["fire_rate"] - (gun_controller["fire_rate"] * .85)
+	gun_controller["fire_rate"] = gun_controller["fire_rate"] - (gun_controller["fire_rate"] * .80)
 
-	#DeBuff - Accuracy - .5
-	gun_controller["accuracy"] = .1
+	#DeBuff - Accuracy - 10x worse
+	gun_controller["accuracy"] = gun_controller["accuracy"] + (gun_controller["accuracy"] * 10)

@@ -1,8 +1,14 @@
 extends Node
 
-enum game_process { start_menu, options_menu, ui_map_selection, cards_selection_loser, cards_selection_winner, game_fight, game_win}
+enum game_process { start_menu, options_menu, ui_map_selection, ui_lobby, cards_selection_loser, cards_selection_winner, game_fight, game_win}
 var current_game_process = game_process.start_menu
 
+
+var game_lobby = {
+	"player_1" : false,
+	"player_2" : false,
+	"full_lobby" : false
+}
 
 var player_death = {
 		"player_1" : false,
@@ -25,6 +31,13 @@ var card_scene_paths = [
 	"res://card_mechanic/Cards/reload_speed+/reload_speed+_dodge_distance-.tscn",
 	"res://card_mechanic/Cards/dodge_cooldown_-/dodge_cooldown_-.tscn",
 	"res://card_mechanic/Cards/health-_damage+/health-_damage+.tscn",
-	"res://card_mechanic/Cards/one_plus_grenade/two_plus_grenade.tscn"
+	"res://card_mechanic/Cards/one_plus_grenade/two_plus_grenade.tscn",
+	"res://card_mechanic/Cards/bullet_bounce+2/bullet_bounce+2.tscn",
+	"res://card_mechanic/Cards/bullet_survive_time+/bullet_survive_time+_fire_speed-.tscn",
+	"res://card_mechanic/Cards/mag_size+/mag_size+_dodge_cooldown_up.tscn",
+	"res://card_mechanic/Cards/acc+_fire_rate+_bullet_bounce-/acc+_fire_rate+_bullet_bounce-.tscn",
+	"res://card_mechanic/Cards/vampire_bullets/vampire_bullets.tscn",
+	"res://card_mechanic/Cards/ghost_bullets/ghost_bullets.tscn"
+	
 	# Add more card paths here
 ]

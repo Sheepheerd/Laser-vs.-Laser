@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://de0o7lukmgp2r"]
+
+[ext_resource type="Script" path="res://card_mechanic/Cards/bullet_bounce+2/bullet_bounce+2.gd" id="1_yhrn3"]
+
+[node name="Button" type="Button"]
+offset_right = 263.0
+offset_bottom = 108.0
+text = "bullet_bounce + 2_bullet_live_timer_+1"
+script = ExtResource("1_yhrn3")

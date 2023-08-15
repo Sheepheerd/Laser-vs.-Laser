@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://54olop75yk5g"]
+[gd_scene load_steps=2 format=3 uid="uid://63666t05ujne"]
 
 [ext_resource type="Script" path="res://weapons/gun_controller.gd" id="1_fm6ef"]
 

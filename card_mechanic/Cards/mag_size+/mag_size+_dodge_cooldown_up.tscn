@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkcmoe4vi1xwn"]
+
+[ext_resource type="Script" path="res://card_mechanic/Cards/mag_size+/mag_size+_dodge_cooldown_up.gd" id="1_mp16v"]
+
+[node name="Button" type="Button"]
+offset_right = 262.0
+offset_bottom = 105.0
+text = "mag_size+_dodge_cooldiwn_slower"
+script = ExtResource("1_mp16v")

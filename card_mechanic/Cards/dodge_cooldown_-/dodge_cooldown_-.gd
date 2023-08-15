@@ -10,8 +10,8 @@ func _ready():
 		gun_controller = gun_tags.player_2_stats
 	
 func action():
-	#Buff - dodge_cooldown+ - 30% faster
-	gun_controller["first_dodge_timer"] = gun_controller["first_dodge_timer"] - (gun_controller["first_dodge_timer"] * .3)
-	gun_controller["wait_time_after_dodge_timer"] = gun_controller["wait_time_after_dodge_timer"] - gun_controller["wait_time_after_dodge_timer"] * .3
+	#Buff - dodge_cooldown+ - 50% faster
+	gun_controller["first_dodge_timer"] = gun_controller["first_dodge_timer"] - (gun_controller["first_dodge_timer"] * .5)
+	gun_controller["wait_time_after_dodge_timer"] = gun_controller["wait_time_after_dodge_timer"] - gun_controller["wait_time_after_dodge_timer"] * .5
 
 

@@ -1,14 +1,13 @@
-[gd_scene load_steps=29 format=3 uid="uid://ba4g5m3vmr7un"]
+[gd_scene load_steps=28 format=3 uid="uid://ba4g5m3vmr7un"]
 
 [ext_resource type="Script" path="res://player_scripts/character_movement.gd" id="1_cao6k"]
 [ext_resource type="PackedScene" uid="uid://co3nabnet1av0" path="res://player_scripts/cursor.tscn" id="3_rxgd7"]
-[ext_resource type="PackedScene" uid="uid://2adhu74lxpph" path="res://player_scripts/player_gun_pickup.tscn" id="4_rnej6"]
 [ext_resource type="PackedScene" uid="uid://cqnqgxr02d0r6" path="res://player_scripts/dodge.tscn" id="5_ktaea"]
 [ext_resource type="PackedScene" uid="uid://kvmb536yhkc0" path="res://weapons/reload.tscn" id="6_g3gn4"]
 [ext_resource type="Texture2D" uid="uid://bvaftih4x11ke" path="res://sprites/Player_1_pistole_walk.png" id="7_uvcef"]
 [ext_resource type="Texture2D" uid="uid://bh3b18wi6q1tv" path="res://sprites/Player_1_pistole_idle.png" id="7_w2g3p"]
 [ext_resource type="Script" path="res://player_scripts/Animations/animation_controller.gd" id="8_avj6y"]
-[ext_resource type="PackedScene" uid="uid://54olop75yk5g" path="res://player_scripts/gun_controller.tscn" id="10_25e4e"]
+[ext_resource type="Script" path="res://weapons/gun_controller.gd" id="9_3vv2a"]
 [ext_resource type="PackedScene" uid="uid://cuqrvt6eqyr61" path="res://player_scripts/death_controller.tscn" id="10_74qx0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q82ae"]
@@ -139,7 +138,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="1" type="CharacterBody2D" groups=["player"]]
+[node name="1" type="CharacterBody2D"]
 scale = Vector2(4, 4)
 motion_mode = 1
 slide_on_ceiling = false
@@ -159,11 +158,6 @@ shape = SubResource("RectangleShape2D_q82ae")
 visible = false
 position = Vector2(3.8147e-06, 0)
 
-[node name="pickup" parent="." instance=ExtResource("4_rnej6")]
-visible = false
-collision_layer = 4
-collision_mask = 4
-
 [node name="dodge" parent="." instance=ExtResource("5_ktaea")]
 visible = false
 
@@ -176,6 +170,7 @@ animation = &"idle_pistol"
 frame_progress = 0.749883
 script = ExtResource("8_avj6y")
 
-[node name="gun_controller" parent="." instance=ExtResource("10_25e4e")]
+[node name="gun_controller" type="Node2D" parent="."]
+script = ExtResource("9_3vv2a")
 
 [node name="death_controller" parent="." instance=ExtResource("10_74qx0")]

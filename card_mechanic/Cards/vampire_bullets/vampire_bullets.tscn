@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwbhacphajjoq"]
+
+[ext_resource type="Script" path="res://card_mechanic/Cards/vampire_bullets/vampire_bullets.gd" id="1_ta0bt"]
+
+[node name="Button" type="Button"]
+offset_right = 263.0
+offset_bottom = 108.0
+text = "vampire_bullets"
+script = ExtResource("1_ta0bt")

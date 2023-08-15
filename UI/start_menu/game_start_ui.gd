@@ -38,6 +38,9 @@ func _process(delta):
 			print(selected_option)
 
 		prev_vertical = vertical
+		
+
+
 
 		if Input.is_joy_button_pressed(0, 0) && !has_selected: # Check for button press on player 1's controller
 			match selected_option:
@@ -52,13 +55,15 @@ func _process(delta):
 			has_selected = true
 
 func _on_play_pressed():
-	get_tree().change_scene_to_file("res://UI/map_selection/ui_map_selection.tscn")
+	get_tree().change_scene_to_file("res://UI/lobby/game_lobby.tscn")
 	game_process_controller.current_game_process = game_process_controller.game_process.ui_map_selection
 
 
+
 func _on_options_pressed():
-	get_tree().change_scene_to_file("res://UI/options_menu/options_menu.tscn")
 	game_process_controller.current_game_process = game_process_controller.game_process.options_menu
+	get_tree().change_scene_to_file("res://UI/options_menu/options_menu.tscn")
+
 
 
 func _on_quit_pressed():

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bspf7wwhs8282"]
+
+[ext_resource type="Script" path="res://card_mechanic/Cards/ghost_bullets/ghost_bullets.gd" id="1_14u0c"]
+
+[node name="Button" type="Button"]
+offset_right = 263.0
+offset_bottom = 108.0
+text = "ghost_bullets"
+script = ExtResource("1_14u0c")

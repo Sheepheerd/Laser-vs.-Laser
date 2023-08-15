@@ -5,5 +5,5 @@
 [node name="Button" type="Button"]
 offset_right = 263.0
 offset_bottom = 108.0
-text = "dodge_speed_up_mag_size_down"
+text = "dodge_speed_up_dodge_distance_with_gun_up_mag_size_down"
 script = ExtResource("1_ossja")

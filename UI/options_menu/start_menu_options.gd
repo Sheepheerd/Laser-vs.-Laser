@@ -3,7 +3,7 @@ extends Control
 
 
 var selected_option = 1
-var num_options = 2
+var num_options = 3
 
 var prev_vertical : float = 0.0
 var has_selected = false
@@ -13,7 +13,9 @@ func _ready():
 		has_selected = true
 		
 func _process(delta):
-	if 	game_process_controller.current_game_process == game_process_controller.game_process.options_menu:
+
+	if game_process_controller.current_game_process == game_process_controller.game_process.options_menu:
+		
 		if Input.is_joy_button_pressed(0, 0) == false:
 			has_selected = false
 		var vertical
@@ -30,23 +32,29 @@ func _process(delta):
 			print(selected_option)
 
 		prev_vertical = vertical
-
-	if Input.is_joy_button_pressed(0, 0) && has_selected == false: # Check for button press on player 1's controller
-		print("selected")
-		match selected_option:
-			1:
-				_on_fullscreen_pressed()
-			2:
-				_on_back_pressed()
+		
+		if Input.is_joy_button_pressed(0, 1) == true:
+				get_tree().change_scene_to_file("res://UI/map_selection/ui_map_selection.tscn")
+		
 	
-		has_selected = true
+		if Input.is_joy_button_pressed(0, 0) && has_selected == false: # Check for button press on player 1's controller
+			print("selected")
+			match selected_option:
+				1:
+					fullscreen()
+				2:
+					back()
+				3:
+					not_set()
+	
+			has_selected = true
 
-func _on_back_pressed():
-	get_tree().change_scene_to_file("res://UI/ui_start.tscn")
+func back():
+	get_tree().change_scene_to_file("res://UI/start_menu/ui_start.tscn")
 	game_process_controller.current_game_process = game_process_controller.game_process.start_menu
 
 
-func _on_fullscreen_pressed():
+func fullscreen():
 	var config = ConfigFile.new()
 	
 	if DisplayServer.window_get_mode():
@@ -57,3 +65,6 @@ func _on_fullscreen_pressed():
 		config.set_value("Settings", "Fullscreen", true)
 	
 	config.save("res://settings.cfg")
+
+func not_set():
+	pass

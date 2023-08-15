@@ -11,20 +11,20 @@ config_version=5
 [application]
 
 config/name="ConceptStigma"
-run/main_scene="res://UI/ui_start.tscn"
+run/main_scene="res://UI/start_menu/ui_start.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [autoload]
 
 gun_tags="*res://weapons/gun_controller.gd"
-map_selection="*res://UI/map_selection/map_selection.gd"
+map_selection="res://UI/map_selection/map_selection.gd"
 game_process_controller="*res://UI/game_process_controller.gd"
 
 [display]
 
-window/size/viewport_width=1440
-window/size/viewport_height=810
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/mode=3
 window/size/window_width_override=1920
 window/size/window_height_override=1080
@@ -81,6 +81,12 @@ E={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"echo":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="player_collision_damage_collision"
+2d_physics/layer_2="bullet_collision"
+2d_physics/layer_3="bullet_through_walls_collision"
 
 [physics]
 

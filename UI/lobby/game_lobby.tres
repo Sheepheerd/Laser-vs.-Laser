@@ -1,0 +1,25 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cdjenual45yft"]
+
+[ext_resource type="FontFile" uid="uid://c3waimfcegrpu" path="res://UI/Font/Minecraft.ttf" id="1_fynmr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j5tmo"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 24
+border_width_top = 24
+border_width_right = 24
+border_width_bottom = 24
+border_color = Color(0.120852, 0.000204038, 0.292411, 0.372549)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(0.619608, 0.498039, 1, 0.372549)
+shadow_size = 10
+shadow_offset = Vector2(25, 30)
+anti_aliasing = false
+
+[resource]
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_fynmr")
+Button/styles/normal = SubResource("StyleBoxFlat_j5tmo")

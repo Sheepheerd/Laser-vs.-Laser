@@ -15,6 +15,7 @@ offsets = PackedFloat32Array(0.205298, 0.523179, 0.622517, 0.761589)
 colors = PackedColorArray(1, 0.95, 0, 1, 1, 0.683333, 0, 1, 1, 0.283333, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yi2yt"]
+size = Vector2(50, 52)
 
 [node name="pixel_explosion" type="CPUParticles2D"]
 material = SubResource("CanvasItemMaterial_38xn7")

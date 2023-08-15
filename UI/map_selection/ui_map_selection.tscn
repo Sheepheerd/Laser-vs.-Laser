@@ -1,34 +1,129 @@
-[gd_scene load_steps=2 format=3 uid="uid://dd6p3mdlmuckc"]
+[gd_scene load_steps=8 format=3 uid="uid://dd6p3mdlmuckc"]
 
+[ext_resource type="Shader" path="res://UI/vaporwave.gdshader" id="1_k4ejw"]
 [ext_resource type="Script" path="res://UI/map_selection/map_selection.gd" id="1_w2yl3"]
+[ext_resource type="Shader" path="res://shaders/VHS.gdshader" id="2_yc6rj"]
+[ext_resource type="Script" path="res://UI/map_selection/hover_selection.gd" id="4_4vrsj"]
+[ext_resource type="Theme" uid="uid://bajqmo6fttg8t" path="res://UI/Theme/player_menu.tres" id="4_nxtqs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7wwck"]
+shader = ExtResource("1_k4ejw")
+shader_parameter/battery = 0.404
+shader_parameter/anchor = -0.5
+shader_parameter/speed_scale = 1.0
+shader_parameter/fov = 0.01
+shader_parameter/background_color = Vector4(0, 0.1, 0.2, 1)
+shader_parameter/grid_color = Vector4(1, 0.5, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0xsay"]
+shader = ExtResource("2_yc6rj")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.119
+shader_parameter/scanlines_width = 0.093
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(1920, 1080)
+shader_parameter/pixelate = false
+shader_parameter/roll = true
+shader_parameter/roll_speed = 1.59
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 2.67
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.0
 
 [node name="UI" type="Node2D"]
 
-[node name="map_selection" type="Control" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_7wwck")
+offset_right = 1920.0
+offset_bottom = 1080.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_0xsay")
+offset_right = 1920.0
+offset_bottom = 1080.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_0xsay")
+offset_right = 1920.0
+offset_bottom = 1080.0
+metadata/_edit_use_anchors_ = true
+
+[node name="start_menu" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 932.0
+offset_top = 426.0
+offset_right = 972.0
+offset_bottom = 466.0
 script = ExtResource("1_w2yl3")
+metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="map_selection"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Map_1" type="Button" parent="map_selection/VBoxContainer"]
+[node name="map_1" type="Button" parent="start_menu"]
 layout_mode = 2
-text = "Map 1
-"
+anchor_left = -8.937
+anchor_top = -2.687
+anchor_right = -8.937
+anchor_bottom = -2.687
+offset_left = -242.52
+offset_top = -95.52
+offset_right = 242.48
+offset_bottom = 95.48
+theme = ExtResource("4_nxtqs")
+text = "map_1"
+script = ExtResource("4_4vrsj")
+metadata/_edit_use_anchors_ = true
 
-[node name="Map_2" type="Button" parent="map_selection/VBoxContainer"]
+[node name="map_2" type="Button" parent="start_menu"]
 layout_mode = 2
-text = "Map 2"
+anchor_left = -9.112
+anchor_top = 7.575
+anchor_right = -9.112
+anchor_bottom = 7.575
+offset_left = -235.52
+offset_top = -103.0
+offset_right = 235.48
+offset_bottom = 103.0
+theme = ExtResource("4_nxtqs")
+text = "map_2"
+metadata/_edit_use_anchors_ = true
 
-[node name="Map_3" type="Button" parent="map_selection/VBoxContainer"]
-layout_mode = 2
-text = "Map 3"
+[node name="map_3" type="Button" parent="start_menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 13.087
+anchor_top = -2.575
+anchor_right = 13.087
+anchor_bottom = -2.575
+offset_left = -263.48
+offset_top = -91.0
+offset_right = 263.52
+offset_bottom = 91.0
+theme = ExtResource("4_nxtqs")
+text = "map_3"
+metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="map_selection/VBoxContainer/Map_1" to="map_selection" method="_on_map_1_pressed"]
-[connection signal="pressed" from="map_selection/VBoxContainer/Map_2" to="map_selection" method="_on_map_2_pressed"]
-[connection signal="pressed" from="map_selection/VBoxContainer/Map_3" to="map_selection" method="_on_map_3_pressed"]
+[node name="map_4" type="Button" parent="start_menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 13.762
+anchor_top = 7.862
+anchor_right = 13.762
+anchor_bottom = 7.862
+offset_left = -255.48
+offset_top = -104.48
+offset_right = 255.52
+offset_bottom = 104.52
+theme = ExtResource("4_nxtqs")
+text = "map_4"
+metadata/_edit_use_anchors_ = true

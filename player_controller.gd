@@ -7,13 +7,16 @@ var player_2 = false
 func _ready():
 	if game_process_controller.current_game_process == game_process_controller.game_process.game_fight:
 		var player_1_instance = playerscene.instantiate()
-		if map_selection.player_1 == true:
+
+		if game_process_controller.game_lobby["player_1"] == true:
 			player_1_instance.player_index = 0
 			add_child(player_1_instance)
+			player_1_instance.add_to_group(str(player_1_instance.player_index))
 
-		var player_2_instance = player_1_instance.duplicate()  # Duplicate the player 1 instance
-		if player_2 == false:
+		if game_process_controller.game_lobby["player_2"] == false:
+			var player_2_instance = player_1_instance.duplicate()  # Duplicate the player 1 instance
 			player_2_instance.global_position = Vector2(100, 0)
 			player_2_instance.player_index = 1
 			add_child(player_2_instance)
+			player_2_instance.add_to_group(str(player_2_instance.player_index))
 

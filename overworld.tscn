@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cp4sk1q2f7hhv"]
+[gd_scene load_steps=19 format=3 uid="uid://cp4sk1q2f7hhv"]
 
 [ext_resource type="Shader" path="res://overworld_crt_good.gdshader" id="1_7kdmj"]
 [ext_resource type="Script" path="res://player_controller.gd" id="1_153jp"]
@@ -14,6 +14,30 @@ shader = ExtResource("1_7kdmj")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmrwg"]
 size = Vector2(215.5, 163.5)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dygtw"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_d0w23"]
+a = Vector2(145.611, -1096.57)
+b = Vector2(855.629, 691.625)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_b7725"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_372ys"]
+a = Vector2(-962, -541)
+b = Vector2(-964, 539)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yokbh"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_c83ko"]
+a = Vector2(962, 541)
+b = Vector2(962, -537)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qrrk6"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_k0aya"]
+a = Vector2(-962, 543)
+b = Vector2(962, 539)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_diwaq"]
 shader = ExtResource("11_s1br2")
@@ -38,43 +62,77 @@ material = SubResource("ShaderMaterial_va10s")
 position = Vector2(-127, -9)
 script = ExtResource("1_153jp")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.75, 0.75)
-position_smoothing_enabled = true
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="." groups=["player"]]
+[node name="Inside" type="StaticBody2D" parent="."]
 position = Vector2(159, -71)
-collision_layer = 3
-collision_mask = 3
+collision_layer = 5
+collision_mask = 5
 physics_material_override = SubResource("PhysicsMaterial_ixca3")
 script = ExtResource("4_xfa85")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D2"]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Inside"]
 position = Vector2(324, 163)
 shape = SubResource("RectangleShape2D_lmrwg")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D2"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Inside"]
 position = Vector2(-38.25, 425.75)
 shape = SubResource("RectangleShape2D_lmrwg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside"]
 position = Vector2(-75, -159)
 shape = SubResource("RectangleShape2D_lmrwg")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Inside"]
 position = Vector2(-706, -61)
 shape = SubResource("RectangleShape2D_lmrwg")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D2"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Inside"]
 position = Vector2(-677, 375)
 shape = SubResource("RectangleShape2D_lmrwg")
 
+[node name="Outside" type="Node2D" parent="."]
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Outside"]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_dygtw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Outside/StaticBody2D4"]
+rotation = -1.19387
+shape = SubResource("SegmentShape2D_d0w23")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Outside"]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_b7725")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Outside/StaticBody2D3"]
+shape = SubResource("SegmentShape2D_372ys")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Outside"]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_yokbh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Outside/StaticBody2D"]
+shape = SubResource("SegmentShape2D_c83ko")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Outside"]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_qrrk6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Outside/StaticBody2D2"]
+shape = SubResource("SegmentShape2D_k0aya")
+
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_diwaq")
-offset_left = -965.0
-offset_top = -543.0
-offset_right = 955.0
-offset_bottom = 537.0
+offset_left = -960.0
+offset_top = -539.0
+offset_right = 960.0
+offset_bottom = 541.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0eoc0")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
