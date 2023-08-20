@@ -14,6 +14,9 @@ var rightStick
 var player_index = 1
 
 var has_selected = false
+
+
+var start_shot = true
 func _ready():
 	#gun_controller.perform_actions()
 	originalPosition = position # Store the original position of the cursor
@@ -22,13 +25,17 @@ func _ready():
 	if Input.is_joy_button_pressed(player_index, 0) == true:
 		has_selected = true
 	player_index = get_parent().player_index
+	await get_tree().create_timer(1.5).timeout.connect(start_shot_test)
+	
+func start_shot_test():
+	start_shot = false
 ##Handles shooting, grenades, and curser distance for right controller stick
 func _process(delta):
 	if 	game_process_controller.current_game_process == game_process_controller.game_process.game_fight:
 		if Input.is_joy_button_pressed(player_index, 0) == false:
 			has_selected = false
 	
-	if Input.get_joy_axis(player_index, 5) && has_selected == false:
+	if Input.get_joy_axis(player_index, 5) && has_selected == false && start_shot == false:
 		Attack()
 
 	if Input.is_joy_button_pressed(player_index, 10)  && has_selected == false:
@@ -52,10 +59,6 @@ func _process(delta):
 	cursorToPlayer = position
 	if cursorToPlayer.length() > cursorDistance:
 		position = cursorToPlayer.normalized() * cursorDistance
-
-
-
-
 
 #if the cursor is inside the player, then the player can't shoot
 func _on_body_entered(_body):
@@ -95,3 +98,5 @@ func shoot_grenade():
 
 func _on_grenade_thown_timer_timeout():
 	has_thrown = false
+	
+	

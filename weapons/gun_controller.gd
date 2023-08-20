@@ -28,8 +28,8 @@ var dodge_cool_down
 var player_1_stats = {
 			"damage": 10,
 			"bullet_speed": 1000,
-			"bullet_slowdown" : 250,
-			"bullet_live_timer" : 2,
+			"bullet_slowdown" : 0,
+			"bullet_live_timer" : 10,
 			"bounce_speed" : .9,
 			"fire_rate" : 0.8, # per second
 			"reload_time" : 2.5, # seconds
@@ -59,8 +59,8 @@ var player_1_stats = {
 var player_1_stats_defaults = {
 			"damage": 10,
 			"bullet_speed": 1000,
-			"bullet_slowdown" : 250,
-			"bullet_live_timer" : 2,
+			"bullet_slowdown" : 0,
+			"bullet_live_timer" : 10,
 			"bounce_speed" : .9,
 			"fire_rate" : 0.8, # per second
 			"reload_time" : 2.5, # seconds
@@ -90,8 +90,8 @@ var player_1_stats_defaults = {
 var player_2_stats = {
 			"damage": 10,
 			"bullet_speed": 1000,
-			"bullet_slowdown" : 250,
-			"bullet_live_timer" : 2,
+			"bullet_slowdown" : 0,
+			"bullet_live_timer" : 10,
 			"bounce_speed" : .9,
 			"fire_rate" : 0.8, # per second
 			"reload_time" : 2.5, # seconds
@@ -121,8 +121,8 @@ var player_2_stats = {
 var player_2_stats_defaults = {
 			"damage": 10,
 			"bullet_speed": 1000,
-			"bullet_slowdown" : 250,
-			"bullet_live_timer" : 2,
+			"bullet_slowdown" : 0,
+			"bullet_live_timer" : 10,
 			"bounce_speed" : .9,
 			"fire_rate" : 0.8, # per second
 			"reload_time" : 2.5, # seconds

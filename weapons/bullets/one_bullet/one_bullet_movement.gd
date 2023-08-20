@@ -20,11 +20,13 @@ var bounced_num
 var vampire_bullets
 var bullets_through_walls
 
+var is_dead = false
 #grenade bullets
 #@onready var explosion_timer = $explosion_timer
 #var explosion_particles = preload("res://effects/pixel_explosion.tscn")
 #var explosion = explosion_particles.instantiate()
 func _ready():
+	is_dead = false
 	if player_index == 0:
 		gun_controller = gun_tags.player_1_stats
 	else:
@@ -44,8 +46,6 @@ func _ready():
 #	if gun_controller["grenade_bullets"] == true:
 #		start_timer()
 func _physics_process(delta):
-
-
 	# Move the bullet
 	#global_position += bulletVelocity * delta
 	if speed > 0:
@@ -65,17 +65,39 @@ func _physics_process(delta):
 		direction.x *= bounce_speed
 		direction.y *= bounce_speed
 	
-	if !collision_info && bounced_num == bullet_max_bounce_num:
-		queue_free()
+	if !collision_info && bounced_num == bullet_max_bounce_num && is_dead == false:
+		bullet_crash()
+		delete_bullet()
 
 #	if gun_controller["grenade_bullets"] == false:
-	var has_shot_timer = get_tree().create_timer(bullet_live_timer)
-	has_shot_timer.timeout.connect(delete_bullet)
+	#var has_shot_timer = get_tree().create_timer(bullet_live_timer)
+	#has_shot_timer.timeout.connect(delete_bullet)
 
 		
 func delete_bullet():
-	queue_free()
+	is_dead = true
+	$CollisionShape2D.queue_free()
+	$Sprite2D.queue_free()
+	$damage.queue_free()
+	#position = Vector2(1000, 2000)
+	cpu_trail()
+	get_tree().create_timer(2).timeout.connect(_delete)
+	#queue_free()
 
+func bullet_crash():
+	$bullet_crash.get_node("bullet_crash").one_shot = true
+	$bullet_crash.get_node("bullet_crash").emitting = true
+	await get_tree().create_timer(1).timeout.connect(stop_bullet_crash)
+
+func stop_bullet_crash():
+	$bullet_crash.get_node("bullet_crash").emitting = false
+	
+func cpu_trail():
+	$cpu_trail.get_node("cpu_trail").gravity.x = 0
+	$cpu_trail.get_node("cpu_trail").emitting = false
+
+func _delete():
+	queue_free()
 
 ##Grenade Effect
 #func start_timer():

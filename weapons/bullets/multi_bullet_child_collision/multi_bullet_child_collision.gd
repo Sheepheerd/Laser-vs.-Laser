@@ -13,12 +13,16 @@ var player_index
 var health
 var bullet_live_timer
 var bullets_through_walls
+var is_dead
 ##Grenade Effects
 #@onready var explosion_timer = $explosion_timer
 #var explosion_particles = preload("res://effects/pixel_explosion.tscn")
 #var explosion = explosion_particles.instantiate()
 var gun_controller
+
 func _ready():
+	bounced_num = 0
+	is_dead = false
 	player_index = get_parent().player_index
 	if player_index == 0:
 		gun_controller = gun_tags.player_1_stats
@@ -35,7 +39,6 @@ func _physics_process(delta):
 	slowDownRate = gun_controller["bullet_slowdown"]
 	bullet_live_timer = gun_controller["bullet_live_timer"]
 	bullet_max_bounce_num = gun_controller["bullet_bounce_num"]
-	bounced_num = 0
 	vampire_bullets = gun_controller["vampire_bullets"]
 	bullets_through_walls = gun_controller["ghost_bullets"]
 	health = gun_controller["health"]
@@ -54,21 +57,43 @@ func _physics_process(delta):
 		
 	# Check for collision
 	var collision_info = move_and_collide(get_parent().direction * speed * delta)
-	if collision_info && get_parent().bounced_num != bullet_max_bounce_num:
+	if collision_info && bounced_num != bullet_max_bounce_num:
 		bounced_num += 1
 		get_parent().direction = get_parent().direction.bounce(collision_info.get_normal())
 		get_parent().direction.x *= bounce_speed
 		get_parent().direction.y *= bounce_speed
 	
-	if !collision_info && get_parent().bounced_num == bullet_max_bounce_num:
-		queue_free()
-	
-	
-#	if get_parent().grenade_bullets == false:
-	var has_shot_timer = get_tree().create_timer(bullet_live_timer)
-	has_shot_timer.timeout.connect(delete_bullet)
+	if !collision_info && bounced_num == bullet_max_bounce_num && is_dead == false:
+		delete_bullet()
+
+#	if gun_controller["grenade_bullets"] == false:
+	#var has_shot_timer = get_tree().create_timer(bullet_live_timer)
+	#has_shot_timer.timeout.connect(delete_bullet)
+
 		
 func delete_bullet():
+	is_dead = true
+	$CollisionShape2D.queue_free()
+	$Sprite2D.queue_free()
+	$damage.queue_free()
+	#position = Vector2(1000, 2000)
+	cpu_trail()
+	get_tree().create_timer(2).timeout.connect(_delete)
+	#queue_free()
+
+func bullet_crash():
+	$bullet_crash.get_node("bullet_crash").one_shot = true
+	$bullet_crash.get_node("bullet_crash").emitting = true
+	await get_tree().create_timer(1).timeout.connect(stop_bullet_crash)
+
+func stop_bullet_crash():
+	$bullet_crash.get_node("bullet_crash").emitting = false
+	
+func cpu_trail():
+	$cpu_trail.get_node("cpu_trail").gravity.x = 0
+	$cpu_trail.get_node("cpu_trail").emitting = false
+
+func _delete():
 	queue_free()
 	
 	

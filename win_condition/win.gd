@@ -24,6 +24,10 @@ func _process(delta):
 				return
 
 func restore_default_stats():
-	gun_tags.player_1_stats = gun_tags.player_1_stats_defaults
-	gun_tags.player_2_stats = gun_tags.player_2_stats_defaults
+	for key in gun_tags.player_1_stats_defaults.keys():
+		gun_tags.player_1_stats[key] = gun_tags.player_1_stats_defaults[key]
+	for key in gun_tags.player_2_stats_defaults.keys():
+		gun_tags.player_2_stats[key] = gun_tags.player_2_stats_defaults[key]
+	game_process_controller.wins["player_1"] = 0
+	game_process_controller.wins["player_2"] = 0
 	defaults_restored = true

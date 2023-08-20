@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://ugm55g2o0r1l"]
+[gd_scene load_steps=10 format=3 uid="uid://ugm55g2o0r1l"]
 
 [ext_resource type="Script" path="res://weapons/bullets/four_bullets/four_bullets_script.gd" id="1_jgotc"]
 [ext_resource type="Script" path="res://weapons/bullets/multi_bullet_child_collision/multi_bullet_child_collision.gd" id="2_ap1xr"]
 [ext_resource type="Texture2D" uid="uid://cwkm247h0olyh" path="res://sprites/bullet.png" id="3_j42ss"]
 [ext_resource type="PackedScene" uid="uid://dslrhk2vawumg" path="res://weapons/damage_controller/damage.tscn" id="4_4gao4"]
+[ext_resource type="PackedScene" uid="uid://bxjs04s3o12gk" path="res://effects/smoke_trail.tscn" id="5_x1fjx"]
+[ext_resource type="PackedScene" uid="uid://co8qct60kbv50" path="res://effects/bullet_crash_effect.tscn" id="6_tmub4"]
+[ext_resource type="PackedScene" uid="uid://sy51sm5n5wlf" path="res://effects/muzzle_flash.tscn" id="7_gvjr0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ajk72"]
 radius = 8.46356
@@ -33,6 +36,10 @@ texture = ExtResource("3_j42ss")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bullet_1/damage"]
 shape = SubResource("CircleShape2D_q4jur")
 
+[node name="cpu_trail" parent="bullet_1" instance=ExtResource("5_x1fjx")]
+
+[node name="bullet_crash" parent="bullet_1" instance=ExtResource("6_tmub4")]
+
 [node name="bullet_2" type="CharacterBody2D" parent="."]
 position = Vector2(-12.5, 0.5)
 collision_layer = 6
@@ -54,6 +61,10 @@ collision_mask = 3
 position = Vector2(0, 0.5)
 shape = SubResource("CircleShape2D_q4jur")
 
+[node name="cpu_trail" parent="bullet_2" instance=ExtResource("5_x1fjx")]
+
+[node name="bullet_crash" parent="bullet_2" instance=ExtResource("6_tmub4")]
+
 [node name="bullet_3" type="CharacterBody2D" parent="."]
 position = Vector2(13, 0)
 collision_layer = 6
@@ -72,6 +83,10 @@ texture = ExtResource("3_j42ss")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bullet_3/damage"]
 shape = SubResource("CircleShape2D_q4jur")
 
+[node name="cpu_trail" parent="bullet_3" instance=ExtResource("5_x1fjx")]
+
+[node name="bullet_crash" parent="bullet_3" instance=ExtResource("6_tmub4")]
+
 [node name="bullet_4" type="CharacterBody2D" parent="."]
 position = Vector2(0, -13.5)
 collision_layer = 6
@@ -89,3 +104,9 @@ texture = ExtResource("3_j42ss")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bullet_4/damage"]
 shape = SubResource("CircleShape2D_q4jur")
+
+[node name="cpu_trail" parent="bullet_4" instance=ExtResource("5_x1fjx")]
+
+[node name="bullet_crash" parent="bullet_4" instance=ExtResource("6_tmub4")]
+
+[node name="muzzle_flash_node" parent="." instance=ExtResource("7_gvjr0")]

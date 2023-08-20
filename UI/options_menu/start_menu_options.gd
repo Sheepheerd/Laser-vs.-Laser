@@ -7,7 +7,8 @@ var num_options = 3
 
 var prev_vertical : float = 0.0
 var has_selected = false
-
+@onready var _transition_rect = get_parent().get_parent().get_node("Transition/transition_controller")
+@onready var button_pop_controller = get_parent().get_parent().get_node("animation_controller/Button_pop")
 func _ready():
 	if Input.is_joy_button_pressed(0, 0) == true:
 		has_selected = true
@@ -34,7 +35,8 @@ func _process(delta):
 		prev_vertical = vertical
 		
 		if Input.is_joy_button_pressed(0, 1) == true:
-				get_tree().change_scene_to_file("res://UI/map_selection/ui_map_selection.tscn")
+				button_pop_controller.play_backwards("options_menu/Pop_in")
+				_transition_rect.transition_to("res://UI/start_menu/ui_start.tscn")
 		
 	
 		if Input.is_joy_button_pressed(0, 0) && has_selected == false: # Check for button press on player 1's controller
@@ -50,9 +52,10 @@ func _process(delta):
 			has_selected = true
 
 func back():
-	get_tree().change_scene_to_file("res://UI/start_menu/ui_start.tscn")
-	game_process_controller.current_game_process = game_process_controller.game_process.start_menu
+	button_pop_controller.play_backwards("options_menu/Pop_in")
+	_transition_rect.transition_to("res://UI/start_menu/ui_start.tscn")
 
+	game_process_controller.current_game_process = game_process_controller.game_process.start_menu
 
 func fullscreen():
 	var config = ConfigFile.new()

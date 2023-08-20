@@ -18,7 +18,6 @@ config/icon="res://icon.png"
 [autoload]
 
 gun_tags="*res://weapons/gun_controller.gd"
-map_selection="res://UI/map_selection/map_selection.gd"
 game_process_controller="*res://UI/game_process_controller.gd"
 
 [display]

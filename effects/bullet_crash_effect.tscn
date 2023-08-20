@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://co8qct60kbv50"]
+
+[ext_resource type="Texture2D" uid="uid://befrdo6bnufkb" path="res://effects/textures/Purple Effect and Bullet 16x16-Recovered-sheet.png" id="1_wbk33"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_13xsl"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_av0pq"]
+offsets = PackedFloat32Array(0.196078, 0.535948, 0.849673)
+colors = PackedColorArray(0.952941, 0.317647, 0.482353, 1, 0.901961, 0.529412, 0.552941, 1, 1, 1, 1, 1)
+
+[node name="bullet_crash" type="Node2D"]
+light_mask = 8
+visibility_layer = 8
+
+[node name="bullet_crash" type="CPUParticles2D" parent="."]
+modulate = Color(1.5, 1.5, 1.5, 1)
+material = SubResource("CanvasItemMaterial_13xsl")
+emitting = false
+amount = 1
+lifetime = 0.5
+one_shot = true
+texture = ExtResource("1_wbk33")
+direction = Vector2(-1, 0)
+gravity = Vector2(0, 0)
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_av0pq")
+anim_speed_min = 1.0
+anim_speed_max = 1.0

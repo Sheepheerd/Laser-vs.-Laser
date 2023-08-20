@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://cp4sk1q2f7hhv"]
+[gd_scene load_steps=30 format=3 uid="uid://cp4sk1q2f7hhv"]
 
 [ext_resource type="Shader" path="res://overworld_crt_good.gdshader" id="1_7kdmj"]
 [ext_resource type="Script" path="res://player_controller.gd" id="1_153jp"]
 [ext_resource type="PackedScene" uid="uid://cbgcr5dushx4j" path="res://win_condition/win.tscn" id="1_hgpv7"]
 [ext_resource type="Script" path="res://healthcheck.gd" id="4_xfa85"]
+[ext_resource type="PackedScene" uid="uid://hgomxoskean4" path="res://UI/Game/game_shaders.tscn" id="6_85yne"]
 [ext_resource type="Shader" path="res://shaders/overworld_crt_good.gdshader" id="11_s1br2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_va10s"]
@@ -12,8 +13,42 @@ shader = ExtResource("1_7kdmj")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ixca3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lmrwg"]
-size = Vector2(215.5, 163.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g80ro"]
+size = Vector2(98, 124)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogml2"]
+size = Vector2(106.983, 101.569)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpru3"]
+size = Vector2(98, 104)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0a42"]
+size = Vector2(98, 120)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_w87u8"]
+a = Vector2(-1024, -468)
+b = Vector2(-1120, -398)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_b3dkn"]
+a = Vector2(688, -468)
+b = Vector2(802, -408)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_s80p5"]
+a = Vector2(-1120, 532)
+b = Vector2(-1020, 612)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_8p8pe"]
+a = Vector2(802, 528)
+b = Vector2(702, 608)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwlqm"]
+size = Vector2(228, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqmkl"]
+size = Vector2(138, 88)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3p8i4"]
+radius = 45.3982
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dygtw"]
 
@@ -47,19 +82,25 @@ shader_parameter/noiseIntensity = 0.001
 shader_parameter/offsetIntensity = 0.0
 shader_parameter/colorOffsetIntensity = 0.232
 
-[sub_resource type="Environment" id="Environment_0eoc0"]
+[sub_resource type="Environment" id="Environment_vxbrs"]
+background_mode = 3
+ambient_light_color = Color(0.431373, 0.109804, 1, 1)
+sdfgi_min_cell_size = 16.0
+sdfgi_cascade0_distance = 1024.0
+sdfgi_max_distance = 16384.0
 glow_enabled = true
 glow_normalized = true
-glow_bloom = 0.33
-fog_enabled = true
+glow_blend_mode = 0
+glow_hdr_threshold = 0.0
 
 [node name="overworld" type="Node2D"]
+position = Vector2(960, 541)
 
 [node name="win" parent="." instance=ExtResource("1_hgpv7")]
 
 [node name="player" type="Node2D" parent="."]
 material = SubResource("ShaderMaterial_va10s")
-position = Vector2(-127, -9)
+position = Vector2(-749, 0)
 script = ExtResource("1_153jp")
 
 [node name="Inside" type="StaticBody2D" parent="."]
@@ -69,25 +110,77 @@ collision_mask = 5
 physics_material_override = SubResource("PhysicsMaterial_ixca3")
 script = ExtResource("4_xfa85")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Inside"]
-position = Vector2(324, 163)
-shape = SubResource("RectangleShape2D_lmrwg")
+[node name="down_arcade_1" type="CollisionShape2D" parent="Inside"]
+position = Vector2(-908, -175)
+shape = SubResource("RectangleShape2D_g80ro")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Inside"]
-position = Vector2(-38.25, 425.75)
-shape = SubResource("RectangleShape2D_lmrwg")
+[node name="diaganole_arcade_1" type="CollisionShape2D" parent="Inside"]
+position = Vector2(-908, 320)
+rotation = 0.785398
+shape = SubResource("RectangleShape2D_ogml2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside"]
-position = Vector2(-75, -159)
-shape = SubResource("RectangleShape2D_lmrwg")
+[node name="diaganole_arcade_2" type="CollisionShape2D" parent="Inside"]
+position = Vector2(549, -175)
+rotation = 0.785398
+shape = SubResource("RectangleShape2D_hpru3")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Inside"]
-position = Vector2(-706, -61)
-shape = SubResource("RectangleShape2D_lmrwg")
+[node name="down_arcade_2" type="CollisionShape2D" parent="Inside"]
+position = Vector2(541, 286)
+shape = SubResource("RectangleShape2D_f0a42")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Inside"]
-position = Vector2(-677, 375)
-shape = SubResource("RectangleShape2D_lmrwg")
+[node name="Left_cornor" type="CollisionShape2D" parent="Inside"]
+shape = SubResource("SegmentShape2D_w87u8")
+
+[node name="Righ_cornor" type="CollisionShape2D" parent="Inside"]
+shape = SubResource("SegmentShape2D_b3dkn")
+
+[node name="Bottom_left_cornor" type="CollisionShape2D" parent="Inside"]
+shape = SubResource("SegmentShape2D_s80p5")
+
+[node name="Bottom_right_cornor" type="CollisionShape2D" parent="Inside"]
+shape = SubResource("SegmentShape2D_8p8pe")
+
+[node name="TV_panel" type="CollisionShape2D" parent="Inside"]
+position = Vector2(-159, -175.5)
+shape = SubResource("RectangleShape2D_xwlqm")
+
+[node name="1_bottom_arcade7" type="CollisionShape2D" parent="Inside"]
+position = Vector2(367, -307)
+rotation = -2.35619
+shape = SubResource("RectangleShape2D_fqmkl")
+
+[node name="1_bottom_arcade6" type="CollisionShape2D" parent="Inside"]
+position = Vector2(-714, -314)
+rotation = -0.785398
+shape = SubResource("RectangleShape2D_fqmkl")
+
+[node name="1_bottom_arcade5" type="CollisionShape2D" parent="Inside"]
+position = Vector2(-495, -175)
+shape = SubResource("RectangleShape2D_fqmkl")
+
+[node name="1_bottom_arcade4" type="CollisionShape2D" parent="Inside"]
+position = Vector2(164, -175)
+shape = SubResource("RectangleShape2D_fqmkl")
+
+[node name="1_bottom_arcade3" type="CollisionShape2D" parent="Inside"]
+position = Vector2(164, 418)
+shape = SubResource("RectangleShape2D_fqmkl")
+
+[node name="1_bottom_arcade2" type="CollisionShape2D" parent="Inside"]
+position = Vector2(-159, 418)
+shape = SubResource("RectangleShape2D_fqmkl")
+
+[node name="1_bottom_arcade" type="CollisionShape2D" parent="Inside"]
+position = Vector2(-495, 418)
+shape = SubResource("RectangleShape2D_fqmkl")
+
+[node name="Middle_ground2" type="CollisionShape2D" parent="Inside"]
+position = Vector2(164, 100)
+shape = SubResource("CircleShape2D_3p8i4")
+
+[node name="Middle_ground" type="CollisionShape2D" parent="Inside"]
+position = Vector2(-495, 100)
+shape = SubResource("CircleShape2D_3p8i4")
 
 [node name="Outside" type="Node2D" parent="."]
 
@@ -125,14 +218,24 @@ physics_material_override = SubResource("PhysicsMaterial_qrrk6")
 shape = SubResource("SegmentShape2D_k0aya")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_diwaq")
 offset_left = -960.0
 offset_top = -539.0
 offset_right = 960.0
 offset_bottom = 541.0
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_0eoc0")
+[node name="Game_shaders" parent="." instance=ExtResource("6_85yne")]
+offset_left = -960.0
+offset_top = -539.0
+offset_right = -960.0
+offset_bottom = -539.0
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Light" type="Node2D" parent="."]
+
+[node name="player_camera_1" type="Camera2D" parent="."]
 position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vxbrs")

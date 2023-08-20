@@ -22,6 +22,7 @@ var wins = {
 
 var required_wins: int = 0
 
+var shake_timer = 0.0
 
 var card_scene_paths = [
 	"res://card_mechanic/Cards/one_plus_bullet/one_plus_bullet.tscn",
@@ -33,9 +34,9 @@ var card_scene_paths = [
 	"res://card_mechanic/Cards/health-_damage+/health-_damage+.tscn",
 	"res://card_mechanic/Cards/one_plus_grenade/two_plus_grenade.tscn",
 	"res://card_mechanic/Cards/bullet_bounce+2/bullet_bounce+2.tscn",
-	"res://card_mechanic/Cards/bullet_survive_time+/bullet_survive_time+_fire_speed-.tscn",
+	"res://card_mechanic/Cards/bullet_survive_time+/max_health+_fire_speed-.tscn",
 	"res://card_mechanic/Cards/mag_size+/mag_size+_dodge_cooldown_up.tscn",
-	"res://card_mechanic/Cards/acc+_fire_rate+_bullet_bounce-/acc+_fire_rate+_bullet_bounce-.tscn",
+	"res://card_mechanic/Cards/acc+_fire_rate+_bullet_bounce-/acc+_fire_rate+.tscn",
 	"res://card_mechanic/Cards/vampire_bullets/vampire_bullets.tscn",
 	"res://card_mechanic/Cards/ghost_bullets/ghost_bullets.tscn"
 	

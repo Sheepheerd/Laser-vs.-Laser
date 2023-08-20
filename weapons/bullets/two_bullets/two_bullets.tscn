@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bsn5q63qesd25"]
+[gd_scene load_steps=10 format=3 uid="uid://bsn5q63qesd25"]
 
 [ext_resource type="Script" path="res://weapons/bullets/two_bullets/two_bullets_script.gd" id="1_g5sv5"]
 [ext_resource type="Script" path="res://weapons/bullets/multi_bullet_child_collision/multi_bullet_child_collision.gd" id="2_2ptu4"]
 [ext_resource type="Texture2D" uid="uid://cwkm247h0olyh" path="res://sprites/bullet.png" id="3_cj5be"]
 [ext_resource type="PackedScene" uid="uid://dslrhk2vawumg" path="res://weapons/damage_controller/damage.tscn" id="4_g3oj8"]
+[ext_resource type="PackedScene" uid="uid://bxjs04s3o12gk" path="res://effects/smoke_trail.tscn" id="5_tb5up"]
+[ext_resource type="PackedScene" uid="uid://sy51sm5n5wlf" path="res://effects/muzzle_flash.tscn" id="6_07bgv"]
+[ext_resource type="PackedScene" uid="uid://co8qct60kbv50" path="res://effects/bullet_crash_effect.tscn" id="6_kn2vo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ajk72"]
 radius = 8.46356
@@ -36,6 +39,10 @@ shape = SubResource("CircleShape2D_q4jur")
 [node name="explosion_timer" type="Timer" parent="bullet_1"]
 one_shot = true
 
+[node name="cpu_trail" parent="bullet_1" instance=ExtResource("5_tb5up")]
+
+[node name="bullet_crash" parent="bullet_1" instance=ExtResource("6_kn2vo")]
+
 [node name="bullet_2" type="CharacterBody2D" parent="."]
 position = Vector2(-12.5, 0.5)
 collision_layer = 6
@@ -59,6 +66,12 @@ shape = SubResource("CircleShape2D_q4jur")
 
 [node name="explosion_timer" type="Timer" parent="bullet_2"]
 one_shot = true
+
+[node name="cpu_trail" parent="bullet_2" instance=ExtResource("5_tb5up")]
+
+[node name="bullet_crash" parent="bullet_2" instance=ExtResource("6_kn2vo")]
+
+[node name="muzzle_flash_node" parent="." instance=ExtResource("6_07bgv")]
 
 [connection signal="timeout" from="bullet_1/explosion_timer" to="bullet_1" method="_on_explosion_timer_timeout"]
 [connection signal="timeout" from="bullet_2/explosion_timer" to="bullet_2" method="_on_explosion_timer_timeout"]

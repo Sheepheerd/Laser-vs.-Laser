@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://co3nabnet1av0"]
+[gd_scene load_steps=5 format=3 uid="uid://co3nabnet1av0"]
 
 [ext_resource type="Script" path="res://player_scripts/cursor_controller.gd" id="1_52pqi"]
 [ext_resource type="Script" path="res://player_scripts/gun_place_holder.gd" id="3_110ys"]
+[ext_resource type="PackedScene" uid="uid://codtffggsc6ww" path="res://effects/screen_effects/camera_shake.tscn" id="3_edqyp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_10fis"]
 radius = 4.99998
@@ -11,6 +12,7 @@ scale = Vector2(0.200001, 0.200001)
 script = ExtResource("1_52pqi")
 
 [node name="Marker2D" type="Marker2D" parent="."]
+visible = false
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.4
@@ -23,7 +25,11 @@ script = ExtResource("3_110ys")
 [node name="gun_shoot_timer" type="Timer" parent="gun_place_holder"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_10fis")
+
+[node name="camera_shake" parent="." instance=ExtResource("3_edqyp")]
+shake_amplitude = 3.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

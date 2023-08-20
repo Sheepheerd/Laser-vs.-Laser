@@ -11,14 +11,22 @@ var player_1 = false
 var player_2 = false
 
 var lobby = false
+@onready var _transition_rect = get_parent().get_parent().get_node("Transition/transition_controller")
+@onready var button_animation_controller = get_parent().get_parent().get_node("animation_controller/Button_pop")
 func _ready():
+	button_animation_controller.play("map_selection/Pop_in")
 	#game_process_controller.current_game_process = game_process_controller.game_process.ui_map_selection
+	game_process_controller.game_lobby["player_1"] = true
 
+	game_process_controller.game_lobby["player_2"] = true
+
+	game_process_controller.game_lobby["full_lobby"] = true
+	
 	if Input.is_joy_button_pressed(0, 0) == true:
 		has_selected = true
 		
 func _process(delta):
-	if 	game_process_controller.current_game_process == game_process_controller.game_process.ui_map_selection:
+	if game_process_controller.current_game_process == game_process_controller.game_process.ui_map_selection:
 		if Input.is_joy_button_pressed(0, 0) == false:
 			has_selected = false
 		
@@ -51,12 +59,10 @@ func _process(delta):
 		prev_horizontal = horizontal
 		
 		if Input.is_joy_button_pressed(0, 1) == true:
-			get_tree().change_scene_to_file("res://UI/start_menu/ui_start.tscn")
+			game_process_controller.current_game_process = game_process_controller.game_process.ui_lobby
+			button_animation_controller.play_backwards("map_selection/Pop_in")
+			_transition_rect.transition_to("res://UI/lobby/game_lobby.tscn")
 		
-		#PlayerLobby
-		
-		if Input.is_joy_button_pressed(0, 2):
-			game_process_controller.game_lobby["player_1"] = true
 			
 
 		if Input.is_joy_button_pressed(0, 0) && has_selected == false && game_process_controller.game_lobby["full_lobby"] == true: # Check for button press on player 1's controller
@@ -71,11 +77,12 @@ func _process(delta):
 				4:
 					map_4()
 			
-		has_selected = true
+			has_selected = true
 
 func map_1():
-	game_process_controller.current_game_process == game_process_controller.game_process.ui_map_selection
-	get_tree().change_scene_to_file("res://UI/lobby/game_lobby.tscn")
+	game_process_controller.current_game_process = game_process_controller.game_process.game_fight
+	button_animation_controller.play_backwards("map_selection/Pop_in")
+	_transition_rect.transition_to("res://overworld.tscn")
 
 
 

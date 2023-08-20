@@ -65,6 +65,7 @@ var has_shot = false
 
 
 func shoot_bullet():
+	get_parent().get_node("camera_shake").shoot_bullet_and_shake(player_index)
 	has_shot = false
 	var bullet = bullet_type.instantiate()
 	bullet.player_index = player_index

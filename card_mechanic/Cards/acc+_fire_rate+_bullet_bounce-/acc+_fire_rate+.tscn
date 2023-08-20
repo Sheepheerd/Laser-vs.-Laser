@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cr7fj8ncvn7lv"]
+
+[ext_resource type="Script" path="res://card_mechanic/Cards/acc+_fire_rate+_bullet_bounce-/acc+_fire_rate+.gd" id="1_agsp6"]
+
+[node name="Button" type="Button"]
+offset_right = 263.0
+offset_bottom = 108.0
+text = "acc+_fire_rate+"
+script = ExtResource("1_agsp6")

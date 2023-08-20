@@ -13,5 +13,3 @@ func action():
 	#Buff - bullet bounce num increase - +2 
 	gun_controller["bullet_bounce_num"] = gun_controller["bullet_bounce_num"] + 2
 
-	#Buff - bullet life time - +1.5 seconds
-	gun_controller["bullet_live_timer"] = gun_controller["bullet_live_timer"] + 1
