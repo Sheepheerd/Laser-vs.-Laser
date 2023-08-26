@@ -1,6 +1,6 @@
 extends Node
 
-enum game_process { start_menu, options_menu, ui_map_selection, ui_lobby, cards_selection_loser, cards_selection_winner, game_fight, game_win}
+enum game_process { start_menu, options_menu, ui_map_selection, ui_lobby, pause_menu, cards_selection_loser, cards_selection_winner, game_fight, game_win}
 var current_game_process = game_process.start_menu
 
 
@@ -20,7 +20,7 @@ var wins = {
 	"player_2" : 0
 }
 
-var required_wins: int = 0
+var required_wins: int = 1
 
 var shake_timer = 0.0
 

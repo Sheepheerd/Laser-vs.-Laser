@@ -8,6 +8,7 @@ var has_selected = false
 @onready var _transition_rect = get_parent().get_parent().get_node("Transition/transition_controller")
 func _ready():
 	game_process_controller.current_game_process = game_process_controller.game_process.start_menu
+	get_tree().paused = false
 	var config = ConfigFile.new()
 	
 	if config.load("res://settings.cfg") == OK:

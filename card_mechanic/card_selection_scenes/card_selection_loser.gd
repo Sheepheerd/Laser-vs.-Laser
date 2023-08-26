@@ -91,20 +91,19 @@ func handle_selection():
 #	if has_selected:
 #		return
 	
-	print("selected")
-	match selected_option:
-		1:
-			display_cards[selected_option - 1].action()
-		2:
-			display_cards[selected_option - 1].action()
-		3:
-			display_cards[selected_option - 1].action()
-	
-	has_selected = true
+	if has_selected == false:
+		print("selected")
+		match selected_option:
+			1:
+				display_cards[selected_option - 1].action()
+			2:
+				display_cards[selected_option - 1].action()
+			3:
+				display_cards[selected_option - 1].action()
+		
+		has_selected = true
 	if game_process_controller.current_game_process == game_process_controller.game_process.cards_selection_loser:
-		game_process_controller.current_game_process = game_process_controller.game_process.cards_selection_winner
-		get_tree().change_scene_to_file("res://card_mechanic/card_selection_scenes/cards_selection_winner.tscn")
-	elif game_process_controller.current_game_process == game_process_controller.game_process.cards_selection_winner:
 		game_process_controller.current_game_process = game_process_controller.game_process.game_fight
-		get_tree().change_scene_to_file("res://overworld.tscn")
+		#Fix this for Different Levels
+		get_tree().change_scene_to_file("res://levels/Level_1/arcade_level.tscn")
 

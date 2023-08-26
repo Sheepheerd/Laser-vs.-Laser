@@ -1,0 +1,267 @@
+[gd_scene load_steps=33 format=3 uid="uid://dwpl7rxbwjd3h"]
+
+[ext_resource type="PackedScene" uid="uid://cbgcr5dushx4j" path="res://win_condition/win.tscn" id="1_8mugj"]
+[ext_resource type="AnimationLibrary" uid="uid://co31gnfoypk7a" path="res://UI/Game/game_animations.res" id="3_70bax"]
+[ext_resource type="Script" path="res://healthcheck.gd" id="4_r0n27"]
+[ext_resource type="PackedScene" uid="uid://hgomxoskean4" path="res://UI/Game/game_shaders.tscn" id="5_0epk6"]
+[ext_resource type="PackedScene" uid="uid://d1rxdwsvvx6vs" path="res://UI/Game/Player/spawn_player.tscn" id="5_p8wak"]
+[ext_resource type="Script" path="res://UI/Game/animation_controller.gd" id="6_rliwr"]
+[ext_resource type="PackedScene" uid="uid://dlqcc3ks8ernp" path="res://UI/pause_menu/pause_menu.tscn" id="7_k021o"]
+[ext_resource type="PackedScene" uid="uid://b6q0c3v5cxmb8" path="res://shaders/win_shader.tscn" id="8_xwvhc"]
+[ext_resource type="PackedScene" uid="uid://ffxtvbv7iy5c" path="res://UI/win_menu/win_menu.tscn" id="9_em7pg"]
+
+[sub_resource type="Animation" id="Animation_pjjeu"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d31ty"]
+_data = {
+"RESET": SubResource("Animation_pjjeu")
+}
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l4yuy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pj50i"]
+size = Vector2(98, 124)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rc6hf"]
+size = Vector2(106.983, 101.569)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64ei3"]
+size = Vector2(98, 104)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mldtv"]
+size = Vector2(98, 120)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_e381b"]
+a = Vector2(-1024, -468)
+b = Vector2(-1120, -398)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_f5b3e"]
+a = Vector2(688, -468)
+b = Vector2(802, -408)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_c6hiv"]
+a = Vector2(-1120, 532)
+b = Vector2(-1020, 612)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_arejl"]
+a = Vector2(802, 528)
+b = Vector2(702, 608)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1tje"]
+size = Vector2(228, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3frbp"]
+size = Vector2(138, 88)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5fwko"]
+radius = 45.3982
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yhdhl"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jkxmh"]
+a = Vector2(145.611, -1096.57)
+b = Vector2(855.629, 691.625)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_y135l"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ttlrm"]
+a = Vector2(-962, -541)
+b = Vector2(-964, 539)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7iypf"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_x14m7"]
+a = Vector2(962, 541)
+b = Vector2(962, -537)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r88gd"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ir0rk"]
+a = Vector2(-962, 543)
+b = Vector2(962, 539)
+
+[sub_resource type="Environment" id="Environment_wegft"]
+background_mode = 3
+ambient_light_color = Color(0.431373, 0.109804, 1, 1)
+sdfgi_min_cell_size = 16.0
+sdfgi_cascade0_distance = 1024.0
+sdfgi_max_distance = 16384.0
+glow_enabled = true
+glow_normalized = true
+glow_blend_mode = 0
+glow_hdr_threshold = 0.0
+
+[node name="arcade_level" type="Node2D"]
+
+[node name="animation_controller" type="Node2D" parent="."]
+process_mode = 3
+position = Vector2(-960, -541)
+script = ExtResource("6_rliwr")
+
+[node name="Game_pop" type="AnimationPlayer" parent="animation_controller"]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_d31ty"),
+"game_animations": ExtResource("3_70bax")
+}
+
+[node name="world_back_buffer" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="world" type="Node2D" parent="world_back_buffer"]
+
+[node name="win" parent="world_back_buffer/world" instance=ExtResource("1_8mugj")]
+
+[node name="player" parent="world_back_buffer/world" instance=ExtResource("5_p8wak")]
+position = Vector2(-590, 115)
+
+[node name="Inside" type="StaticBody2D" parent="world_back_buffer/world"]
+position = Vector2(159, -71)
+collision_layer = 5
+collision_mask = 5
+physics_material_override = SubResource("PhysicsMaterial_l4yuy")
+script = ExtResource("4_r0n27")
+
+[node name="down_arcade_1" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
+position = Vector2(-908, -175)
+shape = SubResource("RectangleShape2D_pj50i")
+
+[node name="diaganole_arcade_1" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
+position = Vector2(-908, 320)
+rotation = 0.785398
+shape = SubResource("RectangleShape2D_rc6hf")
+
+[node name="diaganole_arcade_2" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
+position = Vector2(549, -175)
+rotation = 0.785398
+shape = SubResource("RectangleShape2D_64ei3")
+
+[node name="down_arcade_2" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
+position = Vector2(541, 286)
+shape = SubResource("RectangleShape2D_mldtv")
+
+[node name="Left_cornor" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
+shape = SubResource("SegmentShape2D_e381b")
+
+[node name="Righ_cornor" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
+shape = SubResource("SegmentShape2D_f5b3e")
+
+[node name="Bottom_left_cornor" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
+shape = SubResource("SegmentShape2D_c6hiv")
+
+[node name="Bottom_right_cornor" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
+shape = SubResource("SegmentShape2D_arejl")
+
+[node name="TV_panel" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
+position = Vector2(-159, -175.5)
+shape = SubResource("RectangleShape2D_f1tje")
+
+[node name="1_bottom_arcade7" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
+position = Vector2(367, -307)
+rotation = -2.35619
+shape = SubResource("RectangleShape2D_3frbp")
+
+[node name="1_bottom_arcade6" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
+position = Vector2(-714, -314)
+rotation = -0.785398
+shape = SubResource("RectangleShape2D_3frbp")
+
+[node name="1_bottom_arcade5" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
+position = Vector2(-495, -175)
+shape = SubResource("RectangleShape2D_3frbp")
+
+[node name="1_bottom_arcade4" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
+position = Vector2(164, -175)
+shape = SubResource("RectangleShape2D_3frbp")
+
+[node name="1_bottom_arcade3" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
+position = Vector2(164, 418)
+shape = SubResource("RectangleShape2D_3frbp")
+
+[node name="1_bottom_arcade2" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
+position = Vector2(-159, 418)
+shape = SubResource("RectangleShape2D_3frbp")
+
+[node name="1_bottom_arcade" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
+position = Vector2(-495, 418)
+shape = SubResource("RectangleShape2D_3frbp")
+
+[node name="Middle_ground2" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
+position = Vector2(164, 100)
+shape = SubResource("CircleShape2D_5fwko")
+
+[node name="Middle_ground" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
+position = Vector2(-495, 100)
+shape = SubResource("CircleShape2D_5fwko")
+
+[node name="Outside" type="Node2D" parent="world_back_buffer/world"]
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="world_back_buffer/world/Outside"]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_yhdhl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="world_back_buffer/world/Outside/StaticBody2D4"]
+rotation = -1.19387
+shape = SubResource("SegmentShape2D_jkxmh")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="world_back_buffer/world/Outside"]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_y135l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="world_back_buffer/world/Outside/StaticBody2D3"]
+shape = SubResource("SegmentShape2D_ttlrm")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="world_back_buffer/world/Outside"]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_7iypf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="world_back_buffer/world/Outside/StaticBody2D"]
+shape = SubResource("SegmentShape2D_x14m7")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="world_back_buffer/world/Outside"]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_r88gd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="world_back_buffer/world/Outside/StaticBody2D2"]
+shape = SubResource("SegmentShape2D_ir0rk")
+
+[node name="player_camera_1" type="Camera2D" parent="world_back_buffer/world"]
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="pause_menu_back_buffer" type="BackBufferCopy" parent="."]
+process_mode = 2
+copy_mode = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="pause_menu_back_buffer"]
+
+[node name="pause_menu" parent="pause_menu_back_buffer/CanvasLayer" instance=ExtResource("7_k021o")]
+process_mode = 0
+
+[node name="win_menu_back_buffer" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="win_menu_back_buffer"]
+
+[node name="win_menu" parent="win_menu_back_buffer/CanvasLayer" instance=ExtResource("9_em7pg")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wegft")
+
+[node name="Game_shaders" parent="." instance=ExtResource("5_0epk6")]
+visible = false
+offset_left = -960.0
+offset_top = -541.0
+offset_right = -960.0
+offset_bottom = -541.0
+
+[node name="win_shader" parent="." instance=ExtResource("8_xwvhc")]
+offset_left = -960.0
+offset_top = -541.0
+offset_right = -960.0
+offset_bottom = -541.0

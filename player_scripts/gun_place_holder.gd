@@ -48,7 +48,7 @@ func grenade_throw():
 	
 var magazine_empty = false
 func weapon_fire():
-	if gun_controller["magazine_size"] > 0:
+	if gun_controller["magazine_size"] > 0 && !gun_controller["health"] <= 0:
 		gun_controller["magazine_size"] -= gun_controller["magazine_depletion_size"]
 		shoot_bullet()
 		#Set Gun Fire Rate

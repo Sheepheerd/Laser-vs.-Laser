@@ -42,7 +42,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TV Shader" type="BackBufferCopy" parent="."]
-visible = false
 copy_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="TV Shader"]
@@ -58,6 +57,7 @@ copy_mode = 2
 material = SubResource("ShaderMaterial_buyhl")
 offset_right = 1920.0
 offset_bottom = 1080.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Glitch" type="BackBufferCopy" parent="."]
 visible = false
@@ -67,9 +67,9 @@ copy_mode = 2
 material = SubResource("ShaderMaterial_4flpd")
 offset_right = 1920.0
 offset_bottom = 1080.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Sharpness" type="BackBufferCopy" parent="."]
-visible = false
 copy_mode = 2
 
 [node name="Sharpness" type="ColorRect" parent="Sharpness"]

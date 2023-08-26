@@ -34,7 +34,7 @@ func _ready():
 	gun_controller["health"] = gun_controller["max_health"]
 
 func _physics_process(delta):
-	if 	game_process_controller.current_game_process == game_process_controller.game_process.game_fight:
+	if game_process_controller.current_game_process == game_process_controller.game_process.game_fight && !gun_controller["health"] <= 0:
 		if Input.is_joy_button_pressed(player_index, 0) == false:
 			has_selected = false
 	
@@ -83,7 +83,14 @@ func _physics_process(delta):
 		
 		if Input.is_action_just_pressed("E"):
 			print(gun_controller["health"])
+			
+		pause_menu()
+			
 func take_damage(damage):
 
 	gun_controller["health"] -= damage
-	
+
+func pause_menu():
+	if Input.is_joy_button_pressed(0, 5) == true:
+		game_process_controller.current_game_process = game_process_controller.game_process.pause_menu
+		get_tree().paused = true

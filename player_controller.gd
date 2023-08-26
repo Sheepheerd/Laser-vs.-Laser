@@ -15,7 +15,7 @@ func _ready():
 
 		if game_process_controller.game_lobby["player_2"] == true:
 			var player_2_instance = player_1_instance.duplicate()  # Duplicate the player 1 instance
-			player_2_instance.global_position = Vector2(100, 0)
+			player_2_instance.global_position = Vector2(200, 0)
 			player_2_instance.player_index = 1
 			add_child(player_2_instance)
 			player_2_instance.add_to_group(str(player_2_instance.player_index))

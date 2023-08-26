@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1rxdwsvvx6vs"]
+
+[ext_resource type="Shader" path="res://overworld_crt_good.gdshader" id="1_1affy"]
+[ext_resource type="Script" path="res://player_controller.gd" id="2_34ehe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kwsrg"]
+render_priority = 0
+shader = ExtResource("1_1affy")
+
+[node name="player" type="Node2D"]
+process_mode = 1
+material = SubResource("ShaderMaterial_kwsrg")
+position = Vector2(-749, 0)
+script = ExtResource("2_34ehe")

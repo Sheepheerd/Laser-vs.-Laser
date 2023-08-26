@@ -31,34 +31,34 @@ func start_shot_test():
 	start_shot = false
 ##Handles shooting, grenades, and curser distance for right controller stick
 func _process(delta):
-	if 	game_process_controller.current_game_process == game_process_controller.game_process.game_fight:
+	if game_process_controller.current_game_process == game_process_controller.game_process.game_fight:
 		if Input.is_joy_button_pressed(player_index, 0) == false:
 			has_selected = false
 	
-	if Input.get_joy_axis(player_index, 5) && has_selected == false && start_shot == false:
-		Attack()
+		if Input.get_joy_axis(player_index, 5) && has_selected == false && start_shot == false:
+			Attack()
 
-	if Input.is_joy_button_pressed(player_index, 10)  && has_selected == false:
-		shoot_grenade()
-	# Controller Support
-	rightStick = Vector2(
-		Input.get_joy_axis(player_index, 2),
-		Input.get_joy_axis(player_index, 3)
-	)
+		if Input.is_joy_button_pressed(player_index, 10)  && has_selected == false:
+			shoot_grenade()
+		# Controller Support
+		rightStick = Vector2(
+			Input.get_joy_axis(player_index, 2),
+			Input.get_joy_axis(player_index, 3)
+		)
 
-	# Apply the threshold for the right stick input
-	if rightStick.length() < rightStickThreshold:
-		rightStick = Vector2.ZERO
-	elif rightStick.length() > rightStickThreshold:
+		# Apply the threshold for the right stick input
+		if rightStick.length() < rightStickThreshold:
+			rightStick = Vector2.ZERO
+		elif rightStick.length() > rightStickThreshold:
+			position += rightStick * cursorSpeed * delta
+
+		# Move the cursor based on the right stick input
 		position += rightStick * cursorSpeed * delta
 
-	# Move the cursor based on the right stick input
-	position += rightStick * cursorSpeed * delta
-
-	# Ensure the cursor stays within the specified distance from the player
-	cursorToPlayer = position
-	if cursorToPlayer.length() > cursorDistance:
-		position = cursorToPlayer.normalized() * cursorDistance
+		# Ensure the cursor stays within the specified distance from the player
+		cursorToPlayer = position
+		if cursorToPlayer.length() > cursorDistance:
+			position = cursorToPlayer.normalized() * cursorDistance
 
 #if the cursor is inside the player, then the player can't shoot
 func _on_body_entered(_body):

@@ -82,7 +82,7 @@ func _process(delta):
 func map_1():
 	game_process_controller.current_game_process = game_process_controller.game_process.game_fight
 	button_animation_controller.play_backwards("map_selection/Pop_in")
-	_transition_rect.transition_to("res://overworld.tscn")
+	_transition_rect.transition_to("res://levels/Level_1/arcade_level.tscn")
 
 
 

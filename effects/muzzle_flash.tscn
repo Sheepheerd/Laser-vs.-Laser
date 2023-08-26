@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://effects/muzzle_flash_effect.gd" id="1_p2jgr"]
 
 [sub_resource type="Curve" id="Curve_ystgg"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0434783, 0.168421), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.451087, 0.505263), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_v2aoq"]
