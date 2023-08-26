@@ -53,6 +53,7 @@ offset_bottom = 1080.0
 metadata/_edit_use_anchors_ = true
 
 [node name="TV Shader" type="BackBufferCopy" parent="."]
+visible = false
 copy_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="TV Shader"]
@@ -62,6 +63,7 @@ offset_bottom = 1080.0
 metadata/_edit_use_anchors_ = true
 
 [node name="VHS" type="BackBufferCopy" parent="."]
+visible = false
 copy_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="VHS"]
@@ -71,6 +73,7 @@ offset_bottom = 1080.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Glitch" type="BackBufferCopy" parent="."]
+visible = false
 copy_mode = 2
 
 [node name="Glitch" type="ColorRect" parent="Glitch"]
@@ -80,6 +83,7 @@ offset_bottom = 1080.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Sharpness" type="BackBufferCopy" parent="."]
+visible = false
 copy_mode = 2
 
 [node name="Sharpness" type="ColorRect" parent="Sharpness"]
