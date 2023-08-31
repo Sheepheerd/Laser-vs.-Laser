@@ -20,7 +20,7 @@ var wins = {
 	"player_2" : 0
 }
 
-var required_wins: int = 1
+var required_wins: int = 3
 
 var shake_timer = 0.0
 

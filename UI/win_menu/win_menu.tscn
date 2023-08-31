@@ -36,26 +36,15 @@ script = ExtResource("3_nwjuc")
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="Options" type="Button" parent="Win_Options/win_menu"]
+[node name="Quite" type="Button" parent="Win_Options/win_menu"]
 visible = false
+layout_mode = 0
 offset_left = 747.0
 offset_top = 611.0
 offset_right = 1167.0
 offset_bottom = 691.0
 theme = ExtResource("2_s3r8r")
-text = "O P T I O N S"
-metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
-
-[node name="Quite_to_main_menu" type="Button" parent="Win_Options/win_menu"]
-visible = false
-offset_left = 747.0
-offset_top = 851.0
-offset_right = 1167.0
-offset_bottom = 931.0
-theme = ExtResource("2_s3r8r")
-text = "Quite_to_main_menu
-"
+text = "Q U I T E"
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 

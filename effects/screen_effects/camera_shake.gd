@@ -16,7 +16,6 @@ func _ready():
 
 
 func _process(delta: float):
-	print(game_process_controller.shake_timer)
 	if game_process_controller.current_game_process == game_process_controller.game_process.game_fight:
 		if game_process_controller.shake_timer > 0.0:
 			game_process_controller.shake_timer -= delta

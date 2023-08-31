@@ -24,10 +24,10 @@ shader_parameter/bottom_strenth = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fjwoh"]
 shader = ExtResource("3_wvma6")
-shader_parameter/_ScanLineJitter = 0.25
-shader_parameter/_VerticalJump = 0.01
+shader_parameter/_ScanLineJitter = 0.2
+shader_parameter/_VerticalJump = 0.0
 shader_parameter/_HorizontalShake = 0.0
-shader_parameter/_ColorDrift = 0.02
+shader_parameter/_ColorDrift = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ycafq"]
 shader = ExtResource("4_jmw5c")
@@ -113,6 +113,7 @@ offset_bottom = 1080.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Glitch" type="BackBufferCopy" parent="."]
+visible = false
 copy_mode = 2
 
 [node name="Glitch" type="ColorRect" parent="Glitch"]

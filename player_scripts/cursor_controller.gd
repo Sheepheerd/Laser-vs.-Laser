@@ -1,11 +1,11 @@
 extends Area2D
 
 var canshoot = true
-var cursorSpeed: float = 250.0
+var cursorSpeed: float = 100.0
 var cursorToPlayer = Vector2.ZERO
 var cursorDistance: float = 15.0
 var rightStickThreshold: float = 0.5
-
+var cursorDirection
 @onready var attackTimer: Timer = $Timer
 
 var originalPosition: Vector2
@@ -45,12 +45,21 @@ func _process(delta):
 			Input.get_joy_axis(player_index, 2),
 			Input.get_joy_axis(player_index, 3)
 		)
-
+		cursorDirection = rightStick.normalized()
 		# Apply the threshold for the right stick input
 		if rightStick.length() < rightStickThreshold:
 			rightStick = Vector2.ZERO
 		elif rightStick.length() > rightStickThreshold:
 			position += rightStick * cursorSpeed * delta
+
+		# Implement aim assist
+		if isLookingAtOtherPlayer(cursorDirection) && rightStick != Vector2.ZERO:
+			var closestNode = getClosestNodeWithOppositeGroup()
+			if closestNode:
+				var targetDirection = closestNode.global_position - global_position
+				var newCursorPosition = position + targetDirection.normalized() * (cursorSpeed - 10) * delta
+				position = newCursorPosition
+
 
 		# Move the cursor based on the right stick input
 		position += rightStick * cursorSpeed * delta
@@ -100,3 +109,26 @@ func _on_grenade_thown_timer_timeout():
 	has_thrown = false
 	
 	
+##aim assest
+func getClosestNodeWithOppositeGroup():
+	var groupToFind = "2" if (player_index == 1)  else "1"  # Assuming you have group names '1' and '2'
+
+	var closestNode = null
+	var closestDistance = cursorDistance  # Initialize with the maximum cursor distance
+
+	for node in get_tree().get_nodes_in_group(groupToFind):
+		var nodeGlobalPosition = node.position
+		var distance = position.distance_to(nodeGlobalPosition)
+		closestNode = node
+		closestDistance = distance
+
+	return closestNode
+
+func isLookingAtOtherPlayer(cursorDirection):
+	var otherPlayer = getClosestNodeWithOppositeGroup()
+	if otherPlayer:
+		var playerToOtherPlayer = otherPlayer.global_position - global_position
+		playerToOtherPlayer = playerToOtherPlayer.normalized()
+		var dotProduct = cursorDirection.dot(playerToOtherPlayer)
+		return dotProduct > 0.7  # Adjust this threshold as needed
+	return false

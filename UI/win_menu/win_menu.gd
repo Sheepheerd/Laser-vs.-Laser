@@ -2,7 +2,7 @@ extends Control
 
 
 var selected_option = 1
-var num_options = 3
+var num_options = 2
 
 var prev_vertical : float = 0
 var has_selected = false
@@ -21,8 +21,7 @@ func _ready():
 		has_selected = true
 	
 	$Rematch.hide()
-	$Options.hide()
-	$Quite_to_main_menu.hide()
+	$Quite.hide()
 	effects.hide()
 		
 func _process(delta):
@@ -57,12 +56,9 @@ func _process(delta):
 		if Input.is_joy_button_pressed(0, 0) && !has_selected: # Check for button press on player 1's controller
 			match selected_option:
 				1:
-					_on_resume_pressed()
+					_on_rematch_pressed()
 				
-				2: 
-					_on_options_pressed()
-					
-				3:
+				2:
 					_on_quit_to_main_menu_pressed()
 		
 			has_selected = true
@@ -71,22 +67,27 @@ func _process(delta):
 func _win_menu():
 	
 	$Rematch.show()
-	$Options.show()
-	$Quite_to_main_menu.show()
+	$Quite.show()
 	effects.show()
 	
 
-func _on_resume_pressed():
+func _on_rematch_pressed():
+	Engine.time_scale = 1
 	$Rematch.hide()
 	$Quite.hide()
-	effects.hide()
-	game_process_controller.current_game_process = game_process_controller.game_process.game_fight
-
+	animation_controller.play_backwards("game_animations/Pop_in")
+	restore_default_stats()
+	if defaults_restored == true:
+		_transition_rect.transition_to("res://UI/map_selection/ui_map_selection.tscn")
+		game_process_controller.current_game_process = game_process_controller.game_process.ui_map_selection
+	else:
+		return
 	
 func _on_options_pressed():
 	pass
 	
 func _on_quit_to_main_menu_pressed():
+	Engine.time_scale = 1
 	animation_controller.play_backwards("game_animations/Pop_in")
 	restore_default_stats()
 	if defaults_restored == true:
