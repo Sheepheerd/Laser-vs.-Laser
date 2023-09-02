@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://4lcsx6qca6w4"]
+
+[ext_resource type="PackedScene" uid="uid://bb5dgbqwvbanf" path="res://src/battle/backgrounds/default/BGDefault.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://cr7k56j3unido" path="res://assets/sprites/backgrounds/Diamonds.png" id="2"]
+[ext_resource type="Material" path="res://src/battle/backgrounds/diamonds/BGDiamondsFG1.tres" id="3"]
+
+[node name="BGDiamonds" instance=ExtResource("1")]
+
+[node name="BG" parent="." index="0"]
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FG1" parent="." index="1"]
+material = ExtResource("3")
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2")
+
+[node name="FG2" parent="." index="2"]
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,13 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvdvcfvm4u0x8"]
+[gd_scene load_steps=3 format=3 uid="uid://cvdvcfvm4u0x8"]
 
 [ext_resource type="Script" path="res://card_mechanic/card_selection_scenes/card_selection_loser.gd" id="1_ff1o7"]
+[ext_resource type="PackedScene" uid="uid://i0tclw500u0h" path="res://src/battle/backgrounds/portal/BGPortal.tscn" id="2_tcfpr"]
 
 [node name="cards" type="Node2D"]
 
-[node name="card_selection" type="Control" parent="."]
+[node name="Effects" type="BackBufferCopy" parent="."]
+
+[node name="BGPortal" parent="Effects" instance=ExtResource("2_tcfpr")]
+offset_right = 1720.0
+offset_bottom = 880.0
+
+[node name="Card Selection" type="BackBufferCopy" parent="."]
+
+[node name="card_selection" type="Control" parent="Card Selection"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1437.0
-offset_bottom = 809.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1720.0
+offset_bottom = 880.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 4
 script = ExtResource("1_ff1o7")

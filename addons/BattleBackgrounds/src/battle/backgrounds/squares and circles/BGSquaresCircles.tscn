@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://qr6gfcomsbm1"]
+
+[ext_resource type="PackedScene" path="res://src/battle/backgrounds/default/BGDefault.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://bv8xtl64n1i44" path="res://assets/sprites/backgrounds/Circles.png" id="2"]
+[ext_resource type="Material" uid="uid://brbkc5rdbdjns" path="res://src/battle/backgrounds/squares and circles/BGSquaresCirclesFG2.tres" id="3"]
+[ext_resource type="Material" uid="uid://bnaherwu77pj4" path="res://src/battle/backgrounds/squares and circles/BGSquaresCirclesFG1.tres" id="4"]
+[ext_resource type="Texture2D" uid="uid://mooe7qcml3bj" path="res://assets/sprites/backgrounds/Squares.png" id="5"]
+
+[node name="BGSquaresCircles" instance=ExtResource("1")]
+
+[node name="BG" parent="." index="0"]
+anchors_preset = 15
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.0156863, 0.168627, 1)
+
+[node name="FG1" parent="." index="1"]
+material = ExtResource("4")
+anchors_preset = 15
+texture = ExtResource("5")
+expand_mode = 1
+
+[node name="FG2" parent="." index="2"]
+material = ExtResource("3")
+anchors_preset = 15
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2")
+expand_mode = 1

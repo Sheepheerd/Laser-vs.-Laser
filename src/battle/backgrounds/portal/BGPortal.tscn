@@ -1,0 +1,105 @@
+[gd_scene load_steps=13 format=3 uid="uid://i0tclw500u0h"]
+
+[ext_resource type="PackedScene" uid="uid://bb5dgbqwvbanf" path="res://src/battle/backgrounds/default/BGDefault.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://bm0g4rw5e6abo" path="res://assets/sprites/backgrounds/Portal.png" id="2"]
+[ext_resource type="Material" path="res://src/battle/backgrounds/portal/BGPortalFG2.tres" id="3"]
+[ext_resource type="Material" uid="uid://dupiubjwrgeva" path="res://src/battle/backgrounds/portal/BGPortalFG1.tres" id="4"]
+[ext_resource type="Shader" path="res://shaders/GodotRetro/Screen Shaders/TV.gdshader" id="5_x3ler"]
+[ext_resource type="Shader" path="res://shaders/GodotRetro/Screen Shaders/NTSC.gdshader" id="6_disju"]
+[ext_resource type="Shader" path="res://shaders/GodotRetro/Screen Shaders/Glitch.gdshader" id="7_85m5t"]
+[ext_resource type="Shader" path="res://shaders/GodotRetro/Screen Shaders/Aditional Shaders/Sharpness.gdshader" id="8_dove6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wjk1p"]
+shader = ExtResource("5_x3ler")
+shader_parameter/vertJerkOpt = 0.089
+shader_parameter/vertMovementOpt = 0.0
+shader_parameter/bottomStaticOpt = 0.0
+shader_parameter/bottomStaticStrenth = 0.7
+shader_parameter/scalinesOpt = 0.8
+shader_parameter/rgbOffsetOpt = 0.2
+shader_parameter/horzFuzzOpt = 0.15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ngcl7"]
+shader = ExtResource("6_disju")
+shader_parameter/blur_amount = 0.0
+shader_parameter/signal_quality = 0.0
+shader_parameter/bottom_strenth = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xdyp6"]
+shader = ExtResource("7_85m5t")
+shader_parameter/_ScanLineJitter = 0.2
+shader_parameter/_VerticalJump = 0.0
+shader_parameter/_HorizontalShake = 0.0
+shader_parameter/_ColorDrift = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oen27"]
+shader = ExtResource("8_dove6")
+shader_parameter/sharpen_amount = 0.042
+
+[node name="BGPortal" instance=ExtResource("1")]
+
+[node name="FG1" parent="." index="1"]
+material = ExtResource("4")
+texture = ExtResource("2")
+
+[node name="FG2" parent="." index="2"]
+material = ExtResource("3")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="." index="3"]
+
+[node name="Control" type="Control" parent="BackBufferCopy" index="0"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1720.0
+offset_bottom = 880.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Base Color" type="BackBufferCopy" parent="BackBufferCopy/Control" index="0"]
+visible = false
+copy_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="BackBufferCopy/Control/Base Color" index="0"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.6, 0.427451, 0.509804, 1)
+
+[node name="TV Shader" type="BackBufferCopy" parent="BackBufferCopy/Control" index="1"]
+copy_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="BackBufferCopy/Control/TV Shader" index="0"]
+material = SubResource("ShaderMaterial_wjk1p")
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="VHS" type="BackBufferCopy" parent="BackBufferCopy/Control" index="2"]
+visible = false
+copy_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="BackBufferCopy/Control/VHS" index="0"]
+material = SubResource("ShaderMaterial_ngcl7")
+offset_right = 1920.0
+offset_bottom = 1080.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Glitch" type="BackBufferCopy" parent="BackBufferCopy/Control" index="3"]
+visible = false
+copy_mode = 2
+
+[node name="Glitch" type="ColorRect" parent="BackBufferCopy/Control/Glitch" index="0"]
+material = SubResource("ShaderMaterial_xdyp6")
+offset_right = 1920.0
+offset_bottom = 1080.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Sharpness" type="BackBufferCopy" parent="BackBufferCopy/Control" index="4"]
+visible = false
+copy_mode = 2
+
+[node name="Sharpness" type="ColorRect" parent="BackBufferCopy/Control/Sharpness" index="0"]
+material = SubResource("ShaderMaterial_oen27")
+offset_right = 1920.0
+offset_bottom = 1084.0
+metadata/_edit_use_anchors_ = true
