@@ -21,7 +21,7 @@ var wins = {
 }
 
 var required_wins: int = 3
-
+var can_pause: bool = true
 var shake_timer = 0.0
 
 var card_scene_paths = [

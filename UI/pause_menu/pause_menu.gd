@@ -34,6 +34,7 @@ func _process(delta):
 			$Options.show()
 			$Quite_to_main_menu.show()
 			effects.show()
+			effects.get_node("transition_controller/AnimationPlayer").stop()
 			
 	if Input.is_joy_button_pressed(0, 0) == false:
 			has_selected = false

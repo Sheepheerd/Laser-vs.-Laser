@@ -34,6 +34,7 @@ func _ready():
 func _process(delta):
 	# Fix This....this permanently changes the scene because the health is never reset
 	if gun_controller["health"] <= 0 && rewarded_win == false: #&& dead_player_declared:
+		game_process_controller.can_pause = false
 		game_process_controller.wins[alive_player] += 1
 		player_explode()
 		hide_sprite()
@@ -45,8 +46,10 @@ func _process(delta):
 		rewarded_win = true
 		
 		if game_process_controller.wins[alive_player] == game_process_controller.required_wins:
+
 			await get_tree().create_timer(1).timeout.connect(win_transition)
 		else:
+
 			await get_tree().create_timer(1).timeout.connect(card_transition)
 
 	if rewarded_win == true:
@@ -70,5 +73,6 @@ func player_explode():
 	$player_explode/explode_flash.emitting = true
 
 func hide_sprite():
+	get_parent().get_node("cursor").can_fire = false
 	get_parent().get_node("AnimatedSprite2D").queue_free()
 

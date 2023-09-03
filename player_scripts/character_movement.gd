@@ -29,7 +29,7 @@ func _ready():
 		has_selected = true
 
 
-		
+	game_process_controller.can_pause = true
 	#Setting Health
 	gun_controller["health"] = gun_controller["max_health"]
 
@@ -90,7 +90,8 @@ func take_damage(damage):
 
 	gun_controller["health"] -= damage
 
+
 func pause_menu():
-	if Input.is_joy_button_pressed(0, 5) == true:
+	if Input.is_joy_button_pressed(player_index, 5) == true && game_process_controller.can_pause == true:
 		game_process_controller.current_game_process = game_process_controller.game_process.pause_menu
 		get_tree().paused = true
