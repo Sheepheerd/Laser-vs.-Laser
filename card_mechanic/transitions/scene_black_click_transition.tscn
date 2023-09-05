@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgeh5kyxb4jag"]
+
+[ext_resource type="AnimationLibrary" uid="uid://t78ajms7ln10" path="res://card_mechanic/transitions/card_transitions.res" id="1_73rmj"]
+[ext_resource type="Script" path="res://card_mechanic/transitions/scene_black_click_transition.gd" id="1_ka2of"]
+
+[sub_resource type="Animation" id="Animation_82bbv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gdxj7"]
+_data = {
+"RESET": SubResource("Animation_82bbv")
+}
+
+[node name="black_click_transition" type="BackBufferCopy"]
+copy_mode = 2
+
+[node name="scene_black_click_transition" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ka2of")
+
+[node name="ColorRect" type="ColorRect" parent="scene_black_click_transition"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="scene_black_click_transition"]
+libraries = {
+"": SubResource("AnimationLibrary_gdxj7"),
+"card_transitions": ExtResource("1_73rmj")
+}

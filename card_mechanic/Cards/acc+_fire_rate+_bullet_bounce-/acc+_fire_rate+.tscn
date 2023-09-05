@@ -1,9 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://cr7fj8ncvn7lv"]
+[gd_scene load_steps=3 format=3 uid="uid://cr7fj8ncvn7lv"]
 
 [ext_resource type="Script" path="res://card_mechanic/Cards/acc+_fire_rate+_bullet_bounce-/acc+_fire_rate+.gd" id="1_agsp6"]
+[ext_resource type="Theme" uid="uid://bajqmo6fttg8t" path="res://UI/Theme/player_menu.tres" id="1_qsf5g"]
 
 [node name="Button" type="Button"]
-offset_right = 263.0
-offset_bottom = 108.0
-text = "acc+_fire_rate+"
+offset_right = 400.0
+offset_bottom = 700.0
+theme = ExtResource("1_qsf5g")
+text = "A C C U R A C Y
+
++
+
+F I R E  R A T E
+
+U P"
 script = ExtResource("1_agsp6")

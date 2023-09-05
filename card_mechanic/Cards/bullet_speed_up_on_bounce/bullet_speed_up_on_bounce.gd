@@ -10,8 +10,6 @@ func _ready():
 		gun_controller = gun_tags.player_2_stats
 	
 func action():
-	#Buff - Damage - 20% more
-	gun_controller["damage"] = gun_controller["damage"] + (gun_controller["damage"] * .20)
+	#Buff - bounce speed up - 50%
+	gun_controller["bounce_speed"] = gun_controller["bounce_speed"] + (gun_controller["bounce_speed"] * .50)
 
-	#DeBuff - Health - 20% lower
-	gun_controller["max_health"] = gun_controller["max_health"] - (gun_controller["max_health"] * .20)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://du2dxmakeipmf"]
+
+[ext_resource type="Script" path="res://card_mechanic/Cards/enemy_no_bounce/enemy_no_bounce.gd" id="1_v41a3"]
+[ext_resource type="Theme" uid="uid://bajqmo6fttg8t" path="res://UI/Theme/player_menu.tres" id="1_x0a52"]
+
+[node name="Button" type="Button"]
+offset_right = 400.0
+offset_bottom = 700.0
+theme = ExtResource("1_x0a52")
+text = "N O
+
+E N E M Y
+
+B O U N C E"
+script = ExtResource("1_v41a3")

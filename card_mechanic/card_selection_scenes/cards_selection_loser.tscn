@@ -1,17 +1,47 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvdvcfvm4u0x8"]
+[gd_scene load_steps=10 format=3 uid="uid://cvdvcfvm4u0x8"]
 
 [ext_resource type="Script" path="res://card_mechanic/card_selection_scenes/card_selection_loser.gd" id="1_ff1o7"]
 [ext_resource type="PackedScene" uid="uid://i0tclw500u0h" path="res://src/battle/backgrounds/portal/BGPortal.tscn" id="2_tcfpr"]
+[ext_resource type="PackedScene" uid="uid://7hfat73c68ku" path="res://card_mechanic/shader/card_shader_effects.tscn" id="3_o8akk"]
+[ext_resource type="PackedScene" uid="uid://bgeh5kyxb4jag" path="res://card_mechanic/transitions/scene_black_click_transition.tscn" id="4_2vb46"]
+[ext_resource type="AnimationLibrary" uid="uid://cl44vj6afn5a8" path="res://card_mechanic/transitions/cards_ready_pulse.res" id="4_gg13j"]
+[ext_resource type="Shader" path="res://shaders/GodotRetro/Screen Shaders/Aditional Shaders/Blur.gdshader" id="5_1j62e"]
+
+[sub_resource type="Animation" id="Animation_tmicp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qoqvw"]
+_data = {
+"RESET": SubResource("Animation_tmicp")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k53bo"]
+shader = ExtResource("5_1j62e")
+shader_parameter/amount = 1.0
 
 [node name="cards" type="Node2D"]
 
 [node name="Effects" type="BackBufferCopy" parent="."]
+copy_mode = 2
 
 [node name="BGPortal" parent="Effects" instance=ExtResource("2_tcfpr")]
 offset_right = 1720.0
 offset_bottom = 880.0
 
 [node name="Card Selection" type="BackBufferCopy" parent="."]
+copy_mode = 2
 
 [node name="card_selection" type="Control" parent="Card Selection"]
 layout_mode = 3
@@ -24,3 +54,21 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
 script = ExtResource("1_ff1o7")
+
+[node name="shaders" parent="Card Selection" instance=ExtResource("3_o8akk")]
+
+[node name="ready_transition" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ready_transition"]
+libraries = {
+"": SubResource("AnimationLibrary_qoqvw"),
+"cards_ready_pulse": ExtResource("4_gg13j")
+}
+
+[node name="ColorRect" type="ColorRect" parent="ready_transition"]
+material = SubResource("ShaderMaterial_k53bo")
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="black_click_transition" parent="." instance=ExtResource("4_2vb46")]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpo2ifjhn8fv5"]
+
+[ext_resource type="Script" path="res://card_mechanic/Cards/extra_life/extra_life.gd" id="1_76s8u"]
+[ext_resource type="Theme" uid="uid://bajqmo6fttg8t" path="res://UI/Theme/player_menu.tres" id="1_ncp3g"]
+
+[node name="Button" type="Button"]
+offset_right = 400.0
+offset_bottom = 700.0
+theme = ExtResource("1_ncp3g")
+text = "E X T R A
+
+H E A R T
+"
+script = ExtResource("1_76s8u")

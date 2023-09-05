@@ -3,8 +3,12 @@ extends Node2D
 var required_wins
 var defaults_restored
 @onready var win_animation = get_parent().get_parent().get_parent().get_node("win_shader/animation_controller/AnimationPlayer")
+
+@onready var _transition_rect = get_parent().get_node("black_click_transition/scene_black_click_transition")
+var not_finished_transition = true
 func _ready():
 	defaults_restored = false
+	not_finished_transition = true
 	#game_process_controller.required_wins = 3
 
 func _process(delta):
@@ -30,7 +34,11 @@ func _process(delta):
 				#get_tree().change_scene_to_file("res://UI/start_menu/ui_start.tscn")
 			else:
 				return
-
+				
+	if game_process_controller.current_game_process == game_process_controller.game_process.cards_selection_loser && not_finished_transition == true:
+		not_finished_transition = false
+		_transition_rect.transition_to("res://card_mechanic/card_selection_scenes/cards_selection_loser.tscn")
+	
 func restore_default_stats():
 	for key in gun_tags.player_1_stats_defaults.keys():
 		gun_tags.player_1_stats[key] = gun_tags.player_1_stats_defaults[key]

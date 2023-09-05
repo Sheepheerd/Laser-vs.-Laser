@@ -1,8 +1,6 @@
 extends Button
 
 
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if get_parent().selected_option == 1:

@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpyck4s6cn860"]
+[gd_scene load_steps=3 format=3 uid="uid://cpyck4s6cn860"]
 
 [ext_resource type="Script" path="res://card_mechanic/Cards/one_plus_bullet/one_plus_bullet.gd" id="1_mfott"]
+[ext_resource type="Theme" uid="uid://bajqmo6fttg8t" path="res://UI/Theme/player_menu.tres" id="1_rjyg2"]
 
 [node name="Button" type="Button"]
-offset_right = 163.0
-offset_bottom = 105.0
-text = "one_plus_bullet"
+offset_right = 400.0
+offset_bottom = 700.0
+theme = ExtResource("1_rjyg2")
+text = "+ 1  B U L L E T"
 script = ExtResource("1_mfott")

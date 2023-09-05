@@ -1,9 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://de0o7lukmgp2r"]
+[gd_scene load_steps=3 format=3 uid="uid://de0o7lukmgp2r"]
 
+[ext_resource type="Theme" uid="uid://bajqmo6fttg8t" path="res://UI/Theme/player_menu.tres" id="1_g6g0h"]
 [ext_resource type="Script" path="res://card_mechanic/Cards/bullet_bounce+2/bullet_bounce+2.gd" id="1_yhrn3"]
 
 [node name="Button" type="Button"]
-offset_right = 263.0
-offset_bottom = 108.0
-text = "bullet_bounce + 2_bullet_live_timer_+1"
+offset_right = 400.0
+offset_bottom = 700.0
+theme = ExtResource("1_g6g0h")
+text = "B U L L E T
+
+B O U N C E
+
++ 2"
 script = ExtResource("1_yhrn3")

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cii5wr4fxfb5a"]
+
+[ext_resource type="Theme" uid="uid://bajqmo6fttg8t" path="res://UI/Theme/player_menu.tres" id="1_vum5m"]
+[ext_resource type="Script" path="res://card_mechanic/Cards/enemy_mag_down/enemy_mag_down.gd" id="2_sjid3"]
+
+[node name="Button" type="Button"]
+offset_right = 400.0
+offset_bottom = 700.0
+theme = ExtResource("1_vum5m")
+text = "E N E M Y
+
+M A G
+
+- 2"
+script = ExtResource("2_sjid3")

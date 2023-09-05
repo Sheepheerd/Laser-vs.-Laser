@@ -10,8 +10,7 @@ func _ready():
 		gun_controller = gun_tags.player_2_stats
 	
 func action():
-	#Buff - Fire Rate - 60% faster
-	gun_controller["fire_rate"] = gun_controller["fire_rate"] - (gun_controller["fire_rate"] * .60)
+	#Buff - Player Speed+ - 20% faster
+	gun_controller["speed_with_gun"] = gun_controller["speed_with_gun"] + (gun_controller["speed_with_gun"] * .20)
 
-	#DeBuff - Accuracy - 10x worse
-	gun_controller["accuracy"] = gun_controller["accuracy"] + (gun_controller["accuracy"] * 5)
+

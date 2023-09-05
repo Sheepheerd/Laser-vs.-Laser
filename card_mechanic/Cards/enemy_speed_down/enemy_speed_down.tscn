@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://beik6kvdmnbvl"]
+
+[ext_resource type="Theme" uid="uid://bajqmo6fttg8t" path="res://UI/Theme/player_menu.tres" id="1_l1m6y"]
+[ext_resource type="Script" path="res://card_mechanic/Cards/enemy_speed_down/enemy_speed_down.gd" id="2_5gg61"]
+
+[node name="Button" type="Button"]
+offset_right = 400.0
+offset_bottom = 700.0
+theme = ExtResource("1_l1m6y")
+text = "E N E M Y 
+
+S P E E D
+
+D O W N"
+script = ExtResource("2_5gg61")

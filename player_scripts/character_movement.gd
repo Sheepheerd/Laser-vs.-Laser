@@ -42,7 +42,7 @@ func _physics_process(delta):
 		speed = gun_controller["speed_with_gun"]
 
 		var move_dir = Vector2.ZERO
-		if Input.is_joy_button_pressed(player_index, 0) && has_selected == false && get_node("dodge").dashing == false:
+		if Input.is_joy_button_pressed(player_index, 0) && has_selected == false && get_node("dodge").dashing == false && gun_controller["can_dodge"] == true:
 			dash.start_dash()
 	#	if dash.is_dashing():
 	#		return

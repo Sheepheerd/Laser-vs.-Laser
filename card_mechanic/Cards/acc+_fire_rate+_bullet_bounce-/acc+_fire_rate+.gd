@@ -8,7 +8,8 @@ func _ready():
 		gun_controller = gun_tags.player_1_stats
 	if player_index == 1:
 		gun_controller = gun_tags.player_2_stats
-	
+
+		
 func action():
 	#Buff - Fire Rate - 30% faster
 	gun_controller["fire_rate"] = gun_controller["fire_rate"] - (gun_controller["fire_rate"] * .30)

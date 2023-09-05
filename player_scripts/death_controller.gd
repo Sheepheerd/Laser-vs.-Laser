@@ -63,7 +63,7 @@ func _process(delta):
 func card_transition():
 	Engine.time_scale = 1.0
 	game_process_controller.current_game_process = game_process_controller.game_process.cards_selection_loser
-	get_tree().change_scene_to_file("res://card_mechanic/card_selection_scenes/cards_selection_loser.tscn")
+
 	
 func win_transition():
 	game_process_controller.current_game_process = game_process_controller.game_process.game_win

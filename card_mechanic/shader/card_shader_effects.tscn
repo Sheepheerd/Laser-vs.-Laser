@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=3 uid="uid://7hfat73c68ku"]
+
+[ext_resource type="Shader" path="res://shaders/GodotRetro/Screen Shaders/TV.gdshader" id="1_0pu5o"]
+[ext_resource type="Shader" path="res://shaders/GodotRetro/Screen Shaders/NTSC.gdshader" id="2_a8bwm"]
+[ext_resource type="Shader" path="res://shaders/GodotRetro/Screen Shaders/Glitch.gdshader" id="3_hesen"]
+[ext_resource type="Shader" path="res://shaders/GodotRetro/Screen Shaders/Aditional Shaders/Sharpness.gdshader" id="4_r1482"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s85re"]
+shader = ExtResource("1_0pu5o")
+shader_parameter/vertJerkOpt = 0.089
+shader_parameter/vertMovementOpt = 0.0
+shader_parameter/bottomStaticOpt = 0.0
+shader_parameter/bottomStaticStrenth = 0.7
+shader_parameter/scalinesOpt = 0.8
+shader_parameter/rgbOffsetOpt = 0.2
+shader_parameter/horzFuzzOpt = 0.15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jdvh1"]
+shader = ExtResource("2_a8bwm")
+shader_parameter/blur_amount = 0.0
+shader_parameter/signal_quality = 0.0
+shader_parameter/bottom_strenth = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jlx4l"]
+shader = ExtResource("3_hesen")
+shader_parameter/_ScanLineJitter = 0.2
+shader_parameter/_VerticalJump = 0.0
+shader_parameter/_HorizontalShake = 0.0
+shader_parameter/_ColorDrift = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bslec"]
+shader = ExtResource("4_r1482")
+shader_parameter/sharpen_amount = 0.042
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1720.0
+offset_bottom = 880.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Base Color" type="BackBufferCopy" parent="."]
+visible = false
+copy_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="Base Color"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.6, 0.427451, 0.509804, 1)
+
+[node name="TV Shader" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="TV Shader"]
+material = SubResource("ShaderMaterial_s85re")
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="VHS" type="BackBufferCopy" parent="."]
+visible = false
+copy_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VHS"]
+material = SubResource("ShaderMaterial_jdvh1")
+offset_right = 1920.0
+offset_bottom = 1080.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Glitch" type="BackBufferCopy" parent="."]
+visible = false
+copy_mode = 2
+
+[node name="Glitch" type="ColorRect" parent="Glitch"]
+material = SubResource("ShaderMaterial_jlx4l")
+offset_right = 1920.0
+offset_bottom = 1080.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Sharpness" type="BackBufferCopy" parent="."]
+visible = false
+copy_mode = 2
+
+[node name="Sharpness" type="ColorRect" parent="Sharpness"]
+material = SubResource("ShaderMaterial_bslec")
+offset_right = 1920.0
+offset_bottom = 1084.0
+metadata/_edit_use_anchors_ = true

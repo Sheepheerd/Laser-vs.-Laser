@@ -9,6 +9,8 @@ func _ready():
 	if player_index == 1:
 		gun_controller = gun_tags.player_2_stats
 	
+	
+
 func action():
 	#Buff - dodge_cooldown+ - 50% faster
 	gun_controller["first_dodge_timer"] = gun_controller["first_dodge_timer"] - (gun_controller["first_dodge_timer"] * .5)

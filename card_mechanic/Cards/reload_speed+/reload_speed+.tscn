@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://i0dloa7hm636"]
+
+[ext_resource type="Script" path="res://card_mechanic/Cards/reload_speed+/reload_speed+.gd" id="1_18xcc"]
+[ext_resource type="Theme" uid="uid://bajqmo6fttg8t" path="res://UI/Theme/player_menu.tres" id="1_bmoum"]
+
+[node name="Button" type="Button"]
+offset_right = 400.0
+offset_bottom = 700.0
+theme = ExtResource("1_bmoum")
+text = "R E L O A D
+
+F A S T E R"
+script = ExtResource("1_18xcc")

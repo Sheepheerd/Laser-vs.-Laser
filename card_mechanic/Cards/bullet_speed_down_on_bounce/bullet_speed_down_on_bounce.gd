@@ -10,6 +10,6 @@ func _ready():
 		gun_controller = gun_tags.player_2_stats
 	
 func action():
-	#Buff - Vampire Bullets = health 50% of damage done
-	gun_controller["vampire_bullets"] = true
+	#Buff - bounce speed down - 90%
+	gun_controller["bounce_speed"] = gun_controller["bounce_speed"] - (gun_controller["bounce_speed"] * .50)
 

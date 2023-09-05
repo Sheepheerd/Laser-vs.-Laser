@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ksagmvv632re"]
+
+[ext_resource type="Theme" uid="uid://bajqmo6fttg8t" path="res://UI/Theme/player_menu.tres" id="1_7sw4w"]
+[ext_resource type="Script" path="res://card_mechanic/Cards/enemy_no_dodge/enemy_no_dodge.gd" id="2_rd1gk"]
+
+[node name="Button" type="Button"]
+offset_right = 400.0
+offset_bottom = 700.0
+theme = ExtResource("1_7sw4w")
+text = "E N E M Y
+
+N O 
+
+D O D G E"
+script = ExtResource("2_rd1gk")

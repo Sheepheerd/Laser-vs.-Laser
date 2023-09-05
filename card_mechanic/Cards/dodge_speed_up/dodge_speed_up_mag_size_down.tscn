@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://b27xjasinlyl6"]
+[gd_scene load_steps=3 format=3 uid="uid://b27xjasinlyl6"]
 
+[ext_resource type="Theme" uid="uid://bajqmo6fttg8t" path="res://UI/Theme/player_menu.tres" id="1_3lo4v"]
 [ext_resource type="Script" path="res://card_mechanic/Cards/dodge_speed_up/dodge_speed_up_mag_size_down.gd" id="1_ossja"]
 
 [node name="Button" type="Button"]
-offset_right = 263.0
-offset_bottom = 108.0
-text = "dodge_speed_up_dodge_distance_with_gun_up_mag_size_down"
+offset_right = 400.0
+offset_bottom = 700.0
+theme = ExtResource("1_3lo4v")
+text = "B E T T E R
+
+D O D G E"
 script = ExtResource("1_ossja")

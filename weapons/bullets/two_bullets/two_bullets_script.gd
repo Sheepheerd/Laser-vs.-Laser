@@ -15,7 +15,7 @@ var bullet_live_timer
 var gun_controller
 var bullet_max_bounce_num
 var bounced_num
-var vampire_bullets
+
 
 var bullets_through_walls
 #var grenade_bullets

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2xdvw85qtx4t"]
+
+[ext_resource type="Script" path="res://card_mechanic/Cards/bullet_speed_up_on_bounce/bullet_speed_up_on_bounce.gd" id="1_cap7p"]
+[ext_resource type="Theme" uid="uid://bajqmo6fttg8t" path="res://UI/Theme/player_menu.tres" id="1_kveb2"]
+
+[node name="Button" type="Button"]
+offset_right = 400.0
+offset_bottom = 700.0
+theme = ExtResource("1_kveb2")
+text = "B U L L E T
+
+B O U N C E
+
+S P E E D
+
+U P"
+script = ExtResource("1_cap7p")

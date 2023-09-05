@@ -1,10 +1,11 @@
-[gd_scene load_steps=33 format=3 uid="uid://dwpl7rxbwjd3h"]
+[gd_scene load_steps=34 format=3 uid="uid://dwpl7rxbwjd3h"]
 
 [ext_resource type="PackedScene" uid="uid://cbgcr5dushx4j" path="res://win_condition/win.tscn" id="1_8mugj"]
 [ext_resource type="AnimationLibrary" uid="uid://co31gnfoypk7a" path="res://UI/Game/game_animations.res" id="3_70bax"]
 [ext_resource type="Script" path="res://healthcheck.gd" id="4_r0n27"]
 [ext_resource type="PackedScene" uid="uid://hgomxoskean4" path="res://UI/Game/game_shaders.tscn" id="5_0epk6"]
 [ext_resource type="PackedScene" uid="uid://d1rxdwsvvx6vs" path="res://UI/Game/Player/spawn_player.tscn" id="5_p8wak"]
+[ext_resource type="PackedScene" uid="uid://bgeh5kyxb4jag" path="res://card_mechanic/transitions/scene_black_click_transition.tscn" id="6_50o1f"]
 [ext_resource type="Script" path="res://UI/Game/animation_controller.gd" id="6_rliwr"]
 [ext_resource type="PackedScene" uid="uid://dlqcc3ks8ernp" path="res://UI/pause_menu/pause_menu.tscn" id="7_k021o"]
 [ext_resource type="PackedScene" uid="uid://b6q0c3v5cxmb8" path="res://shaders/win_shader.tscn" id="8_xwvhc"]
@@ -233,6 +234,9 @@ shape = SubResource("SegmentShape2D_ir0rk")
 [node name="player_camera_1" type="Camera2D" parent="world_back_buffer/world"]
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+
+[node name="black_click_transition" parent="world_back_buffer/world" instance=ExtResource("6_50o1f")]
+position = Vector2(-960, -541)
 
 [node name="pause_menu_back_buffer" type="BackBufferCopy" parent="."]
 process_mode = 2

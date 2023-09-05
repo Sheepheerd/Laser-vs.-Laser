@@ -46,6 +46,7 @@ texture = ExtResource("2")
 material = ExtResource("3")
 
 [node name="BackBufferCopy" type="BackBufferCopy" parent="." index="3"]
+visible = false
 
 [node name="Control" type="Control" parent="BackBufferCopy" index="0"]
 layout_mode = 3

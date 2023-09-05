@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://5uhi372pbsfj"]
+
+[ext_resource type="Theme" uid="uid://bajqmo6fttg8t" path="res://UI/Theme/player_menu.tres" id="1_i8ee5"]
+[ext_resource type="Script" path="res://card_mechanic/Cards/player_speed_up/player_speed_up.gd" id="2_fqqis"]
+
+[node name="player_speed_up" type="Button"]
+offset_right = 400.0
+offset_bottom = 700.0
+theme = ExtResource("1_i8ee5")
+text = "P L A Y E R
+
+S P E E D
+
+U P"
+script = ExtResource("2_fqqis")

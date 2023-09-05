@@ -11,7 +11,7 @@ func _ready():
 	
 func action():
 	#Buff - Bullet Speed+ - 50% faster
-	gun_controller["bullet_speed"] = gun_controller["bullet_speed"] + (gun_controller["bullet_speed"] * .50)
+	gun_controller["bullet_speed"] = gun_controller["bullet_speed"] + (gun_controller["bullet_speed"] * .70)
 
 
 	#DeBuff - Reload Speed- - 20% slower

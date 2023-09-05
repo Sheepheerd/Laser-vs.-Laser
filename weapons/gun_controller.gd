@@ -26,7 +26,7 @@ var dodge_distance_with_gun
 var dodge_cool_down
 
 var player_1_stats = {
-			"damage": 10,
+			"damage": 1,
 			"bullet_speed": 1000,
 			"bullet_slowdown" : 0,
 			"bullet_live_timer" : 10,
@@ -41,23 +41,24 @@ var player_1_stats = {
 			"dodge_speed_with_gun" : 200,
 			"dodge_distance_with_gun" : 200,
 			"first_dodge_timer" : 1,
-			"health" : 100,
+			"health" : 4,
 			"gun_bullet" : "1_bullet",
 			"magazine_max_size" : 10,
-			"max_health" : 100,
+			"max_health" : 4,
 			"grenade_num" : 1,
 			"grenade_max_num" : 1,
 			"grenade_speed" : 800,
 			"grenade_slowdown" : 400,
 			"bullet_bounce_num" : 3,
 			
-			"vampire_bullets" : false, #should start false
-			"ghost_bullets" : false, #should start false
-			"grenade_bullets" : true
+			"ghost_bullets" : false,
+			"grenade_bullets" : false,
+			
+			"can_dodge" : true
 	}
 	
 var player_1_stats_defaults = {
-			"damage": 10,
+			"damage": 1,
 			"bullet_speed": 1000,
 			"bullet_slowdown" : 0,
 			"bullet_live_timer" : 10,
@@ -72,23 +73,24 @@ var player_1_stats_defaults = {
 			"dodge_speed_with_gun" : 200,
 			"dodge_distance_with_gun" : 200,
 			"first_dodge_timer" : 1,
-			"health" : 100,
+			"health" : 4,
 			"gun_bullet" : "1_bullet",
 			"magazine_max_size" : 10,
-			"max_health" : 100,
+			"max_health" : 4,
 			"grenade_num" : 1,
 			"grenade_max_num" : 1,
 			"grenade_speed" : 800,
 			"grenade_slowdown" : 400,
 			"bullet_bounce_num" : 3,
 			
-			"vampire_bullets" : false, #should start false
 			"ghost_bullets" : false,
-			"grenade_bullets" : false
+			"grenade_bullets" : false,
+			
+			"can_dodge" : true
 	}
 	
 var player_2_stats = {
-			"damage": 10,
+			"damage": 1,
 			"bullet_speed": 1000,
 			"bullet_slowdown" : 0,
 			"bullet_live_timer" : 10,
@@ -103,23 +105,24 @@ var player_2_stats = {
 			"dodge_speed_with_gun" : 200,
 			"dodge_distance_with_gun" : 200,
 			"first_dodge_timer" : 1,
-			"health" : 100,
+			"health" : 4,
 			"gun_bullet" : "1_bullet",
 			"magazine_max_size" : 10,
-			"max_health" : 100,
+			"max_health" : 4,
 			"grenade_num" : 1,
 			"grenade_max_num" : 1,
 			"grenade_speed" : 800,
 			"grenade_slowdown" : 400,
 			"bullet_bounce_num" : 3,
 			
-			"vampire_bullets" : false, #should start false
 			"ghost_bullets" : false,
-			"grenade_bullets" : false
+			"grenade_bullets" : false,
+			
+			"can_dodge" : true
 	}
 
 var player_2_stats_defaults = {
-			"damage": 10,
+			"damage": 1,
 			"bullet_speed": 1000,
 			"bullet_slowdown" : 0,
 			"bullet_live_timer" : 10,
@@ -134,19 +137,20 @@ var player_2_stats_defaults = {
 			"dodge_speed_with_gun" : 200,
 			"dodge_distance_with_gun" : 200,
 			"first_dodge_timer" : 1,
-			"health" : 100,
+			"health" : 4,
 			"gun_bullet" : "1_bullet",
 			"magazine_max_size" : 10,
-			"max_health" : 100,
+			"max_health" : 4,
 			"grenade_num" : 1,
 			"grenade_max_num" : 1,
 			"grenade_speed" : 800,
 			"grenade_slowdown" : 400,
 			"bullet_bounce_num" : 3,
 			
-			"vampire_bullets" : false, #should start false
 			"ghost_bullets" : false,
-			"grenade_bullets" : false
+			"grenade_bullets" : false,
+			
+			"can_dodge" : true
 	}
 
 

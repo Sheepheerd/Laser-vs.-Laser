@@ -12,7 +12,7 @@ var is_paused = false
 var can_press = true
 var defaults_restored = false
 @onready var animation_controller = get_parent().get_parent().get_parent().get_parent().get_parent().get_node("animation_controller/Game_pop")
-@onready var _transition_rect = get_parent().get_parent().get_node("Transition/transition_controller")
+@onready var _transition_rect = get_parent().get_parent().get_node("black_click_transition/scene_black_click_transition")
 @onready var effects = get_parent().get_parent().get_node("Transition")
 func _ready():
 	animation_controller.play("game_animations/Pop_in")
@@ -78,7 +78,7 @@ func _on_rematch_pressed():
 	animation_controller.play_backwards("game_animations/Pop_in")
 	restore_default_stats()
 	if defaults_restored == true:
-		_transition_rect.transition_to("res://UI/map_selection/ui_map_selection.tscn")
+		_transition_rect.transition_to("res://levels/Level_1/arcade_level.tscn")
 		game_process_controller.current_game_process = game_process_controller.game_process.ui_map_selection
 	else:
 		return

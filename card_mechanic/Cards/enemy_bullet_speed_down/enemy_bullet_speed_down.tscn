@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bung6utxlfutv"]
+
+[ext_resource type="Theme" uid="uid://bajqmo6fttg8t" path="res://UI/Theme/player_menu.tres" id="1_a7vyq"]
+[ext_resource type="Script" path="res://card_mechanic/Cards/enemy_bullet_speed_down/enemy_bullet_speed_down.gd" id="2_hgsrc"]
+
+[node name="Button" type="Button"]
+offset_right = 400.0
+offset_bottom = 700.0
+theme = ExtResource("1_a7vyq")
+text = "E N E M Y
+
+B U L L E T
+
+S P E E D
+
+D O W N"
+script = ExtResource("2_hgsrc")

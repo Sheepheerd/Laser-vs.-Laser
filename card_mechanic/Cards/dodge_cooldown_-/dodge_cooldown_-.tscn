@@ -1,9 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://do1viki5fl820"]
+[gd_scene load_steps=3 format=3 uid="uid://do1viki5fl820"]
 
 [ext_resource type="Script" path="res://card_mechanic/Cards/dodge_cooldown_-/dodge_cooldown_-.gd" id="1_1nmas"]
+[ext_resource type="Theme" uid="uid://bajqmo6fttg8t" path="res://UI/Theme/player_menu.tres" id="1_c6q3i"]
 
 [node name="Button" type="Button"]
-offset_right = 263.0
-offset_bottom = 108.0
-text = "dodge_cooldown_-"
+offset_right = 400.0
+offset_bottom = 700.0
+theme = ExtResource("1_c6q3i")
+text = "D O D G E
+
+C O O L D O W N
+
+Q U I C K E R"
 script = ExtResource("1_1nmas")

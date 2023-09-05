@@ -1,9 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://byoj5tlfrr254"]
+[gd_scene load_steps=3 format=3 uid="uid://byoj5tlfrr254"]
 
+[ext_resource type="Theme" uid="uid://bajqmo6fttg8t" path="res://UI/Theme/player_menu.tres" id="1_fijg2"]
 [ext_resource type="Script" path="res://card_mechanic/Cards/bullet_speed+/bullet_speed+_reload_speed_up.gd" id="1_swpxq"]
 
 [node name="Button" type="Button"]
-offset_right = 263.0
-offset_bottom = 108.0
-text = "bullet_speed+_reload_speed_up"
+offset_right = 400.0
+offset_bottom = 700.0
+theme = ExtResource("1_fijg2")
+text = "B U L L E T
+
+S P E E D
+
+U P
+
+
+
+R E L O A D
+
+T I M E
+
+L O N G E R"
 script = ExtResource("1_swpxq")

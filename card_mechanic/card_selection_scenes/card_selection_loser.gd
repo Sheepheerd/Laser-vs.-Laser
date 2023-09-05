@@ -12,9 +12,13 @@ var num_options = 3
 var prev_horizontal : float = 0
 var has_selected = false
 var player_index
+@onready var _transition_rect = get_parent().get_parent().get_node("black_click_transition/scene_black_click_transition")
+@onready var card_effects = get_parent().get_parent().get_node("ready_transition/AnimationPlayer")
 func _ready():
 	card_scene_paths = game_process_controller.card_scene_paths
 	if 	game_process_controller.current_game_process == game_process_controller.game_process.cards_selection_loser:
+		
+		card_effects.play("cards_ready_pulse/cards_pulse")
 		if game_process_controller.player_death["player_1"] == true && game_process_controller.player_death["player_2"] == false:
 			player_index = 0
 		#if player two dies
@@ -42,6 +46,8 @@ func _process(delta):
 #			player_index = 1
 		
 		
+
+			
 		if Input.is_joy_button_pressed(player_index, 0) == false:
 			has_selected = false
 		if Input.is_joy_button_pressed(player_index, 0):
@@ -61,15 +67,18 @@ func _process(delta):
 			print(selected_option)
 
 		prev_horizontal = horizontal
+		
+		if selected_option == 1:
+			get_node("Button").grab_focus()
 
 func shuffle_cards():
 	shuffled_card_scene_paths = shuffle_array(card_scene_paths)
 
 func display_random_cards():
 	var card_positions = [
-		Vector2(0, 0),  # First column
-		Vector2(300, 0),
-		Vector2(700, 0)
+		Vector2(150, 200),  # First column
+		Vector2(760, 200),
+		Vector2(1370, 200)
 	]
 
 	for i in range(3):  # Display the first 3 shuffled cards
@@ -105,5 +114,5 @@ func handle_selection():
 	if game_process_controller.current_game_process == game_process_controller.game_process.cards_selection_loser:
 		game_process_controller.current_game_process = game_process_controller.game_process.game_fight
 		#Fix this for Different Levels
-		get_tree().change_scene_to_file("res://levels/Level_1/arcade_level.tscn")
+		_transition_rect.transition_to("res://levels/Level_1/arcade_level.tscn")
 

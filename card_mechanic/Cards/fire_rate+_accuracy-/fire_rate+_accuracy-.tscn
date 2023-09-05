@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://yr2s8totoq2d"]
+[gd_scene load_steps=3 format=3 uid="uid://yr2s8totoq2d"]
 
 [ext_resource type="Script" path="res://card_mechanic/Cards/fire_rate+_accuracy-/fire_rate+_accuracy-.gd" id="1_m5n40"]
+[ext_resource type="Theme" uid="uid://bajqmo6fttg8t" path="res://UI/Theme/player_menu.tres" id="1_ylcp7"]
 
 [node name="Button" type="Button"]
-offset_right = 262.0
-offset_bottom = 105.0
-text = "fire_rate+_accuracy-"
+offset_right = 400.0
+offset_bottom = 700.0
+theme = ExtResource("1_ylcp7")
+text = "F I R E R A T E - U P
+
+A I M - D O W N"
 script = ExtResource("1_m5n40")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dih1cv48bq7xo"]
+
+[ext_resource type="Theme" uid="uid://bajqmo6fttg8t" path="res://UI/Theme/player_menu.tres" id="1_r0yof"]
+[ext_resource type="Script" path="res://card_mechanic/Cards/bullet_speed_down_on_bounce/bullet_speed_down_on_bounce.gd" id="2_6e0n4"]
+
+[node name="Button" type="Button"]
+offset_right = 400.0
+offset_bottom = 700.0
+theme = ExtResource("1_r0yof")
+text = "B U L L E T
+
+B O U N C E
+
+S P E E D
+
+D O W N"
+script = ExtResource("2_6e0n4")

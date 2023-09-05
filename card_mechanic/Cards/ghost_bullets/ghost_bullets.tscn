@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bspf7wwhs8282"]
+[gd_scene load_steps=3 format=3 uid="uid://bspf7wwhs8282"]
 
 [ext_resource type="Script" path="res://card_mechanic/Cards/ghost_bullets/ghost_bullets.gd" id="1_14u0c"]
+[ext_resource type="Theme" uid="uid://bajqmo6fttg8t" path="res://UI/Theme/player_menu.tres" id="1_yci5b"]
 
 [node name="Button" type="Button"]
-offset_right = 263.0
-offset_bottom = 108.0
-text = "ghost_bullets"
+offset_right = 400.0
+offset_bottom = 700.0
+theme = ExtResource("1_yci5b")
+text = "G H O S T
+
+B U L L E T S"
 script = ExtResource("1_14u0c")

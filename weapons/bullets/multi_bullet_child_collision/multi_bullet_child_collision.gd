@@ -8,7 +8,6 @@ var bulletVelocity
 var damage
 var bullet_max_bounce_num
 var bounced_num
-var vampire_bullets
 var player_index
 var health
 var bullet_live_timer
@@ -39,7 +38,6 @@ func _physics_process(delta):
 	slowDownRate = gun_controller["bullet_slowdown"]
 	bullet_live_timer = gun_controller["bullet_live_timer"]
 	bullet_max_bounce_num = gun_controller["bullet_bounce_num"]
-	vampire_bullets = gun_controller["vampire_bullets"]
 	bullets_through_walls = gun_controller["ghost_bullets"]
 	health = gun_controller["health"]
 	
