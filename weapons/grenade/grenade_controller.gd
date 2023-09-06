@@ -40,7 +40,7 @@ func _ready():
 	bullet_live_timer = gun_controller["bullet_live_timer"]
 	bullet_max_bounce_num = gun_controller["bullet_bounce_num"]
 	bounced_num = 0
-	vampire_bullets = gun_controller["vampire_bullets"]
+
 	bullets_through_walls = gun_controller["ghost_bullets"]
 
 		
