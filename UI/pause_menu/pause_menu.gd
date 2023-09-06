@@ -2,7 +2,7 @@ extends Control
 
 
 var selected_option = 1
-var num_options = 3
+var num_options = 2
 
 var prev_vertical : float = 0
 var has_selected = false
@@ -21,7 +21,7 @@ func _ready():
 		has_selected = true
 	
 	$Resume.hide()
-	$Options.hide()
+	#$Options.hide()
 	$Quite_to_main_menu.hide()
 	effects.hide()
 		
@@ -31,7 +31,7 @@ func _process(delta):
 			#game_process_controller.current_game_process = game_process_controller.game_process.pause_menu
 			#get_tree().paused = true
 			$Resume.show()
-			$Options.show()
+			#$Options.show()
 			$Quite_to_main_menu.show()
 			effects.show()
 			effects.get_node("transition_controller/AnimationPlayer").stop()
@@ -66,10 +66,10 @@ func _process(delta):
 			match selected_option:
 				1:
 					_on_resume_pressed()
-				2:
-					_on_options_pressed()
+				#2:
+					#_on_options_pressed()
 					
-				3:
+				2:
 					_on_quit_to_main_menu_pressed()
 		
 			has_selected = true
@@ -79,7 +79,7 @@ func _process(delta):
 
 func _on_resume_pressed():
 	$Resume.hide()
-	$Options.hide()
+	#$Options.hide()
 	$Quite_to_main_menu.hide()
 	effects.hide()
 	game_process_controller.current_game_process = game_process_controller.game_process.game_fight

@@ -57,12 +57,11 @@ metadata/_edit_lock_ = true
 visible = false
 layout_mode = 2
 offset_left = 747.0
-offset_top = 851.0
+offset_top = 611.0
 offset_right = 1167.0
-offset_bottom = 931.0
+offset_bottom = 691.0
 theme = ExtResource("3_80vru")
-text = "Quite_to_main_menu
-"
+text = "M A I N  M E N U"
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 

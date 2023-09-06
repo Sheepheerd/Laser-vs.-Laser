@@ -161,7 +161,7 @@ position = Vector2(3.8147e-06, 0)
 visible = false
 
 [node name="reload" parent="." instance=ExtResource("6_g3gn4")]
-visible = false
+position = Vector2(0, 13.25)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bbeu6")

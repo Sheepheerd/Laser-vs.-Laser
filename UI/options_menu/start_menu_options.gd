@@ -45,9 +45,9 @@ func _process(delta):
 				1:
 					fullscreen()
 				2:
-					back()
+					sound()
 				3:
-					not_set()
+					back()
 	
 			has_selected = true
 
@@ -69,5 +69,5 @@ func fullscreen():
 	
 	config.save("res://settings.cfg")
 
-func not_set():
+func sound():
 	pass

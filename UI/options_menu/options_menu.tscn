@@ -88,11 +88,11 @@ layout_mode = 2
 anchor_top = 0.00185191
 anchor_bottom = 0.00185191
 offset_left = 747.0
-offset_top = 411.001
+offset_top = 413.001
 offset_right = 1167.0
-offset_bottom = 491.001
+offset_bottom = 493.001
 theme = ExtResource("4_c5c2w")
-text = "F u l l s c r e e n"
+text = "F U L L S C R E E N"
 script = ExtResource("4_1485g")
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
@@ -104,18 +104,18 @@ offset_top = 611.0
 offset_right = 1167.0
 offset_bottom = 691.0
 theme = ExtResource("4_c5c2w")
-text = "B a c k"
+text = "S O U N D"
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="NO set" type="Button" parent="Menu_Options/start_menu"]
+[node name="Sound" type="Button" parent="Menu_Options/start_menu"]
 layout_mode = 2
 offset_left = 747.0
 offset_top = 851.0
 offset_right = 1167.0
 offset_bottom = 931.0
 theme = ExtResource("4_c5c2w")
-text = "N o t  S e t"
+text = "B A C K"
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 

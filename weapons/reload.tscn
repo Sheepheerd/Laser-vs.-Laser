@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://kvmb536yhkc0"]
+[gd_scene load_steps=3 format=3 uid="uid://kvmb536yhkc0"]
 
 [ext_resource type="Script" path="res://weapons/reload.gd" id="1_ytagd"]
+[ext_resource type="Theme" uid="uid://bajqmo6fttg8t" path="res://UI/Theme/player_menu.tres" id="2_agq8e"]
 
 [node name="reload" type="Node2D"]
 script = ExtResource("1_ytagd")
 
 [node name="reload_time" type="Timer" parent="."]
+
+[node name="HSlider" type="HSlider" parent="."]
+offset_left = -24.0
+offset_right = 24.0
+offset_bottom = 16.0
+theme = ExtResource("2_agq8e")
+editable = false
+tick_count = 1

@@ -1,6 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://dwpl7rxbwjd3h"]
+[gd_scene load_steps=35 format=3 uid="uid://dwpl7rxbwjd3h"]
 
 [ext_resource type="PackedScene" uid="uid://cbgcr5dushx4j" path="res://win_condition/win.tscn" id="1_8mugj"]
+[ext_resource type="PackedScene" uid="uid://crqcpip6p3tpo" path="res://UI/level_ui/player_hearts_ui.tscn" id="3_8vka3"]
 [ext_resource type="AnimationLibrary" uid="uid://co31gnfoypk7a" path="res://UI/Game/game_animations.res" id="3_70bax"]
 [ext_resource type="Script" path="res://healthcheck.gd" id="4_r0n27"]
 [ext_resource type="PackedScene" uid="uid://hgomxoskean4" path="res://UI/Game/game_shaders.tscn" id="5_0epk6"]
@@ -106,6 +107,19 @@ libraries = {
 "": SubResource("AnimationLibrary_d31ty"),
 "game_animations": ExtResource("3_70bax")
 }
+
+[node name="game_ui_back_buffer" type="BackBufferCopy" parent="."]
+z_index = 1
+copy_mode = 2
+rect = Rect2(-960, -541, 1920, 1080)
+
+[node name="game_ui_elements" type="Node2D" parent="game_ui_back_buffer"]
+position = Vector2(-960, 543)
+
+[node name="Player_hearts_ui" parent="game_ui_back_buffer/game_ui_elements" instance=ExtResource("3_8vka3")]
+offset_top = -65.0
+offset_right = 0.0
+offset_bottom = -65.0
 
 [node name="world_back_buffer" type="BackBufferCopy" parent="."]
 copy_mode = 2
@@ -236,6 +250,7 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="black_click_transition" parent="world_back_buffer/world" instance=ExtResource("6_50o1f")]
+z_index = 1
 position = Vector2(-960, -541)
 
 [node name="pause_menu_back_buffer" type="BackBufferCopy" parent="."]
@@ -257,14 +272,14 @@ copy_mode = 2
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wegft")
 
-[node name="Game_shaders" parent="." instance=ExtResource("5_0epk6")]
-visible = false
+[node name="win_shader" parent="." instance=ExtResource("8_xwvhc")]
 offset_left = -960.0
 offset_top = -541.0
 offset_right = -960.0
 offset_bottom = -541.0
 
-[node name="win_shader" parent="." instance=ExtResource("8_xwvhc")]
+[node name="Game_shaders" parent="." instance=ExtResource("5_0epk6")]
+visible = false
 offset_left = -960.0
 offset_top = -541.0
 offset_right = -960.0

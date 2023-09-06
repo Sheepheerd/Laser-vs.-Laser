@@ -33,7 +33,7 @@ var player_1_stats = {
 			"bounce_speed" : .9,
 			"fire_rate" : 0.8, # per second
 			"reload_time" : 2.5, # seconds
-			"magazine_size" : 10, # bullets
+			"magazine_size" : 5, # bullets
 			"accuracy" : 0.03, # try to implement some sort of random spray
 			"magazine_depletion_size" : 1,
 			"speed_with_gun" : 90,
@@ -43,7 +43,7 @@ var player_1_stats = {
 			"first_dodge_timer" : 1,
 			"health" : 4,
 			"gun_bullet" : "1_bullet",
-			"magazine_max_size" : 10,
+			"magazine_max_size" : 5,
 			"max_health" : 4,
 			"grenade_num" : 1,
 			"grenade_max_num" : 1,
@@ -65,7 +65,7 @@ var player_1_stats_defaults = {
 			"bounce_speed" : .9,
 			"fire_rate" : 0.8, # per second
 			"reload_time" : 2.5, # seconds
-			"magazine_size" : 10, # bullets
+			"magazine_size" : 5, # bullets
 			"accuracy" : 0.03, # try to implement some sort of random spray
 			"magazine_depletion_size" : 1,
 			"speed_with_gun" : 90,
@@ -75,7 +75,7 @@ var player_1_stats_defaults = {
 			"first_dodge_timer" : 1,
 			"health" : 4,
 			"gun_bullet" : "1_bullet",
-			"magazine_max_size" : 10,
+			"magazine_max_size" : 5,
 			"max_health" : 4,
 			"grenade_num" : 1,
 			"grenade_max_num" : 1,
@@ -97,7 +97,7 @@ var player_2_stats = {
 			"bounce_speed" : .9,
 			"fire_rate" : 0.8, # per second
 			"reload_time" : 2.5, # seconds
-			"magazine_size" : 10, # bullets
+			"magazine_size" : 5, # bullets
 			"accuracy" : 0.03, # try to implement some sort of random spray
 			"magazine_depletion_size" : 1,
 			"speed_with_gun" : 90,
@@ -107,7 +107,7 @@ var player_2_stats = {
 			"first_dodge_timer" : 1,
 			"health" : 4,
 			"gun_bullet" : "1_bullet",
-			"magazine_max_size" : 10,
+			"magazine_max_size" : 5,
 			"max_health" : 4,
 			"grenade_num" : 1,
 			"grenade_max_num" : 1,
@@ -129,7 +129,7 @@ var player_2_stats_defaults = {
 			"bounce_speed" : .9,
 			"fire_rate" : 0.8, # per second
 			"reload_time" : 2.5, # seconds
-			"magazine_size" : 10, # bullets
+			"magazine_size" : 5, # bullets
 			"accuracy" : 0.03, # try to implement some sort of random spray
 			"magazine_depletion_size" : 1,
 			"speed_with_gun" : 90,
@@ -139,7 +139,7 @@ var player_2_stats_defaults = {
 			"first_dodge_timer" : 1,
 			"health" : 4,
 			"gun_bullet" : "1_bullet",
-			"magazine_max_size" : 10,
+			"magazine_max_size" : 5,
 			"max_health" : 4,
 			"grenade_num" : 1,
 			"grenade_max_num" : 1,

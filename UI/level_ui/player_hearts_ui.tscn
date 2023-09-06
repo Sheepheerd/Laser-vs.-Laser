@@ -1,0 +1,132 @@
+[gd_scene load_steps=3 format=3 uid="uid://crqcpip6p3tpo"]
+
+[ext_resource type="Texture2D" uid="uid://bpyyypnl1hf8f" path="res://UI/level_ui/HealthUI.png" id="1_07fcd"]
+[ext_resource type="Script" path="res://UI/level_ui/player_hearts_ui.gd" id="1_jgtrk"]
+
+[node name="Player_hearts_ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1536.0
+offset_bottom = -864.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+script = ExtResource("1_jgtrk")
+
+[node name="Empty_Hearts_P1" type="Node2D" parent="."]
+position = Vector2(1.6, 1.6)
+
+[node name="all_empty" type="Sprite2D" parent="Empty_Hearts_P1"]
+position = Vector2(6, 6)
+texture = ExtResource("1_07fcd")
+hframes = 3
+vframes = 7
+frame = 13
+
+[node name="all_empty2" type="Sprite2D" parent="Empty_Hearts_P1"]
+position = Vector2(17, 6)
+texture = ExtResource("1_07fcd")
+hframes = 3
+vframes = 7
+frame = 13
+
+[node name="all_empty3" type="Sprite2D" parent="Empty_Hearts_P1"]
+position = Vector2(28, 6)
+texture = ExtResource("1_07fcd")
+hframes = 3
+vframes = 7
+frame = 13
+
+[node name="all_empty4" type="Sprite2D" parent="Empty_Hearts_P1"]
+position = Vector2(39, 6)
+texture = ExtResource("1_07fcd")
+hframes = 3
+vframes = 7
+frame = 13
+
+[node name="Empty_Hearts_P2" type="Node2D" parent="."]
+position = Vector2(339.2, 1.8)
+
+[node name="all_empty" type="Sprite2D" parent="Empty_Hearts_P2"]
+position = Vector2(6, 6)
+texture = ExtResource("1_07fcd")
+hframes = 3
+vframes = 7
+frame = 13
+
+[node name="all_empty2" type="Sprite2D" parent="Empty_Hearts_P2"]
+position = Vector2(17, 6)
+texture = ExtResource("1_07fcd")
+hframes = 3
+vframes = 7
+frame = 13
+
+[node name="all_empty3" type="Sprite2D" parent="Empty_Hearts_P2"]
+position = Vector2(28, 6)
+texture = ExtResource("1_07fcd")
+hframes = 3
+vframes = 7
+frame = 13
+
+[node name="all_empty4" type="Sprite2D" parent="Empty_Hearts_P2"]
+position = Vector2(39, 6)
+texture = ExtResource("1_07fcd")
+hframes = 3
+vframes = 7
+frame = 13
+
+[node name="Full_Hearts_P1" type="Node2D" parent="."]
+position = Vector2(1.8, 1.6)
+
+[node name="Heart_1" type="Sprite2D" parent="Full_Hearts_P1"]
+position = Vector2(6, 6)
+texture = ExtResource("1_07fcd")
+hframes = 3
+vframes = 7
+
+[node name="Heart_2" type="Sprite2D" parent="Full_Hearts_P1"]
+position = Vector2(17, 6)
+texture = ExtResource("1_07fcd")
+hframes = 3
+vframes = 7
+
+[node name="Heart_3" type="Sprite2D" parent="Full_Hearts_P1"]
+position = Vector2(28, 6)
+texture = ExtResource("1_07fcd")
+hframes = 3
+vframes = 7
+
+[node name="Heart_4" type="Sprite2D" parent="Full_Hearts_P1"]
+position = Vector2(39, 6)
+texture = ExtResource("1_07fcd")
+hframes = 3
+vframes = 7
+
+[node name="Full_Hearts_P2" type="Node2D" parent="."]
+position = Vector2(339.6, 1.2)
+
+[node name="Heart_1" type="Sprite2D" parent="Full_Hearts_P2"]
+position = Vector2(39.4, 6.6)
+texture = ExtResource("1_07fcd")
+hframes = 3
+vframes = 7
+
+[node name="Heart_2" type="Sprite2D" parent="Full_Hearts_P2"]
+position = Vector2(28.2, 6.2)
+texture = ExtResource("1_07fcd")
+hframes = 3
+vframes = 7
+
+[node name="Heart_3" type="Sprite2D" parent="Full_Hearts_P2"]
+position = Vector2(17.6, 6.2)
+texture = ExtResource("1_07fcd")
+hframes = 3
+vframes = 7
+
+[node name="Heart_4" type="Sprite2D" parent="Full_Hearts_P2"]
+position = Vector2(6.20004, 6.2)
+texture = ExtResource("1_07fcd")
+hframes = 3
+vframes = 7

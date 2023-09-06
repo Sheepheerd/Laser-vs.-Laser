@@ -40,7 +40,7 @@ func _process(delta):
 		hide_sprite()
 		dead_player_declared = false
 		game_process_controller.player_death[dead_player] = true  # Update the dictionary
-		gun_controller["health"] = gun_controller["max_health"]
+		#gun_controller["health"] = gun_controller["max_health"]
 		print("change")
 		
 		rewarded_win = true
