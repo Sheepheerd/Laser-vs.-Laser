@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ba4g5m3vmr7un"]
+[gd_scene load_steps=29 format=3 uid="uid://ba4g5m3vmr7un"]
 
 [ext_resource type="Script" path="res://player_scripts/character_movement.gd" id="1_cao6k"]
 [ext_resource type="PackedScene" uid="uid://co3nabnet1av0" path="res://player_scripts/cursor.tscn" id="3_rxgd7"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://player_scripts/Animations/animation_controller.gd" id="8_avj6y"]
 [ext_resource type="Script" path="res://weapons/gun_controller.gd" id="9_3vv2a"]
 [ext_resource type="PackedScene" uid="uid://cuqrvt6eqyr61" path="res://player_scripts/death_controller.tscn" id="10_74qx0"]
+[ext_resource type="Texture2D" uid="uid://2sjnjnfhsh3s" path="res://effects/light/light.png" id="10_uhxrk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q82ae"]
 size = Vector2(14, 17.5)
@@ -140,6 +141,8 @@ animations = [{
 
 [node name="1" type="CharacterBody2D"]
 scale = Vector2(4, 4)
+collision_layer = 17
+collision_mask = 17
 motion_mode = 1
 slide_on_ceiling = false
 wall_min_slide_angle = 0.0
@@ -161,7 +164,7 @@ position = Vector2(3.8147e-06, 0)
 visible = false
 
 [node name="reload" parent="." instance=ExtResource("6_g3gn4")]
-position = Vector2(0, 13.25)
+position = Vector2(0.25, 9)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bbeu6")
@@ -173,3 +176,11 @@ script = ExtResource("8_avj6y")
 script = ExtResource("9_3vv2a")
 
 [node name="death_controller" parent="." instance=ExtResource("10_74qx0")]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+scale = Vector2(1.24659, 1.24811)
+energy = 0.29
+shadow_enabled = true
+texture = ExtResource("10_uhxrk")
+texture_scale = 0.12

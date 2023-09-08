@@ -3,14 +3,14 @@
 [ext_resource type="Shader" path="res://shaders/GodotRetro/Screen Shaders/TV.gdshader" id="1_j33h4"]
 [ext_resource type="Shader" path="res://shaders/GodotRetro/Screen Shaders/VHS.gdshader" id="2_u28ef"]
 [ext_resource type="Shader" path="res://shaders/GodotRetro/Screen Shaders/Glitch.gdshader" id="3_u6t2e"]
-[ext_resource type="Shader" path="res://shaders/GodotRetro/Screen Shaders/Aditional Shaders/Sharpness.gdshader" id="4_7ak5i"]
+[ext_resource type="Shader" path="res://shaders/overworld_crt_good.gdshader" id="4_rnvjb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1k4ki"]
 shader = ExtResource("1_j33h4")
-shader_parameter/vertJerkOpt = 0.089
+shader_parameter/vertJerkOpt = 0.001
 shader_parameter/vertMovementOpt = 0.0
 shader_parameter/bottomStaticOpt = 0.0
-shader_parameter/bottomStaticStrenth = 0.7
+shader_parameter/bottomStaticStrenth = 0.37
 shader_parameter/scalinesOpt = 0.8
 shader_parameter/rgbOffsetOpt = 0.2
 shader_parameter/horzFuzzOpt = 0.15
@@ -30,8 +30,12 @@ shader_parameter/_HorizontalShake = 0.0
 shader_parameter/_ColorDrift = 0.02
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lo87u"]
-shader = ExtResource("4_7ak5i")
-shader_parameter/sharpen_amount = 0.042
+shader = ExtResource("4_rnvjb")
+shader_parameter/shake = 0.015
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.0006
+shader_parameter/colorOffsetIntensity = 0.115
 
 [node name="Game_shaders" type="Control"]
 layout_mode = 3
@@ -42,6 +46,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TV Shader" type="BackBufferCopy" parent="."]
+visible = false
 copy_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="TV Shader"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://b6q0c3v5cxmb8"]
+[gd_scene load_steps=14 format=3 uid="uid://b6q0c3v5cxmb8"]
 
 [ext_resource type="Shader" path="res://shaders/GodotRetro/Screen Shaders/TV.gdshader" id="1_xk3wr"]
 [ext_resource type="Shader" path="res://shaders/GodotRetro/Screen Shaders/NTSC.gdshader" id="2_uilql"]
 [ext_resource type="Shader" path="res://shaders/GodotRetro/Screen Shaders/Glitch.gdshader" id="3_wvma6"]
 [ext_resource type="Shader" path="res://shaders/GodotRetro/Screen Shaders/Aditional Shaders/Sharpness.gdshader" id="4_jmw5c"]
+[ext_resource type="Shader" path="res://shaders/GodotRetro/Screen Shaders/Aditional Shaders/Dithering.gdshader" id="5_auwh7"]
 [ext_resource type="AnimationLibrary" uid="uid://e7p7ukobjj0k" path="res://UI/Game/win_animations.res" id="5_pq75q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_frsw2"]
@@ -32,6 +33,12 @@ shader_parameter/_ColorDrift = 0.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ycafq"]
 shader = ExtResource("4_jmw5c")
 shader_parameter/sharpen_amount = 0.042
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gbwil"]
+shader = ExtResource("5_auwh7")
+shader_parameter/SCREEN_WIDTH = 1920.0
+shader_parameter/COLOR_FACTOR = 10.0
+shader_parameter/DITHERING_STRENTH = 0.001
 
 [sub_resource type="Animation" id="Animation_q1li3"]
 length = 0.001
@@ -114,6 +121,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Glitch" type="BackBufferCopy" parent="."]
 visible = false
+z_index = 2
 copy_mode = 2
 
 [node name="Glitch" type="ColorRect" parent="Glitch"]
@@ -131,6 +139,15 @@ material = SubResource("ShaderMaterial_ycafq")
 offset_right = 1920.0
 offset_bottom = 1084.0
 metadata/_edit_use_anchors_ = true
+
+[node name="Dithering" type="BackBufferCopy" parent="."]
+visible = false
+copy_mode = 2
+
+[node name="Dither" type="ColorRect" parent="Dithering"]
+material = SubResource("ShaderMaterial_gbwil")
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [node name="animation_controller" type="Node2D" parent="."]
 

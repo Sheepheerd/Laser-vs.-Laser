@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dwpl7rxbwjd3h"]
+[gd_scene load_steps=50 format=3 uid="uid://dwpl7rxbwjd3h"]
 
 [ext_resource type="PackedScene" uid="uid://cbgcr5dushx4j" path="res://win_condition/win.tscn" id="1_8mugj"]
 [ext_resource type="PackedScene" uid="uid://crqcpip6p3tpo" path="res://UI/level_ui/player_hearts_ui.tscn" id="3_8vka3"]
@@ -7,10 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://hgomxoskean4" path="res://UI/Game/game_shaders.tscn" id="5_0epk6"]
 [ext_resource type="PackedScene" uid="uid://d1rxdwsvvx6vs" path="res://UI/Game/Player/spawn_player.tscn" id="5_p8wak"]
 [ext_resource type="PackedScene" uid="uid://bgeh5kyxb4jag" path="res://card_mechanic/transitions/scene_black_click_transition.tscn" id="6_50o1f"]
+[ext_resource type="Texture2D" uid="uid://qybu0pql86lr" path="res://sprites/Arcade_level/Arcade_different_ground(correct_one).png" id="6_jfx4n"]
 [ext_resource type="Script" path="res://UI/Game/animation_controller.gd" id="6_rliwr"]
+[ext_resource type="Texture2D" uid="uid://nwqxkca736i6" path="res://sprites/Arcade_level/arcade_down.png" id="7_5uf53"]
 [ext_resource type="PackedScene" uid="uid://dlqcc3ks8ernp" path="res://UI/pause_menu/pause_menu.tscn" id="7_k021o"]
+[ext_resource type="Texture2D" uid="uid://b4m51oqrcpipv" path="res://sprites/Arcade_level/arcade_top_down.png" id="8_qbdcf"]
 [ext_resource type="PackedScene" uid="uid://b6q0c3v5cxmb8" path="res://shaders/win_shader.tscn" id="8_xwvhc"]
 [ext_resource type="PackedScene" uid="uid://ffxtvbv7iy5c" path="res://UI/win_menu/win_menu.tscn" id="9_em7pg"]
+[ext_resource type="Texture2D" uid="uid://c0heqncjvxfts" path="res://effects/textures/64/spotlight_1.png" id="10_mkx0j"]
 
 [sub_resource type="Animation" id="Animation_pjjeu"]
 length = 0.001
@@ -23,16 +27,28 @@ _data = {
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l4yuy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pj50i"]
-size = Vector2(98, 124)
+size = Vector2(112, 135)
+
+[sub_resource type="Gradient" id="Gradient_b2ofu"]
+offsets = PackedFloat32Array(0, 0.289308, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jnyew"]
+gradient = SubResource("Gradient_b2ofu")
+fill_from = Vector2(0, 0.324324)
+fill_to = Vector2(0.81982, 0.554054)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_w4vpu"]
+polygon = PackedVector2Array(-698.622, 284.257, -743.876, 329.512, -840.043, 233.345, -794.788, 188.09)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rc6hf"]
-size = Vector2(106.983, 101.569)
+size = Vector2(135.764, 113.137)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_64ei3"]
-size = Vector2(98, 104)
+size = Vector2(112.43, 135.764)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mldtv"]
-size = Vector2(98, 120)
+size = Vector2(112, 137)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_e381b"]
 a = Vector2(-1024, -468)
@@ -51,45 +67,77 @@ a = Vector2(802, 528)
 b = Vector2(702, 608)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1tje"]
-size = Vector2(228, 27)
+size = Vector2(355, 34)
+
+[sub_resource type="Gradient" id="Gradient_34aei"]
+offsets = PackedFloat32Array(0, 0.559748)
+colors = PackedColorArray(0, 0, 0, 1, 1, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eex46"]
+gradient = SubResource("Gradient_34aei")
+fill_from = Vector2(0.486486, 1)
+fill_to = Vector2(0.477477, 0.0045045)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_a4bpv"]
+closed = false
+polygon = PackedVector2Array(178.5, 18, 178.5, -18, -176.5, -17, -176.5, 17)
+
+[sub_resource type="Gradient" id="Gradient_wsj6p"]
+offsets = PackedFloat32Array(0, 0.761006)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pxb6s"]
+gradient = SubResource("Gradient_wsj6p")
+fill = 1
+fill_from = Vector2(0.509009, 0)
+fill_to = Vector2(0.5, 0.617117)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3frbp"]
-size = Vector2(138, 88)
+size = Vector2(137, 113)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5fwko"]
-radius = 45.3982
+radius = 76.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kepr7"]
+size = Vector2(132.936, 151.321)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_auspr"]
+polygon = PackedVector2Array(65, -2, 64.8771, 74.7766, -65, 77, -65, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vq756"]
+size = Vector2(131.522, 152.028)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yhdhl"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jkxmh"]
-a = Vector2(145.611, -1096.57)
-b = Vector2(855.629, 691.625)
+a = Vector2(125.932, -1045.76)
+b = Vector2(806.851, 674.367)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_y135l"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ttlrm"]
-a = Vector2(-962, -541)
-b = Vector2(-964, 539)
+a = Vector2(-919, -505)
+b = Vector2(-923, 500)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7iypf"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_x14m7"]
-a = Vector2(962, 541)
-b = Vector2(962, -537)
+a = Vector2(921, 500)
+b = Vector2(922, -505)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r88gd"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ir0rk"]
-a = Vector2(-962, 543)
-b = Vector2(962, 539)
+a = Vector2(-924, 499)
+b = Vector2(924, 498)
 
 [sub_resource type="Environment" id="Environment_wegft"]
 background_mode = 3
-ambient_light_color = Color(0.431373, 0.109804, 1, 1)
+ambient_light_source = 1
+ambient_light_color = Color(0.541176, 0, 0, 1)
 sdfgi_min_cell_size = 16.0
 sdfgi_cascade0_distance = 1024.0
 sdfgi_max_distance = 16384.0
-glow_enabled = true
 glow_normalized = true
 glow_blend_mode = 0
 glow_hdr_threshold = 0.0
@@ -128,8 +176,47 @@ copy_mode = 2
 
 [node name="win" parent="world_back_buffer/world" instance=ExtResource("1_8mugj")]
 
-[node name="player" parent="world_back_buffer/world" instance=ExtResource("5_p8wak")]
-position = Vector2(-590, 115)
+[node name="world_sprites" type="Node2D" parent="world_back_buffer/world"]
+
+[node name="ArcadeDifferentGround(correctOne)" type="Sprite2D" parent="world_back_buffer/world/world_sprites"]
+scale = Vector2(4, 4)
+texture = ExtResource("6_jfx4n")
+
+[node name="ArcadeDown" type="Sprite2D" parent="world_back_buffer/world/world_sprites"]
+position = Vector2(-727, -312)
+rotation = 0.785398
+scale = Vector2(4, 4)
+texture = ExtResource("7_5uf53")
+
+[node name="ArcadeDown2" type="Sprite2D" parent="world_back_buffer/world/world_sprites"]
+position = Vector2(738, -318)
+rotation = -0.785398
+scale = Vector2(4, 4)
+texture = ExtResource("7_5uf53")
+
+[node name="ArcadeTopDown" type="Sprite2D" parent="world_back_buffer/world/world_sprites"]
+position = Vector2(-775, -54)
+rotation = 1.5708
+scale = Vector2(4, 4)
+texture = ExtResource("8_qbdcf")
+
+[node name="ArcadeTopDown2" type="Sprite2D" parent="world_back_buffer/world/world_sprites"]
+position = Vector2(781, -55)
+rotation = -1.5708
+scale = Vector2(4, 4)
+texture = ExtResource("8_qbdcf")
+
+[node name="ArcadeTopDown3" type="Sprite2D" parent="world_back_buffer/world/world_sprites"]
+position = Vector2(-751, 244)
+rotation = 0.785398
+scale = Vector2(4, 4)
+texture = ExtResource("8_qbdcf")
+
+[node name="ArcadeTopDown4" type="Sprite2D" parent="world_back_buffer/world/world_sprites"]
+position = Vector2(752, 251)
+rotation = -0.785398
+scale = Vector2(4, 4)
+texture = ExtResource("8_qbdcf")
 
 [node name="Inside" type="StaticBody2D" parent="world_back_buffer/world"]
 position = Vector2(159, -71)
@@ -139,22 +226,85 @@ physics_material_override = SubResource("PhysicsMaterial_l4yuy")
 script = ExtResource("4_r0n27")
 
 [node name="down_arcade_1" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
-position = Vector2(-908, -175)
+position = Vector2(-934, 16.5)
 shape = SubResource("RectangleShape2D_pj50i")
 
+[node name="PointLight2D" type="PointLight2D" parent="world_back_buffer/world/Inside/down_arcade_1"]
+position = Vector2(30.666, -1.66893e-06)
+scale = Vector2(0.791687, 2.10937)
+color = Color(0.462745, 0.360784, 0.870588, 1)
+energy = 0.4
+shadow_filter_smooth = 4.4
+texture = SubResource("GradientTexture2D_jnyew")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="world_back_buffer/world/Inside/down_arcade_1"]
+visible = false
+position = Vector2(708, 357.5)
+rotation = 0.785398
+occluder = SubResource("OccluderPolygon2D_w4vpu")
+sdf_collision = false
+
 [node name="diaganole_arcade_1" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
-position = Vector2(-908, 320)
+position = Vector2(-910, 315)
 rotation = 0.785398
 shape = SubResource("RectangleShape2D_rc6hf")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="world_back_buffer/world/Inside/diaganole_arcade_1"]
+visible = false
+position = Vector2(358.503, -703.571)
+rotation = -0.785398
+occluder = SubResource("OccluderPolygon2D_w4vpu")
+sdf_collision = false
+
+[node name="PointLight2D2" type="PointLight2D" parent="world_back_buffer/world/Inside/diaganole_arcade_1"]
+position = Vector2(0.131409, -30.9435)
+rotation = -1.5708
+scale = Vector2(0.791687, 2.10937)
+color = Color(0.462745, 0.360784, 0.870588, 1)
+energy = 0.4
+shadow_filter_smooth = 4.4
+texture = SubResource("GradientTexture2D_jnyew")
+
 [node name="diaganole_arcade_2" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
-position = Vector2(549, -175)
+position = Vector2(592.75, 322.75)
 rotation = 0.785398
 shape = SubResource("RectangleShape2D_64ei3")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="world_back_buffer/world/Inside/diaganole_arcade_2"]
+visible = false
+position = Vector2(746.351, 357.089)
+rotation = 0.785398
+occluder = SubResource("OccluderPolygon2D_w4vpu")
+sdf_collision = false
+
+[node name="PointLight2D" type="PointLight2D" parent="world_back_buffer/world/Inside/diaganole_arcade_2"]
+position = Vector2(-32.4231, 0.437073)
+rotation = 3.14159
+scale = Vector2(0.791687, 2.10937)
+color = Color(0.462745, 0.360784, 0.870588, 1)
+energy = 0.4
+shadow_filter_smooth = 4.4
+texture = SubResource("GradientTexture2D_jnyew")
+
 [node name="down_arcade_2" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
-position = Vector2(541, 286)
+position = Vector2(622, 16.5)
 shape = SubResource("RectangleShape2D_mldtv")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="world_back_buffer/world/Inside/down_arcade_2"]
+visible = false
+position = Vector2(746.351, 357.089)
+rotation = 0.785398
+occluder = SubResource("OccluderPolygon2D_w4vpu")
+sdf_collision = false
+
+[node name="PointLight2D" type="PointLight2D" parent="world_back_buffer/world/Inside/down_arcade_2"]
+position = Vector2(-31, 0.207903)
+rotation = 3.14159
+scale = Vector2(0.791687, 2.1315)
+color = Color(0.462745, 0.360784, 0.870588, 1)
+energy = 0.4
+shadow_filter_smooth = 4.4
+texture = SubResource("GradientTexture2D_jnyew")
 
 [node name="Left_cornor" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
 shape = SubResource("SegmentShape2D_e381b")
@@ -169,46 +319,205 @@ shape = SubResource("SegmentShape2D_c6hiv")
 shape = SubResource("SegmentShape2D_arejl")
 
 [node name="TV_panel" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
-position = Vector2(-159, -175.5)
+position = Vector2(-157.5, -183)
 shape = SubResource("RectangleShape2D_f1tje")
 
-[node name="1_bottom_arcade7" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
-position = Vector2(367, -307)
-rotation = -2.35619
-shape = SubResource("RectangleShape2D_3frbp")
+[node name="PointLight2D" type="PointLight2D" parent="world_back_buffer/world/Inside/TV_panel"]
+visible = false
+position = Vector2(-0.499992, 3.05165)
+scale = Vector2(5.46875, 0.529636)
+color = Color(0.589994, 0.87213, 1, 1)
+energy = 0.57
+shadow_filter_smooth = 4.4
+texture = SubResource("GradientTexture2D_eex46")
 
-[node name="1_bottom_arcade6" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
-position = Vector2(-714, -314)
-rotation = -0.785398
-shape = SubResource("RectangleShape2D_3frbp")
+[node name="LightOccluder2D" type="LightOccluder2D" parent="world_back_buffer/world/Inside/TV_panel"]
+visible = false
+occluder = SubResource("OccluderPolygon2D_a4bpv")
+
+[node name="PointLight2D2" type="PointLight2D" parent="world_back_buffer/world/Inside/TV_panel"]
+visible = false
+position = Vector2(2.50001, 389)
+scale = Vector2(0.81584, 1.76527)
+color = Color(0.462745, 0.360784, 0.870588, 1)
+energy = 0.73
+shadow_enabled = true
+shadow_filter_smooth = 4.4
+texture = SubResource("GradientTexture2D_pxb6s")
+texture_scale = 6.55
 
 [node name="1_bottom_arcade5" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
-position = Vector2(-495, -175)
+position = Vector2(-579, -208.5)
 shape = SubResource("RectangleShape2D_3frbp")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="world_back_buffer/world/Inside/1_bottom_arcade5"]
+visible = false
+position = Vector2(-360, 700.5)
+rotation = 2.35619
+occluder = SubResource("OccluderPolygon2D_w4vpu")
+sdf_collision = false
+
+[node name="PointLight2D" type="PointLight2D" parent="world_back_buffer/world/Inside/1_bottom_arcade5"]
+position = Vector2(-0.109125, 30.5)
+rotation = 1.5708
+scale = Vector2(0.791687, 2.13722)
+color = Color(0.462745, 0.360784, 0.870588, 1)
+energy = 0.4
+shadow_filter_smooth = 4.4
+texture = SubResource("GradientTexture2D_jnyew")
 
 [node name="1_bottom_arcade4" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
-position = Vector2(164, -175)
+position = Vector2(264, -208)
 shape = SubResource("RectangleShape2D_3frbp")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="world_back_buffer/world/Inside/1_bottom_arcade4"]
+visible = false
+position = Vector2(-360, 700.5)
+rotation = 2.35619
+occluder = SubResource("OccluderPolygon2D_w4vpu")
+sdf_collision = false
+
+[node name="PointLight2D" type="PointLight2D" parent="world_back_buffer/world/Inside/1_bottom_arcade4"]
+position = Vector2(0.469658, 33)
+rotation = 1.5708
+scale = Vector2(0.791687, 2.12064)
+color = Color(0.462745, 0.360784, 0.870588, 1)
+energy = 0.4
+shadow_filter_smooth = 4.4
+texture = SubResource("GradientTexture2D_jnyew")
 
 [node name="1_bottom_arcade3" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
-position = Vector2(164, 418)
+position = Vector2(264, 343)
 shape = SubResource("RectangleShape2D_3frbp")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="world_back_buffer/world/Inside/1_bottom_arcade3"]
+visible = false
+position = Vector2(-358, 749)
+rotation = 2.35619
+occluder = SubResource("OccluderPolygon2D_w4vpu")
+sdf_collision = false
+
+[node name="PointLight2D" type="PointLight2D" parent="world_back_buffer/world/Inside/1_bottom_arcade3"]
+position = Vector2(0.749148, -31)
+rotation = -1.5708
+scale = Vector2(0.791687, 2.12693)
+color = Color(0.462745, 0.360784, 0.870588, 1)
+energy = 0.4
+shadow_filter_smooth = 4.4
+texture = SubResource("GradientTexture2D_jnyew")
 
 [node name="1_bottom_arcade2" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
-position = Vector2(-159, 418)
+position = Vector2(-164, 343)
 shape = SubResource("RectangleShape2D_3frbp")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="world_back_buffer/world/Inside/1_bottom_arcade2"]
+visible = false
+position = Vector2(-360, 751)
+rotation = 2.35619
+occluder = SubResource("OccluderPolygon2D_w4vpu")
+sdf_collision = false
+
+[node name="PointLight2D" type="PointLight2D" parent="world_back_buffer/world/Inside/1_bottom_arcade2"]
+position = Vector2(0.618721, -31)
+rotation = -1.5708
+scale = Vector2(0.791687, 2.12871)
+color = Color(0.462745, 0.360784, 0.870588, 1)
+energy = 0.4
+shadow_filter_smooth = 4.4
+texture = SubResource("GradientTexture2D_jnyew")
 
 [node name="1_bottom_arcade" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
-position = Vector2(-495, 418)
+position = Vector2(-574.5, 343)
 shape = SubResource("RectangleShape2D_3frbp")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="world_back_buffer/world/Inside/1_bottom_arcade"]
+visible = false
+position = Vector2(-359.5, 748)
+rotation = 2.35619
+occluder = SubResource("OccluderPolygon2D_w4vpu")
+sdf_collision = false
+
+[node name="PointLight2D" type="PointLight2D" parent="world_back_buffer/world/Inside/1_bottom_arcade"]
+position = Vector2(-0.561864, -30)
+rotation = -1.5708
+scale = Vector2(0.791687, 2.14256)
+color = Color(0.462745, 0.360784, 0.870588, 1)
+energy = 0.4
+shadow_filter_smooth = 4.4
+texture = SubResource("GradientTexture2D_jnyew")
+
 [node name="Middle_ground2" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
-position = Vector2(164, 100)
+position = Vector2(116, 70)
 shape = SubResource("CircleShape2D_5fwko")
 
+[node name="PointLight2D" type="PointLight2D" parent="world_back_buffer/world/Inside/Middle_ground2"]
+visible = false
+position = Vector2(16, 17)
+rotation = -0.785398
+scale = Vector2(141.98, 137.101)
+color = Color(0.603922, 0, 0.447059, 1)
+energy = 0.5
+shadow_enabled = true
+shadow_filter_smooth = 4.4
+texture = ExtResource("10_mkx0j")
+texture_scale = 0.06
+
 [node name="Middle_ground" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
-position = Vector2(-495, 100)
+position = Vector2(-488, 80)
 shape = SubResource("CircleShape2D_5fwko")
+
+[node name="PointLight2D" type="PointLight2D" parent="world_back_buffer/world/Inside/Middle_ground"]
+visible = false
+position = Vector2(16, 17)
+rotation = -0.785398
+scale = Vector2(141.98, 137.101)
+color = Color(0.603922, 0, 0.447059, 1)
+energy = 0.5
+shadow_enabled = true
+shadow_filter_smooth = 4.4
+texture = ExtResource("10_mkx0j")
+texture_scale = 0.06
+
+[node name="top_left_arcade_diagonole" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
+position = Vector2(-888, -241.75)
+rotation = 0.785398
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_kepr7")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="world_back_buffer/world/Inside/top_left_arcade_diagonole"]
+visible = false
+occluder = SubResource("OccluderPolygon2D_auspr")
+
+[node name="PointLight2D" type="PointLight2D" parent="world_back_buffer/world/Inside/top_left_arcade_diagonole"]
+position = Vector2(-0.938535, -35.2767)
+rotation = 1.5708
+scale = Vector2(1.06445, 1.79939)
+color = Color(0.462745, 0.360784, 0.870588, 1)
+energy = 0.4
+shadow_filter_smooth = 4.4
+texture = SubResource("GradientTexture2D_jnyew")
+
+[node name="top_right_down_arcade" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
+position = Vector2(578.75, -245)
+rotation = -0.785398
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_vq756")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="world_back_buffer/world/Inside/top_right_down_arcade"]
+visible = false
+occluder = SubResource("OccluderPolygon2D_auspr")
+
+[node name="PointLight2D" type="PointLight2D" parent="world_back_buffer/world/Inside/top_right_down_arcade"]
+position = Vector2(-0.938535, -35.2767)
+rotation = 1.5708
+scale = Vector2(1.06445, 1.79939)
+color = Color(0.462745, 0.360784, 0.870588, 1)
+energy = 0.4
+shadow_filter_smooth = 4.4
+texture = SubResource("GradientTexture2D_jnyew")
+
+[node name="player" parent="world_back_buffer/world" instance=ExtResource("5_p8wak")]
+position = Vector2(-590, 115)
 
 [node name="Outside" type="Node2D" parent="world_back_buffer/world"]
 
@@ -253,6 +562,12 @@ position_smoothing_speed = 10.0
 z_index = 1
 position = Vector2(-960, -541)
 
+[node name="light_sources" type="Node2D" parent="world_back_buffer/world"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="world_back_buffer/world/light_sources"]
+visible = false
+color = Color(0.709804, 0.643137, 0.741176, 1)
+
 [node name="pause_menu_back_buffer" type="BackBufferCopy" parent="."]
 process_mode = 2
 copy_mode = 2
@@ -273,13 +588,12 @@ copy_mode = 2
 environment = SubResource("Environment_wegft")
 
 [node name="win_shader" parent="." instance=ExtResource("8_xwvhc")]
-offset_left = -960.0
-offset_top = -541.0
-offset_right = -960.0
-offset_bottom = -541.0
+offset_left = -968.0
+offset_top = -545.0
+offset_right = -968.0
+offset_bottom = -545.0
 
 [node name="Game_shaders" parent="." instance=ExtResource("5_0epk6")]
-visible = false
 offset_left = -960.0
 offset_top = -541.0
 offset_right = -960.0

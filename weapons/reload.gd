@@ -20,16 +20,23 @@ func _ready():
 	reload_timer.timeout.connect(_on_reload_time_timeout)
 
 	$HSlider.value = 0.0
-	
+	$ReloadBar.hide()
+	$HSlider.hide()
+	$ShaderEffect.hide()
 func _process(delta):
 	if Input.is_joy_button_pressed(player_index, 3) && !reloading:
+		
 		start_reload()
 		startLerp(maxSliderValue)
 
 	if gun_controller["magazine_size"] == 0 && !reloading:
 		start_reload()
+		startLerp(maxSliderValue)
 		
 	if reloading:
+		$ReloadBar.show()
+		$HSlider.show()
+		$ShaderEffect.show()
 		# Calculate the interpolation factor (0 to 1)
 		var t = currentTime / lerpDuration
 		# Perform the linear interpolation
@@ -37,6 +44,9 @@ func _process(delta):
 		$HSlider.value = lerp(0.0, targetValue, t)
 	else:
 		# Ensure we reach the exact target value when the lerp is complete
+		$ReloadBar.hide()
+		$HSlider.hide()
+		$ShaderEffect.hide()
 		$HSlider.value = 0
 
 func start_reload():

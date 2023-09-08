@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://weapons/damage_controller/damage_controller.gd" id="1_mhqin"]
 
 [node name="damage" type="Area2D"]
+collision_layer = 16
+collision_mask = 16
 script = ExtResource("1_mhqin")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

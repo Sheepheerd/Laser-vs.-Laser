@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0yox0nxfumhj"
-path="res://.godot/imported/sprite_gun.png-a7f41e64aa6b60c65bf3a1bb9e8926a1.ctex"
+uid="uid://b4m51oqrcpipv"
+path="res://.godot/imported/arcade_top_down.png-c338fb328d86f79895a8d44c1fb9003a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/sprite_gun.png"
-dest_files=["res://.godot/imported/sprite_gun.png-a7f41e64aa6b60c65bf3a1bb9e8926a1.ctex"]
+source_file="res://sprites/Arcade_level/arcade_top_down.png"
+dest_files=["res://.godot/imported/arcade_top_down.png-c338fb328d86f79895a8d44c1fb9003a.ctex"]
 
 [params]
 

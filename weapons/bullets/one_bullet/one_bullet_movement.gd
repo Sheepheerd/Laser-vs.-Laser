@@ -40,7 +40,8 @@ func _ready():
 	bullet_max_bounce_num = gun_controller["bullet_bounce_num"]
 	bounced_num = 0
 	bullets_through_walls = gun_controller["ghost_bullets"]
-	
+	$light/PointLight2D.show()
+	$bullet_crash/PointLight2D.hide()
 	#Grenade Bullets
 #	if gun_controller["grenade_bullets"] == true:
 #		start_timer()
@@ -68,9 +69,10 @@ func _physics_process(delta):
 		bullet_crash()
 		delete_bullet()
 
-#	if gun_controller["grenade_bullets"] == false:
-	#var has_shot_timer = get_tree().create_timer(bullet_live_timer)
-	#has_shot_timer.timeout.connect(delete_bullet)
+	if $bullet_crash.get_node("bullet_crash").emitting == true:
+		$bullet_crash/PointLight2D.show()
+	else:
+		$bullet_crash/PointLight2D.hide()
 
 		
 func delete_bullet():
@@ -86,10 +88,13 @@ func delete_bullet():
 func bullet_crash():
 	$bullet_crash.get_node("bullet_crash").one_shot = true
 	$bullet_crash.get_node("bullet_crash").emitting = true
+	$light/PointLight2D.hide()
+	speed = 0
 	await get_tree().create_timer(1).timeout.connect(stop_bullet_crash)
 
 func stop_bullet_crash():
 	$bullet_crash.get_node("bullet_crash").emitting = false
+
 	
 func cpu_trail():
 	$cpu_trail.get_node("cpu_trail").gravity.x = 0

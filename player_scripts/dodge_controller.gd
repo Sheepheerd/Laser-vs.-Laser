@@ -21,6 +21,8 @@ var target_position = Vector2.ZERO
 var wait_time_after_dash
 var player_index = 1
 func _ready():
+	
+			
 	# Get a reference to the RayCast2D node
 	raycast_1 = $Node2D/raycast_1
 	raycast_2 = $Node2D/raycast_2
@@ -109,7 +111,9 @@ func _process(delta):
 	
 	move_and_slide()
 	if sliding:
-			
+		
+		get_parent().set_collision_layer_value(5, false)
+		get_parent().set_collision_mask_value(5,false)
 		# Update the slide timer
 		slide_timer += delta
 		# Calculate the interpolation factor (0 to 1)
@@ -134,7 +138,10 @@ func _process(delta):
 		# Check if sliding is complete
 		if slide_timer >= slide_time:
 			sliding = false
-
+	else:
+		get_parent().set_collision_layer_value(5, true)
+		get_parent().set_collision_mask_value(5,true)
 
 func _on_area_2d_body_entered(_body):
 	get_parent().move_and_slide()
+

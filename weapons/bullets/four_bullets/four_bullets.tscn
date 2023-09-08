@@ -54,8 +54,6 @@ shape = SubResource("CircleShape2D_ajk72")
 texture = ExtResource("3_j42ss")
 
 [node name="damage" parent="bullet_2" instance=ExtResource("4_4gao4")]
-collision_layer = 3
-collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bullet_2/damage"]
 position = Vector2(0, 0.5)

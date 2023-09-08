@@ -31,6 +31,7 @@ func _ready():
 	game_process_controller.player_death[dead_player] = false
 	game_process_controller.player_death[alive_player] = false
 	initialTimeScale = Engine.time_scale
+	get_parent().get_node("reload").show()
 func _process(delta):
 	# Fix This....this permanently changes the scene because the health is never reset
 	if gun_controller["health"] <= 0 && rewarded_win == false: #&& dead_player_declared:
@@ -73,6 +74,7 @@ func player_explode():
 	$player_explode/explode_flash.emitting = true
 
 func hide_sprite():
+	get_parent().get_node("reload").hide()
 	get_parent().get_node("cursor").can_fire = false
 	get_parent().get_node("AnimatedSprite2D").queue_free()
 
