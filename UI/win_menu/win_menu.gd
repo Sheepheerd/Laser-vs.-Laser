@@ -78,7 +78,7 @@ func _on_rematch_pressed():
 	animation_controller.play_backwards("game_animations/Pop_in")
 	restore_default_stats()
 	if defaults_restored == true:
-		_transition_rect.transition_to("res://levels/Level_1/arcade_level.tscn")
+		_transition_rect.transition_to("res://UI/map_selection/ui_map_selection.tscn")
 		game_process_controller.current_game_process = game_process_controller.game_process.ui_map_selection
 	else:
 		return

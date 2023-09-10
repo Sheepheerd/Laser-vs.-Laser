@@ -57,6 +57,7 @@ one_shot = true
 [node name="PointLight2D" type="PointLight2D" parent="light"]
 position = Vector2(-0.25, 0.250001)
 scale = Vector2(2.63672, 2.44141)
+energy = 16.0
 texture = ExtResource("7_l65mk")
 texture_scale = 0.01
 

@@ -26,35 +26,31 @@ func _ready():
 			player_index = 1
 		shuffle_cards()
 		display_random_cards()
-	if 	game_process_controller.current_game_process == game_process_controller.game_process.cards_selection_winner:
-		if game_process_controller.player_death["player_1"] == true && game_process_controller.player_death["player_2"] == false:
-			player_index = 1
-		#if player two dies
-		elif game_process_controller.player_death["player_1"] == false && game_process_controller.player_death["player_2"] == true:
-			player_index = 0
+#	if 	game_process_controller.current_game_process == game_process_controller.game_process.cards_selection_winner:
+#		if game_process_controller.player_death["player_1"] == true && game_process_controller.player_death["player_2"] == false:
+#			player_index = 1
+#		#if player two dies
+#		elif game_process_controller.player_death["player_1"] == false && game_process_controller.player_death["player_2"] == true:
+#			player_index = 0
 #	if Input.is_joy_button_pressed(dead_player, 0) == true:
 #		has_selected = true
 
+var good_player
+func _process(event):
 
-func _process(delta):
-#	if 	game_process_controller.current_game_process == game_process_controller.game_process.cards_selection_loser:
-#			#if player one dies
-#		if game_process_controller.player_death["player_1"] == true && game_process_controller.player_death["player_2"] == false:
-#			player_index = 0
-#		#if player two dies
-#		elif game_process_controller.player_death["player_1"] == false && game_process_controller.player_death["player_2"] == true:
-#			player_index = 1
-		
+		if player_index == 0:
+			good_player = 0
+		else:
+			good_player = 1
 		
 
-			
 		if Input.is_joy_button_pressed(player_index, 0) == false:
 			has_selected = false
 		if Input.is_joy_button_pressed(player_index, 0):
 			handle_selection()
 
 		var horizontal
-		horizontal = Input.get_joy_axis(player_index, 0) # Using player 1's controller analog input
+		horizontal = Input.get_joy_axis(good_player, 0)# Using player 1's controller analog input
 
 		if horizontal > 0.5 and prev_horizontal <= 0.5:
 			selected_option += 1
@@ -69,7 +65,11 @@ func _process(delta):
 		prev_horizontal = horizontal
 		
 		if selected_option == 1:
-			get_node("Button").grab_focus()
+			get_child(0).grab_focus()
+		elif selected_option == 2:
+			get_child(1).grab_focus()
+		elif selected_option == 3:
+			get_child(2).grab_focus()
 
 func shuffle_cards():
 	shuffled_card_scene_paths = shuffle_array(card_scene_paths)

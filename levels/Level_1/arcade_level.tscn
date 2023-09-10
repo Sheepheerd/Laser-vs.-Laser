@@ -1,9 +1,10 @@
-[gd_scene load_steps=50 format=3 uid="uid://dwpl7rxbwjd3h"]
+[gd_scene load_steps=52 format=3 uid="uid://dwpl7rxbwjd3h"]
 
 [ext_resource type="PackedScene" uid="uid://cbgcr5dushx4j" path="res://win_condition/win.tscn" id="1_8mugj"]
 [ext_resource type="PackedScene" uid="uid://crqcpip6p3tpo" path="res://UI/level_ui/player_hearts_ui.tscn" id="3_8vka3"]
 [ext_resource type="AnimationLibrary" uid="uid://co31gnfoypk7a" path="res://UI/Game/game_animations.res" id="3_70bax"]
 [ext_resource type="Script" path="res://healthcheck.gd" id="4_r0n27"]
+[ext_resource type="PackedScene" uid="uid://c2n3lhri2oa1w" path="res://UI/Game/score.tscn" id="4_sevrb"]
 [ext_resource type="PackedScene" uid="uid://hgomxoskean4" path="res://UI/Game/game_shaders.tscn" id="5_0epk6"]
 [ext_resource type="PackedScene" uid="uid://d1rxdwsvvx6vs" path="res://UI/Game/Player/spawn_player.tscn" id="5_p8wak"]
 [ext_resource type="PackedScene" uid="uid://bgeh5kyxb4jag" path="res://card_mechanic/transitions/scene_black_click_transition.tscn" id="6_50o1f"]
@@ -14,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://b4m51oqrcpipv" path="res://sprites/Arcade_level/arcade_top_down.png" id="8_qbdcf"]
 [ext_resource type="PackedScene" uid="uid://b6q0c3v5cxmb8" path="res://shaders/win_shader.tscn" id="8_xwvhc"]
 [ext_resource type="PackedScene" uid="uid://ffxtvbv7iy5c" path="res://UI/win_menu/win_menu.tscn" id="9_em7pg"]
+[ext_resource type="Texture2D" uid="uid://2sjnjnfhsh3s" path="res://effects/light/light.png" id="10_k2ikt"]
 [ext_resource type="Texture2D" uid="uid://c0heqncjvxfts" path="res://effects/textures/64/spotlight_1.png" id="10_mkx0j"]
 
 [sub_resource type="Animation" id="Animation_pjjeu"]
@@ -168,6 +170,8 @@ position = Vector2(-960, 543)
 offset_top = -65.0
 offset_right = 0.0
 offset_bottom = -65.0
+
+[node name="score" parent="game_ui_back_buffer/game_ui_elements" instance=ExtResource("4_sevrb")]
 
 [node name="world_back_buffer" type="BackBufferCopy" parent="."]
 copy_mode = 2
@@ -481,7 +485,6 @@ texture_scale = 0.06
 [node name="top_left_arcade_diagonole" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
 position = Vector2(-888, -241.75)
 rotation = 0.785398
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_kepr7")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="world_back_buffer/world/Inside/top_left_arcade_diagonole"]
@@ -500,7 +503,6 @@ texture = SubResource("GradientTexture2D_jnyew")
 [node name="top_right_down_arcade" type="CollisionShape2D" parent="world_back_buffer/world/Inside"]
 position = Vector2(578.75, -245)
 rotation = -0.785398
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_vq756")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="world_back_buffer/world/Inside/top_right_down_arcade"]
@@ -515,6 +517,16 @@ color = Color(0.462745, 0.360784, 0.870588, 1)
 energy = 0.4
 shadow_filter_smooth = 4.4
 texture = SubResource("GradientTexture2D_jnyew")
+
+[node name="Wall Lights" type="Node2D" parent="world_back_buffer/world/Inside"]
+
+[node name="PointLight2D" type="PointLight2D" parent="world_back_buffer/world/Inside/Wall Lights"]
+position = Vector2(-154.5, 70.5)
+scale = Vector2(373.242, 210.742)
+color = Color(0, 0.521569, 1, 1)
+energy = 0.25
+texture = ExtResource("10_k2ikt")
+texture_scale = 0.01
 
 [node name="player" parent="world_back_buffer/world" instance=ExtResource("5_p8wak")]
 position = Vector2(-590, 115)
@@ -562,12 +574,6 @@ position_smoothing_speed = 10.0
 z_index = 1
 position = Vector2(-960, -541)
 
-[node name="light_sources" type="Node2D" parent="world_back_buffer/world"]
-
-[node name="CanvasModulate" type="CanvasModulate" parent="world_back_buffer/world/light_sources"]
-visible = false
-color = Color(0.709804, 0.643137, 0.741176, 1)
-
 [node name="pause_menu_back_buffer" type="BackBufferCopy" parent="."]
 process_mode = 2
 copy_mode = 2
@@ -588,12 +594,14 @@ copy_mode = 2
 environment = SubResource("Environment_wegft")
 
 [node name="win_shader" parent="." instance=ExtResource("8_xwvhc")]
+z_index = 2
 offset_left = -968.0
 offset_top = -545.0
 offset_right = -968.0
 offset_bottom = -545.0
 
 [node name="Game_shaders" parent="." instance=ExtResource("5_0epk6")]
+z_index = 2
 offset_left = -960.0
 offset_top = -541.0
 offset_right = -960.0

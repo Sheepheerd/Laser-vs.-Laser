@@ -11,8 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://cuqrvt6eqyr61" path="res://player_scripts/death_controller.tscn" id="10_74qx0"]
 [ext_resource type="Texture2D" uid="uid://2sjnjnfhsh3s" path="res://effects/light/light.png" id="10_uhxrk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q82ae"]
-size = Vector2(14, 17.5)
+[sub_resource type="CircleShape2D" id="CircleShape2D_wf0u0"]
+radius = 8.25
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yl1ta"]
 atlas = ExtResource("7_w2g3p")
@@ -140,6 +140,7 @@ animations = [{
 }]
 
 [node name="1" type="CharacterBody2D"]
+z_index = 1
 scale = Vector2(4, 4)
 collision_layer = 17
 collision_mask = 17
@@ -155,7 +156,7 @@ script = ExtResource("1_cao6k")
 
 [node name="collision_shape_2d" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 1)
-shape = SubResource("RectangleShape2D_q82ae")
+shape = SubResource("CircleShape2D_wf0u0")
 
 [node name="cursor" parent="." instance=ExtResource("3_rxgd7")]
 position = Vector2(3.8147e-06, 0)

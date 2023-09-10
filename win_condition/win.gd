@@ -9,6 +9,7 @@ var not_finished_transition = true
 func _ready():
 	defaults_restored = false
 	not_finished_transition = true
+	
 	#game_process_controller.required_wins = 3
 
 func _process(delta):

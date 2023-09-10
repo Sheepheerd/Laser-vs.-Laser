@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2n3lhri2oa1w"]
+
+[ext_resource type="Script" path="res://UI/Game/score.gd" id="1_yuatt"]
+[ext_resource type="Theme" uid="uid://ba2jqkcd238pp" path="res://UI/Theme/player_score_count.tres" id="2_pk6s6"]
+
+[node name="score" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_yuatt")
+
+[node name="score_counter" type="Button" parent="."]
+layout_mode = 0
+offset_left = 500.0
+offset_top = -988.0
+offset_right = 562.0
+offset_bottom = -908.0
+theme = ExtResource("2_pk6s6")
+
+[node name="score_counter2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1353.0
+offset_top = -984.0
+offset_right = 1415.0
+offset_bottom = -904.0
+theme = ExtResource("2_pk6s6")

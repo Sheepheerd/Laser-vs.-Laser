@@ -4,7 +4,7 @@ var camera1 : Camera2D
 var camera2 : Camera2D
 var original_camera1_position : Vector2
 var original_camera2_position : Vector2
-@export var shake_amplitude : float = 5.0
+@export var shake_amplitude : float = 15.0
 var shake_duration : float = 1.0
 var shake_timer
 
