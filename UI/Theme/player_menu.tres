@@ -103,7 +103,6 @@ corner_radius_bottom_left = 4
 corner_detail = 6
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0p0qa"]
-texture = ExtResource("3_m5f6b")
 
 [resource]
 /fonts/Pixel_Font = ExtResource("1_l7hj3")

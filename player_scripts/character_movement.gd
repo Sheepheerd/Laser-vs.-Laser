@@ -16,6 +16,7 @@ var has_selected
 @onready var dash = $dodge
 var health
 var player_tag = self.get_name()
+var move_yes
 func _ready():
 	# Hide the system mouse cursor
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -32,7 +33,9 @@ func _ready():
 	game_process_controller.can_pause = true
 	#Setting Health
 	gun_controller["health"] = gun_controller["max_health"]
-
+	gun_controller["can_dodge"] = false
+	move_yes = false
+	await get_tree().create_timer(3).timeout.connect(can_move_player)
 func _physics_process(delta):
 	if game_process_controller.current_game_process == game_process_controller.game_process.game_fight && !gun_controller["health"] <= 0:
 		if Input.is_joy_button_pressed(player_index, 0) == false:
@@ -49,12 +52,12 @@ func _physics_process(delta):
 
 		# Controller input
 		var horizontal = Input.get_joy_axis(player_index, 0)
-		if abs(horizontal) > 0.2: # Set the deadzone threshold to 0.2 (adjust as needed)
+		if abs(horizontal) > 0.2 && move_yes == true: # Set the deadzone threshold to 0.2 (adjust as needed)
 			move_dir.x += horizontal
 		else:
 			move_dir.x = 0.0
 		var vertical = Input.get_joy_axis(player_index, 1)
-		if abs(vertical) > 0.2: # Set the deadzone threshold to 0.2 (adjust as needed)
+		if abs(vertical) > 0.2 && move_yes == true: # Set the deadzone threshold to 0.2 (adjust as needed)
 			move_dir.y += vertical
 		else:
 			move_dir.y = 0.0
@@ -90,7 +93,10 @@ func take_damage(damage):
 
 	gun_controller["health"] -= damage
 
-
+func can_move_player():
+	move_yes = true
+	get_node("cursor").can_fire = true
+	gun_controller["can_dodge"] = true
 func pause_menu():
 	if Input.is_joy_button_pressed(player_index, 5) == true && game_process_controller.can_pause == true:
 		game_process_controller.current_game_process = game_process_controller.game_process.pause_menu

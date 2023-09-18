@@ -16,7 +16,7 @@ var player_index
 @onready var card_effects = get_parent().get_parent().get_node("ready_transition/AnimationPlayer")
 func _ready():
 	card_scene_paths = game_process_controller.card_scene_paths
-	if 	game_process_controller.current_game_process == game_process_controller.game_process.cards_selection_loser:
+	if game_process_controller.current_game_process == game_process_controller.game_process.cards_selection_loser:
 		
 		card_effects.play("cards_ready_pulse/cards_pulse")
 		if game_process_controller.player_death["player_1"] == true && game_process_controller.player_death["player_2"] == false:

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkj3bmc3or7oe"]
+
+[ext_resource type="Theme" uid="uid://bajqmo6fttg8t" path="res://UI/Theme/player_menu.tres" id="1_3lpin"]
+[ext_resource type="Script" path="res://for_youtube/test_card/testcard.gd" id="2_y6jjn"]
+
+[node name="Button" type="Button"]
+offset_right = 400.0
+offset_bottom = 700.0
+theme = ExtResource("1_3lpin")
+text = "A C C U R A C Y
+
++
+
+F I R E  R A T E
+
+U P"
+script = ExtResource("2_y6jjn")

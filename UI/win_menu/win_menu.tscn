@@ -9,6 +9,7 @@
 [node name="win_menu" type="Node2D"]
 
 [node name="Win_Options" type="BackBufferCopy" parent="."]
+copy_mode = 2
 
 [node name="win_menu" type="Control" parent="Win_Options"]
 layout_mode = 3

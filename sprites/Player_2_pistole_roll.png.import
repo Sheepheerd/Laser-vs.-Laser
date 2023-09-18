@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2e5pe2y6tmo4"
-path="res://.godot/imported/Player_1_pistole.png-df87fab0fec80bdace787a3e67979c1a.ctex"
+uid="uid://usk12bowrbhr"
+path="res://.godot/imported/Player_2_pistole_roll.png-5cb6e60bb72059823a2d29cde8c42029.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Player_1_pistole.png"
-dest_files=["res://.godot/imported/Player_1_pistole.png-df87fab0fec80bdace787a3e67979c1a.ctex"]
+source_file="res://sprites/Player_2_pistole_roll.png"
+dest_files=["res://.godot/imported/Player_2_pistole_roll.png-5cb6e60bb72059823a2d29cde8c42029.ctex"]
 
 [params]
 

@@ -15,13 +15,13 @@ var player_index = 1
 
 var has_selected = false
 
-var can_fire = true
+var can_fire = false
 var start_shot = true
 func _ready():
 	#gun_controller.perform_actions()
 	originalPosition = position # Store the original position of the cursor
 	#magazine_size = gun_controller.magazine_size
-	can_fire == true
+	can_fire == false
 	if Input.is_joy_button_pressed(player_index, 0) == true:
 		has_selected = true
 	player_index = get_parent().player_index
@@ -38,8 +38,8 @@ func _process(delta):
 		if Input.get_joy_axis(player_index, 5) && has_selected == false && start_shot == false && can_fire == true:
 			Attack()
 
-		if Input.is_joy_button_pressed(player_index, 10)  && has_selected == false && can_fire == true:
-			shoot_grenade()
+#		if Input.is_joy_button_pressed(player_index, 10)  && has_selected == false && can_fire == true:
+#			shoot_grenade()
 		# Controller Support
 		rightStick = Vector2(
 			Input.get_joy_axis(player_index, 2),

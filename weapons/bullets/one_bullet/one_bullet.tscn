@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdu5l8aklorvy"]
+[gd_scene load_steps=9 format=3 uid="uid://cdu5l8aklorvy"]
 
 [ext_resource type="Script" path="res://weapons/bullets/one_bullet/one_bullet_movement.gd" id="1_1g8hr"]
 [ext_resource type="Texture2D" uid="uid://cwkm247h0olyh" path="res://sprites/bullet.png" id="2_hs6dt"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bxjs04s3o12gk" path="res://effects/smoke_trail.tscn" id="4_imavh"]
 [ext_resource type="PackedScene" uid="uid://sy51sm5n5wlf" path="res://effects/muzzle_flash.tscn" id="5_bt7f1"]
 [ext_resource type="PackedScene" uid="uid://co8qct60kbv50" path="res://effects/bullet_crash_effect.tscn" id="6_xgq3e"]
-[ext_resource type="Texture2D" uid="uid://2sjnjnfhsh3s" path="res://effects/light/light.png" id="7_l65mk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p0eyk"]
 radius = 8.33335
@@ -52,13 +51,6 @@ one_shot = true
 
 [node name="bullet_crash" parent="." instance=ExtResource("6_xgq3e")]
 
-[node name="light" type="Node2D" parent="."]
-
-[node name="PointLight2D" type="PointLight2D" parent="light"]
-position = Vector2(-0.25, 0.250001)
-scale = Vector2(2.63672, 2.44141)
-energy = 16.0
-texture = ExtResource("7_l65mk")
-texture_scale = 0.01
+[node name="bounce" type="AudioStreamPlayer" parent="."]
 
 [connection signal="timeout" from="explosion_timer" to="." method="_on_explosion_timer_timeout"]

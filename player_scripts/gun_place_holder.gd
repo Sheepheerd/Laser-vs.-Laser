@@ -65,11 +65,13 @@ var has_shot = false
 
 
 func shoot_bullet():
-	get_parent().get_node("camera_shake").shoot_bullet_and_shake(player_index)
+	#get_parent().get_node("camera_shake").shoot_bullet_and_shake(player_index)
+	$AudioStreamPlayer.play()
 	has_shot = false
 	var bullet = bullet_type.instantiate()
 	bullet.player_index = player_index
 	get_parent().get_parent().get_parent().add_child(bullet)
+
 
 	# Set the initial position of the bullet at the marker's position
 	bullet.global_position = get_parent().get_node("Marker2D").global_position
@@ -99,14 +101,14 @@ func apply_accuracy(dir, accuracy):
 #fix this for bullet dictionary in gun_tags
 func define_bullet_type():
 	
-	if gun_controller["gun_bullet"] == "1_bullet":
-		bullet_type = preload("res://weapons/bullets/one_bullet/one_bullet.tscn")
-	if gun_controller["gun_bullet"] == "2_bullet":
-		bullet_type = preload("res://weapons/bullets/two_bullets/two_bullets.tscn")
-	if gun_controller["gun_bullet"] == "3_bullet":
-		bullet_type = preload("res://weapons/bullets/three_bullets/three_bullets.tscn")
-	if gun_controller["gun_bullet"] == "4_bullet":
-		bullet_type = preload("res://weapons/bullets/four_bullets/four_bullets.tscn")
+	#if gun_controller["gun_bullet"] == "1_bullet":
+	bullet_type = preload("res://weapons/bullets/one_bullet/one_bullet.tscn")
+#	if gun_controller["gun_bullet"] == "2_bullet":
+#		bullet_type = preload("res://weapons/bullets/two_bullets/two_bullets.tscn")
+#	if gun_controller["gun_bullet"] == "3_bullet":
+#		bullet_type = preload("res://weapons/bullets/three_bullets/three_bullets.tscn")
+#	if gun_controller["gun_bullet"] == "4_bullet":
+#		bullet_type = preload("res://weapons/bullets/four_bullets/four_bullets.tscn")
 
 #	if gun_controller["gun_bullet"] == "Grenade_Launcher":
 #		bullet_type = preload("res://weapons/grenade_launcher/grenade_bullets.tscn")

@@ -1,0 +1,161 @@
+[gd_scene load_steps=12 format=3 uid="uid://b55aicp4notln"]
+
+[ext_resource type="PackedScene" uid="uid://ccxyu1ekqf3oh" path="res://shaders/UI_Shaders.tscn" id="1_cjabk"]
+[ext_resource type="Script" path="res://UI/sound_menu/sound_menu.gd" id="2_1ph8v"]
+[ext_resource type="Theme" uid="uid://bajqmo6fttg8t" path="res://UI/Theme/player_menu.tres" id="3_ejiy1"]
+[ext_resource type="Script" path="res://UI/sound_menu/level_controller.gd" id="4_dj4ww"]
+[ext_resource type="Script" path="res://UI/map_selection/hover_selection.gd" id="4_qj0u5"]
+[ext_resource type="PackedScene" uid="uid://xgiy4raoxxhf" path="res://UI/Transitions/transition_controller.tscn" id="5_ejqu7"]
+[ext_resource type="Theme" uid="uid://ba2jqkcd238pp" path="res://UI/Theme/player_score_count.tres" id="5_iynmu"]
+[ext_resource type="Script" path="res://UI/sound_menu/animation_controller.gd" id="8_yqos8"]
+
+[sub_resource type="Animation" id="Animation_gb1eh"]
+resource_name = "PopIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Menu_Options/sound_menu:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.01, 0.01), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Menu_Options/Control:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yvu6y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Menu_Options/sound_menu:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.01, 0.01)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Menu_Options/Control:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1, 0.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ehyub"]
+_data = {
+"Pop_in": SubResource("Animation_gb1eh"),
+"RESET": SubResource("Animation_yvu6y")
+}
+
+[node name="UI" type="Node2D"]
+
+[node name="Shaders" parent="." instance=ExtResource("1_cjabk")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Menu_Options" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="sound_menu" type="Control" parent="Menu_Options"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1720.0
+offset_bottom = 880.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.01, 0.01)
+pivot_offset = Vector2(954, 536)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("2_1ph8v")
+metadata/_edit_use_anchors_ = true
+
+[node name="Music" type="Button" parent="Menu_Options/sound_menu"]
+layout_mode = 2
+anchor_left = -0.2375
+anchor_right = -0.2375
+offset_left = 747.0
+offset_top = 611.0
+offset_right = 1167.0
+offset_bottom = 691.0
+theme = ExtResource("3_ejiy1")
+text = "M U S I C"
+script = ExtResource("4_qj0u5")
+metadata/_edit_use_anchors_ = true
+
+[node name="Soundfx" type="Button" parent="Menu_Options/sound_menu"]
+layout_mode = 2
+anchor_left = 0.251042
+anchor_top = -0.222222
+anchor_right = 0.251042
+anchor_bottom = -0.222222
+offset_left = 747.0
+offset_top = 851.0
+offset_right = 1167.0
+offset_bottom = 931.0
+theme = ExtResource("3_ejiy1")
+text = "S O U N D F X"
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="Menu_Options"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1720.0
+offset_bottom = 880.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+pivot_offset = Vector2(935, 552)
+script = ExtResource("4_dj4ww")
+
+[node name="music" type="Button" parent="Menu_Options/Control"]
+offset_left = 465.0
+offset_top = 427.0
+offset_right = 527.0
+offset_bottom = 507.0
+theme = ExtResource("5_iynmu")
+
+[node name="sfx" type="Button" parent="Menu_Options/Control"]
+offset_left = 1405.0
+offset_top = 427.0
+offset_right = 1467.0
+offset_bottom = 507.0
+theme = ExtResource("5_iynmu")
+
+[node name="Transition" parent="." instance=ExtResource("5_ejqu7")]
+
+[node name="animation_controller" type="Node2D" parent="."]
+script = ExtResource("8_yqos8")
+
+[node name="Button_movement" type="AnimationPlayer" parent="animation_controller"]
+root_node = NodePath("../..")
+
+[node name="Button_pop" type="AnimationPlayer" parent="animation_controller"]
+libraries = {
+"": SubResource("AnimationLibrary_ehyub")
+}

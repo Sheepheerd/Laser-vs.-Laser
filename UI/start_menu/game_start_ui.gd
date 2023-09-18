@@ -8,15 +8,17 @@ var has_selected = false
 @onready var _transition_rect = get_parent().get_parent().get_node("Transition/transition_controller")
 func _ready():
 	game_process_controller.current_game_process = game_process_controller.game_process.start_menu
+	game_process_controller.load_config()
+	menu_music.play_music()
 	get_tree().paused = false
-	var config = ConfigFile.new()
+	#var config = ConfigFile.new()
 	
-	if config.load("res://settings.cfg") == OK:
-		var fullscreen = config.get_value("Settings", "Fullscreen", false)
-		if fullscreen:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		else:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+#	if config.load("res://settings.cfg") == OK:
+#		var fullscreen = config.get_value("Settings", "Fullscreen", false)
+#		if fullscreen:
+#			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+#		else:
+#			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
 	if Input.is_joy_button_pressed(0, 0) == true:
 		has_selected = true

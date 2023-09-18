@@ -22,18 +22,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Menu_Options/start_menu/Fullscreen:size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(420, 80)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lsxo2"]
 _data = {
@@ -52,7 +40,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.05, 0.05)]
+"values": [Vector2(0.025, 0.025)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_smgnq"]
@@ -63,8 +51,10 @@ _data = {
 [node name="UI" type="Node2D"]
 
 [node name="Shaders" parent="." instance=ExtResource("1_u1j0p")]
+metadata/_edit_use_anchors_ = true
 
 [node name="Menu_Options" type="BackBufferCopy" parent="."]
+copy_mode = 2
 
 [node name="start_menu" type="Control" parent="Menu_Options"]
 layout_mode = 3
@@ -75,7 +65,6 @@ offset_right = 1720.0
 offset_bottom = 880.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.05, 0.05)
 pivot_offset = Vector2(955, 537)
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -88,17 +77,19 @@ layout_mode = 2
 anchor_top = 0.00185191
 anchor_bottom = 0.00185191
 offset_left = 747.0
-offset_top = 413.001
+offset_top = 425.001
 offset_right = 1167.0
-offset_bottom = 493.001
+offset_bottom = 505.001
 theme = ExtResource("4_c5c2w")
 text = "F U L L S C R E E N"
 script = ExtResource("4_1485g")
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="Back" type="Button" parent="Menu_Options/start_menu"]
+[node name="Sound" type="Button" parent="Menu_Options/start_menu"]
 layout_mode = 2
+anchor_top = 0.025
+anchor_bottom = 0.025
 offset_left = 747.0
 offset_top = 611.0
 offset_right = 1167.0
@@ -108,7 +99,7 @@ text = "S O U N D"
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="Sound" type="Button" parent="Menu_Options/start_menu"]
+[node name="Back" type="Button" parent="Menu_Options/start_menu"]
 layout_mode = 2
 offset_left = 747.0
 offset_top = 851.0

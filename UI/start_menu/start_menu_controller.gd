@@ -8,21 +8,21 @@ func _ready():
 	can_animate = true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if can_animate == true:
-		#Animatinon
-		if menu_selected_option.selected_option == 1:
-
-			Button_movement.play("Play_pulse")
-			
-			
-		elif menu_selected_option.selected_option == 2:
-			
-			Button_movement.play("Options_pulse")
-			
-
-			
-			
-		elif menu_selected_option.selected_option == 3:
-
-			Button_movement.play("Quit_pulse")
-		
+#	if can_animate == true:
+#		#Animatinon
+#		if menu_selected_option.selected_option == 1:
+#
+#			Button_movement.play("Play_pulse")
+#
+#
+#		elif menu_selected_option.selected_option == 2:
+#
+#			Button_movement.play("Options_pulse")
+#
+#
+#
+#
+#		elif menu_selected_option.selected_option == 3:
+#
+#			Button_movement.play("Quit_pulse")
+	pass

@@ -1,21 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://b6q0c3v5cxmb8"]
+[gd_scene load_steps=6 format=3 uid="uid://b6q0c3v5cxmb8"]
 
-[ext_resource type="Shader" path="res://shaders/GodotRetro/Screen Shaders/TV.gdshader" id="1_xk3wr"]
 [ext_resource type="Shader" path="res://shaders/GodotRetro/Screen Shaders/NTSC.gdshader" id="2_uilql"]
-[ext_resource type="Shader" path="res://shaders/GodotRetro/Screen Shaders/Glitch.gdshader" id="3_wvma6"]
-[ext_resource type="Shader" path="res://shaders/GodotRetro/Screen Shaders/Aditional Shaders/Sharpness.gdshader" id="4_jmw5c"]
-[ext_resource type="Shader" path="res://shaders/GodotRetro/Screen Shaders/Aditional Shaders/Dithering.gdshader" id="5_auwh7"]
 [ext_resource type="AnimationLibrary" uid="uid://e7p7ukobjj0k" path="res://UI/Game/win_animations.res" id="5_pq75q"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_frsw2"]
-shader = ExtResource("1_xk3wr")
-shader_parameter/vertJerkOpt = 0.089
-shader_parameter/vertMovementOpt = 0.0
-shader_parameter/bottomStaticOpt = 0.0
-shader_parameter/bottomStaticStrenth = 0.7
-shader_parameter/scalinesOpt = 0.8
-shader_parameter/rgbOffsetOpt = 0.2
-shader_parameter/horzFuzzOpt = 0.15
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_omrth"]
 shader = ExtResource("2_uilql")
@@ -23,29 +9,12 @@ shader_parameter/blur_amount = 0.0
 shader_parameter/signal_quality = 0.0
 shader_parameter/bottom_strenth = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fjwoh"]
-shader = ExtResource("3_wvma6")
-shader_parameter/_ScanLineJitter = 0.2
-shader_parameter/_VerticalJump = 0.0
-shader_parameter/_HorizontalShake = 0.0
-shader_parameter/_ColorDrift = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ycafq"]
-shader = ExtResource("4_jmw5c")
-shader_parameter/sharpen_amount = 0.042
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gbwil"]
-shader = ExtResource("5_auwh7")
-shader_parameter/SCREEN_WIDTH = 1920.0
-shader_parameter/COLOR_FACTOR = 10.0
-shader_parameter/DITHERING_STRENTH = 0.001
-
 [sub_resource type="Animation" id="Animation_q1li3"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../VHS/ColorRect:material:shader_parameter/blur_amount")
+tracks/0/path = NodePath("../VHS/ColorRect:material:shader_parameter/signal_quality")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -57,7 +26,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../VHS/ColorRect:material:shader_parameter/signal_quality")
+tracks/1/path = NodePath("../VHS/ColorRect:material:shader_parameter/bottom_strenth")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -69,7 +38,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../VHS/ColorRect:material:shader_parameter/bottom_strenth")
+tracks/2/path = NodePath("../VHS/ColorRect:material:shader_parameter/blur_amount")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -92,24 +61,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Base Color" type="BackBufferCopy" parent="."]
-visible = false
-copy_mode = 2
-
-[node name="ColorRect3" type="ColorRect" parent="Base Color"]
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.6, 0.427451, 0.509804, 1)
-
-[node name="TV Shader" type="BackBufferCopy" parent="."]
-visible = false
-copy_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="TV Shader"]
-material = SubResource("ShaderMaterial_frsw2")
-offset_right = 1920.0
-offset_bottom = 1080.0
-
 [node name="VHS" type="BackBufferCopy" parent="."]
 copy_mode = 2
 
@@ -118,36 +69,6 @@ material = SubResource("ShaderMaterial_omrth")
 offset_right = 1920.0
 offset_bottom = 1080.0
 metadata/_edit_use_anchors_ = true
-
-[node name="Glitch" type="BackBufferCopy" parent="."]
-visible = false
-z_index = 2
-copy_mode = 2
-
-[node name="Glitch" type="ColorRect" parent="Glitch"]
-material = SubResource("ShaderMaterial_fjwoh")
-offset_right = 1920.0
-offset_bottom = 1080.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Sharpness" type="BackBufferCopy" parent="."]
-visible = false
-copy_mode = 2
-
-[node name="Sharpness" type="ColorRect" parent="Sharpness"]
-material = SubResource("ShaderMaterial_ycafq")
-offset_right = 1920.0
-offset_bottom = 1084.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Dithering" type="BackBufferCopy" parent="."]
-visible = false
-copy_mode = 2
-
-[node name="Dither" type="ColorRect" parent="Dithering"]
-material = SubResource("ShaderMaterial_gbwil")
-offset_right = 1920.0
-offset_bottom = 1080.0
 
 [node name="animation_controller" type="Node2D" parent="."]
 

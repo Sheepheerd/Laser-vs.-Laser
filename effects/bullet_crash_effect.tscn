@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://co8qct60kbv50"]
+[gd_scene load_steps=4 format=3 uid="uid://co8qct60kbv50"]
 
 [ext_resource type="Texture2D" uid="uid://befrdo6bnufkb" path="res://effects/textures/Purple Effect and Bullet 16x16-Recovered-sheet.png" id="1_wbk33"]
-[ext_resource type="Texture2D" uid="uid://2sjnjnfhsh3s" path="res://effects/light/light.png" id="2_vmrwk"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_13xsl"]
 particles_animation = true
@@ -32,15 +31,3 @@ scale_amount_max = 3.0
 color_ramp = SubResource("Gradient_av0pq")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
-position = Vector2(-9.53674e-07, 0)
-rotation = -0.785398
-scale = Vector2(0.693412, 0.71521)
-color = Color(0.760784, 0.0705882, 0.717647, 1)
-energy = 0.25
-shadow_enabled = true
-shadow_filter_smooth = 4.4
-texture = ExtResource("2_vmrwk")
-texture_scale = 0.1

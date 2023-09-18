@@ -70,4 +70,7 @@ func fullscreen():
 	config.save("res://settings.cfg")
 
 func sound():
-	pass
+	button_pop_controller.play_backwards("options_menu/Pop_in")
+	_transition_rect.transition_to("res://UI/sound_menu/sound_menu.tscn")
+
+	game_process_controller.current_game_process = game_process_controller.game_process.sound_menu

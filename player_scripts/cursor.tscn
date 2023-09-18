@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://co3nabnet1av0"]
+[gd_scene load_steps=6 format=3 uid="uid://co3nabnet1av0"]
 
 [ext_resource type="Script" path="res://player_scripts/cursor_controller.gd" id="1_52pqi"]
 [ext_resource type="Script" path="res://player_scripts/gun_place_holder.gd" id="3_110ys"]
 [ext_resource type="PackedScene" uid="uid://codtffggsc6ww" path="res://effects/screen_effects/camera_shake.tscn" id="3_edqyp"]
+[ext_resource type="AudioStream" uid="uid://8agifqw4ej66" path="res://effects/sound_effects/shoot_effect.ogg" id="3_i0eyb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_10fis"]
-radius = 4.99998
+radius = 4.99997
 
 [node name="cursor" type="Area2D"]
 scale = Vector2(0.200001, 0.200001)
@@ -24,8 +25,10 @@ script = ExtResource("3_110ys")
 
 [node name="gun_shoot_timer" type="Timer" parent="gun_place_holder"]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="gun_place_holder"]
+stream = ExtResource("3_i0eyb")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_10fis")
 
 [node name="camera_shake" parent="." instance=ExtResource("3_edqyp")]

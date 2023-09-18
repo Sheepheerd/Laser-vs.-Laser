@@ -11,9 +11,10 @@ var player_1 = false
 var player_2 = false
 
 var lobby = false
-@onready var _transition_rect = get_parent().get_parent().get_node("Transition/transition_controller")
+@onready var _transition_rect = get_parent().get_parent().get_node("black_click_transition/scene_black_click_transition")
 @onready var button_animation_controller = get_parent().get_parent().get_node("animation_controller/Button_pop")
 func _ready():
+	game_process_controller.not_playing_game_music = true
 	button_animation_controller.play("map_selection/Pop_in")
 	#game_process_controller.current_game_process = game_process_controller.game_process.ui_map_selection
 	game_process_controller.game_lobby["player_1"] = true
@@ -81,7 +82,9 @@ func _process(delta):
 
 func map_1():
 	game_process_controller.current_game_process = game_process_controller.game_process.game_fight
+	menu_music.stop_music()
 	button_animation_controller.play_backwards("map_selection/Pop_in")
+	get_parent().get_parent().get_node("Transition/transition_controller/AnimationPlayer").play("Glitch_transition")
 	_transition_rect.transition_to("res://levels/Level_1/arcade_level.tscn")
 
 

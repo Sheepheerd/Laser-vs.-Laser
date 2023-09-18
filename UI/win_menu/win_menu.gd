@@ -73,6 +73,8 @@ func _win_menu():
 
 func _on_rematch_pressed():
 	Engine.time_scale = 1
+	game_music.stop_music()
+	menu_music.play_music()
 	$Rematch.hide()
 	$Quite.hide()
 	animation_controller.play_backwards("game_animations/Pop_in")
@@ -83,11 +85,10 @@ func _on_rematch_pressed():
 	else:
 		return
 	
-func _on_options_pressed():
-	pass
 	
 func _on_quit_to_main_menu_pressed():
 	Engine.time_scale = 1
+	game_music.stop_music()
 	animation_controller.play_backwards("game_animations/Pop_in")
 	restore_default_stats()
 	if defaults_restored == true:

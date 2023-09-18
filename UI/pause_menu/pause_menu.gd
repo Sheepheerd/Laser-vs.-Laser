@@ -12,7 +12,7 @@ var is_paused = false
 var can_press = true
 var defaults_restored = false
 @onready var animation_controller = get_parent().get_parent().get_parent().get_parent().get_parent().get_node("animation_controller/Game_pop")
-@onready var _transition_rect = get_parent().get_parent().get_node("Transition/transition_controller")
+@onready var _transition_rect = get_parent().get_parent().get_node("black_click_transition/scene_black_click_transition")
 @onready var effects = get_parent().get_parent().get_node("Transition")
 func _ready():
 	animation_controller.play("game_animations/Pop_in")
@@ -85,11 +85,10 @@ func _on_resume_pressed():
 	game_process_controller.current_game_process = game_process_controller.game_process.game_fight
 	get_tree().paused = false
 	
-func _on_options_pressed():
-	pass
 	
 func _on_quit_to_main_menu_pressed():
 	animation_controller.play_backwards("game_animations/Pop_in")
+	game_music.stop_music()
 	restore_default_stats()
 	if defaults_restored == true:
 		#get_parent().get_parent().get_node("animation_controller/Button_pop").play_backwards("start_menu_animations/Pop_in")

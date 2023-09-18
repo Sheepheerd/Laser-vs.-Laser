@@ -19,7 +19,7 @@ scale = Vector2(2, 2)
 script = ExtResource("1_g5sv5")
 
 [node name="bullet_1" type="CharacterBody2D" parent="."]
-position = Vector2(13.5, 0.5)
+position = Vector2(0.5, 9)
 collision_layer = 6
 collision_mask = 6
 script = ExtResource("2_2ptu4")
@@ -44,7 +44,7 @@ one_shot = true
 [node name="bullet_crash" parent="bullet_1" instance=ExtResource("6_kn2vo")]
 
 [node name="bullet_2" type="CharacterBody2D" parent="."]
-position = Vector2(-12.5, 0.5)
+position = Vector2(0.5, -8.5)
 collision_layer = 6
 collision_mask = 6
 script = ExtResource("2_2ptu4")

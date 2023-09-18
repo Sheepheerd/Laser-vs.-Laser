@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlqcc3ks8ernp"]
+[gd_scene load_steps=6 format=3 uid="uid://dlqcc3ks8ernp"]
 
 [ext_resource type="Script" path="res://UI/pause_menu/pause_menu.gd" id="1_p13n3"]
 [ext_resource type="Theme" uid="uid://bajqmo6fttg8t" path="res://UI/Theme/player_menu.tres" id="3_80vru"]
 [ext_resource type="Script" path="res://UI/map_selection/hover_selection.gd" id="4_nlhsc"]
 [ext_resource type="PackedScene" uid="uid://xgiy4raoxxhf" path="res://UI/Transitions/transition_controller.tscn" id="4_y7ubs"]
+[ext_resource type="PackedScene" uid="uid://bgeh5kyxb4jag" path="res://card_mechanic/transitions/scene_black_click_transition.tscn" id="5_8wdq4"]
 
 [node name="pause_menu" type="Node2D"]
 process_mode = 3
@@ -67,3 +68,5 @@ metadata/_edit_lock_ = true
 
 [node name="Transition" parent="." instance=ExtResource("4_y7ubs")]
 visible = false
+
+[node name="black_click_transition" parent="." instance=ExtResource("5_8wdq4")]

@@ -35,6 +35,9 @@ func _process(delta):
 		$Full_Hearts_P1.hide()
 
 	#Player Two
+	if gun_tags.player_2_stats["health"] == 5:
+		for i in range(5):
+			children_P2[i].show()
 	if gun_tags.player_2_stats["health"] == 4:
 		for i in range(4):
 			children_P2[i].show()

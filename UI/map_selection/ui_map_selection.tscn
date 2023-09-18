@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dd6p3mdlmuckc"]
+[gd_scene load_steps=13 format=3 uid="uid://dd6p3mdlmuckc"]
 
 [ext_resource type="PackedScene" uid="uid://ccxyu1ekqf3oh" path="res://shaders/UI_Shaders.tscn" id="1_04tnq"]
 [ext_resource type="Script" path="res://UI/map_selection/map_selection.gd" id="1_w2yl3"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://xgiy4raoxxhf" path="res://UI/Transitions/transition_controller.tscn" id="5_coxun"]
 [ext_resource type="AnimationLibrary" uid="uid://ih82se7p1x6r" path="res://UI/map_selection/map_selection.res" id="6_5jay1"]
 [ext_resource type="Script" path="res://UI/map_selection/animation_controller.gd" id="6_u5fkv"]
+[ext_resource type="PackedScene" uid="uid://bgeh5kyxb4jag" path="res://card_mechanic/transitions/scene_black_click_transition.tscn" id="8_kk7o7"]
 
 [sub_resource type="Animation" id="Animation_bx4sy"]
 length = 0.001
@@ -159,3 +160,6 @@ libraries = {
 "": SubResource("AnimationLibrary_xbh1n"),
 "map_selection": ExtResource("6_5jay1")
 }
+
+[node name="black_click_transition" parent="." instance=ExtResource("8_kk7o7")]
+z_index = 1

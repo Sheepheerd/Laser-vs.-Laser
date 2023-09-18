@@ -10,8 +10,8 @@ func _process(delta):
 	if can_animate == true:
 		#Animatinon
 		if get_parent().get_node("Menu_Options/start_menu").selected_option == 1:
-
-			Button_movement.play("options_menu/Fullscreen_pulse")
+			pass
+			#Button_movement.play("options_menu/Fullscreen_pulse")
 			
 #
 #		elif get_parent().get_node("Menu_Options/start_menu").selected_option == 2:

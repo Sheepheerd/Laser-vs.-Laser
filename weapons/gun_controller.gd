@@ -54,7 +54,7 @@ var player_1_stats = {
 			"ghost_bullets" : false,
 			"grenade_bullets" : false,
 			
-			"can_dodge" : true
+			"can_dodge" : false
 	}
 	
 var player_1_stats_defaults = {
@@ -86,7 +86,7 @@ var player_1_stats_defaults = {
 			"ghost_bullets" : false,
 			"grenade_bullets" : false,
 			
-			"can_dodge" : true
+			"can_dodge" : false
 	}
 	
 var player_2_stats = {
@@ -118,7 +118,7 @@ var player_2_stats = {
 			"ghost_bullets" : false,
 			"grenade_bullets" : false,
 			
-			"can_dodge" : true
+			"can_dodge" : false
 	}
 
 var player_2_stats_defaults = {
@@ -150,7 +150,7 @@ var player_2_stats_defaults = {
 			"ghost_bullets" : false,
 			"grenade_bullets" : false,
 			
-			"can_dodge" : true
+			"can_dodge" : false
 	}
 
 
